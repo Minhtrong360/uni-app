@@ -1,23 +1,60 @@
-// https://v0.dev/chat/7_2uNDV3eqj
+// https://v0.dev/chat/b/NQ89JvH
 'use client'
+
 import Image from 'next/image'
-import { Menu, Search, MoreHorizontal } from 'lucide-react'
+import { Menu, Search, MoreHorizontal, Home, Store, Calendar, HeartHandshake, Rocket } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent,  CardTitle } from "@/components/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Component() {
+  const router = useRouter()
   return (
     <Card className="max-w-md mx-auto">
       <CardContent className="p-4 space-y-4">
         <header className="flex justify-between items-center">
-          <Button variant="ghost" size="icon">
-            <Menu className="w-6 h-6" />
-          </Button>
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Menu">
+                <Menu className="w-6 h-6" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start">
+              <DropdownMenuItem onClick={() => router.push('/')}>
+                <Home className="mr-2 h-4 w-4" />
+                <span>Home</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/store')}>
+                <Store className="mr-2 h-4 w-4" />
+                <span>Store</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/news')}>
+                <Calendar className="mr-2 h-4 w-4" />
+                <span>Events</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/support/dashboard')}>
+                <HeartHandshake className="mr-2 h-4 w-4" />
+                <span>Student Support</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/startups')}>
+                <Rocket className="mr-2 h-4 w-4" />
+                <span>Startup Projects</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <CardTitle className="text-lg">Campus Events</CardTitle>
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="icon">
               <Search className="w-6 h-6" />
             </Button>
+            <Link href="/user/user-setting">
             <Image
               src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=32&width=32"
               alt="Student Profile"
@@ -25,6 +62,7 @@ export default function Component() {
               height={32}
               className="rounded-full"
             />
+            </Link>
           </div>
         </header>
 

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Mail, Lock, Eye } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function LoginComponent({ onForgotPassword }: { onForgotPassword: () => void }) {
     return (
@@ -36,9 +37,11 @@ export default function LoginComponent({ onForgotPassword }: { onForgotPassword:
               Forgot password?
             </button>
           </div>
+          <Link href="/">
           <Button className="w-full  text-white py-3">
             Continue
           </Button>
+          </Link>
         </form>
         <div className="flex items-center justify-center space-x-4">
           <div className="h-px bg-gray-300 w-full" />

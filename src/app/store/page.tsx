@@ -2,6 +2,7 @@
 'use client'
 import Image from 'next/image'
 import { ChevronLeft, Star } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Component() {
   const restaurants = [
@@ -32,9 +33,11 @@ export default function Component() {
   ]
 
   return (
-    <div className="max-w-md mx-auto bg-white border-4 border-gray-200 rounded-3xl overflow-hidden shadow-lg">
+    <div className="max-w-md mx-auto bg-white border border-gray-200 rounded-xl overflow-hidden shadow">
       <div className="px-4 py-4 flex items-center border-b border-gray-200">
+        <Link href="/">
         <ChevronLeft className="w-6 h-6 text-gray-600" />
+        </Link>
         <h1 className="text-xl font-semibold ml-4">Fast Food</h1>
       </div>
       

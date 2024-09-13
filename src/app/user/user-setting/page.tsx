@@ -12,7 +12,9 @@ export default function UserSetting() {
     <div className="flex min-h-screen bg-gray-100">
       <div className="m-auto w-full max-w-md bg-white p-8 rounded-3xl shadow-lg">
         <div className="flex justify-between items-center mb-6">
+          <Link href="/">
           <ArrowLeft className="w-6 h-6 text-gray-500" />
+          </Link>
           <h1 className="text-xl font-semibold">My profile</h1>
           <Link href="/auth"><span className="text-sm">Log out</span> </Link>
         </div>
