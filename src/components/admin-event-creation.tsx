@@ -1,21 +1,19 @@
-// https://v0.dev/chat/MAcb32KlLGb
 'use client'
-import { useState} from 'react'
+
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { CalendarIcon, X, Clock, ChevronLeft } from "lucide-react"
+import { CalendarIcon, X, Clock } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-import { useRouter } from 'next/navigation'
-export default function AdminEventCreation() {
-  const router = useRouter()
+export function AdminEventCreationComponent() {
   const [eventDate, setEventDate] = useState<Date>()
   const [tags, setTags] = useState<string[]>([])
   const [currentTag, setCurrentTag] = useState('')
@@ -55,12 +53,7 @@ export default function AdminEventCreation() {
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-0  py-4 flex items-center">
-          <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" />
-          <h1 className="text-2xl font-semibold text-gray-900">Create University Event</h1>
-        
-      </div>
+        <h1 className="text-2xl font-bold mb-6">Create University Event</h1>
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="w-full lg:w-1/2">
             <Card>
@@ -206,7 +199,7 @@ export default function AdminEventCreation() {
             <Card className="overflow-hidden">
               <div className="relative h-48">
                 <img
-                  src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=200&width=400"
+                  src="/placeholder.svg?height=200&width=400"
                   alt="Event preview"
                   className="w-full h-full object-cover"
                 />

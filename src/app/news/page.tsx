@@ -35,7 +35,7 @@ export default function Component() {
                 <Store className="mr-2 h-4 w-4" />
                 <span>Store</span>
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push('/news')}>
+              <DropdownMenuItem onClick={() => router.push('/events')}>
                 <Calendar className="mr-2 h-4 w-4" />
                 <span>Events</span>
               </DropdownMenuItem>

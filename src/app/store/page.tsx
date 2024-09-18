@@ -116,7 +116,7 @@
 // https://v0.dev/chat/FmwamKz6rrr
 'use client'
 import Image from 'next/image'
-import { ChevronLeft, Star, ShoppingCart, Clock, MapPin, Search, Filter, Menu, X, Home, Calendar, HeartHandshake, Rocket, Store } from 'lucide-react'
+import {  Star, ShoppingCart, Clock, MapPin, Search, Filter, Menu, X, Home, Calendar, HeartHandshake, Rocket, Store, History } from 'lucide-react'
 import { useState } from 'react'
 import {
   DropdownMenu,
@@ -124,7 +124,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import Link from 'next/link'
+
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
@@ -188,7 +188,7 @@ export default function Stores() {
                 <Store className="mr-2 h-4 w-4" />
                 <span>Store</span>
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push('/news')}>
+              <DropdownMenuItem onClick={() => router.push('/events')}>
                 <Calendar className="mr-2 h-4 w-4" />
                 <span>Events</span>
               </DropdownMenuItem>
@@ -214,6 +214,7 @@ export default function Stores() {
               <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             </div>
             <Filter className="w-6 h-6 cursor-pointer" />
+            <History className="w-6 h-6 cursor-pointer" onClick={() => router.push('/store/history')}/>
             <div className="lg:hidden">
               <ShoppingCart className="w-6 h-6 cursor-pointer" onClick={() => setIsCartOpen(true)} />
             </div>

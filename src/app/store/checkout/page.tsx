@@ -1,8 +1,10 @@
 'use client'
+// https://v0.dev/chat/FmwamKz6rrr
 import { useState } from 'react'
 import { ChevronLeft, CreditCard, Calendar, Lock, CheckCircle, Truck, Clock, MapPin, AlertCircle } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 export default function Checkout() {
   const [cardNumber, setCardNumber] = useState('')
   const [expiryDate, setExpiryDate] = useState('')
@@ -54,7 +56,7 @@ export default function Checkout() {
                     }`}
                     onClick={() => setPaymentMethod('credit')}
                   >
-                    <Image src="/placeholder.svg?height=50&width=50?height=24&width=24" alt="Credit Card" width={24} height={24} className="mr-2" />
+                    <Image src="/placeholder.svg?height=24&width=24" alt="Credit Card" width={24} height={24} className="mr-2" />
                     <span>Credit Card</span>
                   </button>
                   <button
@@ -137,21 +139,22 @@ export default function Checkout() {
               {paymentMethod === 'paypal' && (
                 <div className="text-center py-4">
                   <p className="text-gray-600 mb-4">You will be redirected to PayPal to complete your payment.</p>
-                  <Image src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=50&width=50?height=40&width=150" alt="PayPal" width={150} height={40} className="mx-auto" />
+                  <Image src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150" alt="PayPal" width={150} height={40} className="mx-auto" />
                 </div>
               )}
               {paymentMethod === 'apple' && (
                 <div className="text-center py-4">
                   <p className="text-gray-600 mb-4">Complete your payment with Apple Pay.</p>
-                  <Image src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=50&width=50?height=40&width=150" alt="Apple Pay" width={150} height={40} className="mx-auto" />
+                  <Image src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150" alt="Apple Pay" width={150} height={40} className="mx-auto" />
                 </div>
               )}
-              <button
+              <Button 
+                onClick={() => router.push('/store/history')}
                 type="submit"
                 className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors mt-4"
               >
                 Pay $14.98
-              </button>
+              </Button>
             </div>
             <div className="mt-6 bg-white shadow-sm rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-4">Delivery Information</h3>
@@ -178,7 +181,7 @@ export default function Checkout() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Image 
-                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=50&width=50?height=64&width=64" 
+                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=64&width=64" 
                       alt="Chicken Burger" 
                       width={64} 
                       height={64} 
@@ -194,7 +197,7 @@ export default function Checkout() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Image 
-                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=50&width=50?height=64&width=64" 
+                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=64&width=64" 
                       alt="French Fries" 
                       width={64} 
                       height={64} 

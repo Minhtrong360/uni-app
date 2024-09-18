@@ -52,7 +52,7 @@
 //         />
 //       </div>
       
-//       <Button onClick={() => router.push('/news')}  className="mb-6 w-full">View all events</Button>
+//       <Button onClick={() => router.push('/events')}  className="mb-6 w-full">View all events</Button>
       
 //       <div className="flex justify-between items-center mb-4">
 //         <h2 className="text-xl font-semibold">Student Services</h2>
@@ -67,7 +67,7 @@
 //             <p className="text-xs text-muted-foreground">Open: 9 AM - 5 PM</p>
 //           </div>
 //         </Link>
-//         <Link href="/news">
+//         <Link href="/events">
 //         <div className="bg-secondary p-4 rounded-lg">
 //           <CalendarDays className="w-8 h-8 mb-2" />
 //           <h3 className="font-semibold">Student Events</h3>
@@ -143,7 +143,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground">Open: 9 AM - 5 PM</p>
               </div>
               </Link>
-              <Link href="/news">
+              <Link href="/events">
               <div className="bg-secondary p-6 rounded-lg">
                 <CalendarDays className="w-10 h-10 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Student Events</h3>
@@ -210,7 +210,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground">In 3 days</p>
               </div>
             </div>
-            <Button onClick={() => router.push(`/news`)}  className="w-full mt-4">View all events</Button>
+            <Button onClick={() => router.push(`/events`)}  className="w-full mt-4">View all events</Button>
           </section>
 
           <section className="bg-secondary p-6 rounded-lg">
