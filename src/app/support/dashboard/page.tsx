@@ -1,52 +1,15 @@
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-// import { Button } from "@/components/ui/button"
-// import Link from "next/link"
 
-// async function getTickets() {
-//   // Fetch tickets from your API
-//   return [
-//     { id: 1, title: "Login Issue", status: "Open" },
-//     { id: 2, title: "Course Registration Problem", status: "In Progress" },
-//     { id: 3, title: "Library Access", status: "Closed" },
-//   ]
-// }
-
-// export default async function SupportDashboard() {
-//   const tickets = await getTickets()
-
-//   return (
-//     <div className="container mx-auto p-4">
-//       <h1 className="text-2xl font-bold mb-4">Support Dashboard</h1>
-//       <Link href="/support/create-ticket">
-//         <Button>Create New Ticket</Button>
-//       </Link>
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-//         {tickets.map((ticket) => (
-//           <Card key={ticket.id}>
-//             <CardHeader>
-//               <CardTitle>{ticket.title}</CardTitle>
-//             </CardHeader>
-//             <CardContent>
-//               <p>Status: {ticket.status}</p>
-//               <Link href={`/support/ticket/${ticket.id}`}>
-//                 <Button variant="outline" className="mt-2">View Details</Button>
-//               </Link>
-//             </CardContent>
-//           </Card>
-//         ))}
-//       </div>
-//     </div>
-//   )
-// }
 // https://v0.dev/chat/b/2jNxrtA
 "use client"
+
+// https://v0.dev/chat/h00S61BwDRA
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Book, Calendar, GraduationCap, Search, Users, LayoutGrid, List, Bell, ChevronLeft } from "lucide-react"
+import { Book, Calendar, GraduationCap, Search, Users, LayoutGrid, List, Bell, Plus, ChevronLeft } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import Link from "next/link"
@@ -55,6 +18,7 @@ import { useRouter } from "next/navigation"
 export default function SchoolSupportDashboard() {
   const [viewType, setViewType] = useState<"table" | "cards">("table")
   const router = useRouter()
+
   const supportRequests = [
     { id: 1, student: "Alice Johnson", issue: "Difficulty with Math homework", category: "Academic", status: "Open", priority: "High", date: "2023-06-01", description: "Alice is struggling with her Algebra II homework and needs additional support." },
     { id: 2, student: "Bob Smith", issue: "Conflict with classmate", category: "Social", status: "In Progress", priority: "Medium", date: "2023-06-02", description: "Bob has reported ongoing conflicts with a classmate during lunch periods." },
@@ -70,7 +34,7 @@ export default function SchoolSupportDashboard() {
         <Link href="/">
         <ChevronLeft className="w-6 h-6 text-gray-600" />
         </Link>
-          <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Student Support Dashboard</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Student Support Dashboard</h1>
           <Button variant="ghost" size="icon">
             <Bell className="h-5 w-5" />
             <span className="sr-only">Notifications</span>
@@ -121,9 +85,14 @@ export default function SchoolSupportDashboard() {
           </Card>
         </div>
         <Card className="bg-white dark:bg-gray-800 mb-8">
-          <CardHeader>
-            <CardTitle>Support Request Management</CardTitle>
-            <CardDescription>Manage and track student support requests</CardDescription>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle>Support Request Management</CardTitle>
+              <CardDescription>Manage and track student support requests</CardDescription>
+            </div>
+            <Button onClick={() => router.push(`/support/create-ticket`)}>
+              <Plus className="mr-2 h-4 w-4" /> New Issue
+            </Button>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0 mb-6">
@@ -209,7 +178,7 @@ export default function SchoolSupportDashboard() {
                   <Card key={request.id} className="bg-white dark:bg-gray-800 overflow-hidden">
                     <div className="relative h-48 w-full">
                       <Image
-                        src={`https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=192&width=384`}
+                        src={`https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=192&width=384`}
                         alt={`Support request for ${request.student}`}
                         layout="fill"
                         objectFit="cover"
@@ -236,7 +205,6 @@ export default function SchoolSupportDashboard() {
                       <p className="text-sm line-clamp-2">{request.description}</p>
                     </CardContent>
                     <CardFooter>
-
                       <Button onClick={() => router.push(`/support/details`)} className="w-full">View Details</Button>
                     </CardFooter>
                   </Card>
