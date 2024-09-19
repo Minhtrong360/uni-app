@@ -2,8 +2,7 @@
 
 // https://v0.dev/chat/_nc0b0lhbPc
 "use client"
-
-
+"use client"
 
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -12,12 +11,24 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { useState } from "react"
+import { UserPlus, MessageSquare, ChevronLeft } from "lucide-react"
 import Link from "next/link"
-import { ChevronLeft } from "lucide-react"
-import { Router } from "next/router"
-
+import AssignTask from "../components/assign-task"
+import { Modal } from "antd"
+import { useRouter } from "next/navigation"
 export default function StudentSupportCenter() {
   const [isImageOpen, setIsImageOpen] = useState(false)
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const router = useRouter()
+
+  const openModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setIsModalVisible(false);
+  };
+
 
   return (
     <div className="container mx-auto px-4 md:px-8 lg:px-0 py-8 lg:w-[75%]">
@@ -35,15 +46,26 @@ export default function StudentSupportCenter() {
           </div>
         </div>
         <div className="flex space-x-4">
-          <Button
-           
-           variant="outline">Assign task</Button>
-          <Button
-           variant="outline">Answer</Button>
+          <Button variant="outline" onClick={openModal}>
+            <UserPlus className="mr-2 h-4 w-4" /> Assign Task
+          </Button>
+          <Button variant="outline" onClick={() => router.push('/support/details/reply')}>
+            <MessageSquare className="mr-2 h-4 w-4" /> Reply
+          </Button>
         </div>
+        <Modal
+        title="Assign Task"
+        open={isModalVisible}
+        onCancel={closeModal}
+        footer={null}
+      >
+        <AssignTask />
+      </Modal>
+      
       </header>
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
         <div className="lg:col-span-2">
           <p className="mb-4">
             The Student Support Center is dedicated to addressing the challenges faced by college students, from academic stress to personal well-being. We provide resources, mentorship, and community-driven solutions to ensure every student succeeds.
@@ -62,7 +84,7 @@ export default function StudentSupportCenter() {
                 </DialogTrigger>
                 <DialogContent className="max-w-3xl">
                   <Image
-                    src="/placeholder.svg"
+                    src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg"
                     alt="Supportive image"
                     width={1200}
                     height={800}
