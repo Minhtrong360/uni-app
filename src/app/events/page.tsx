@@ -240,7 +240,7 @@
 // }
 
 import Image from 'next/image'
-import { Menu, MoreHorizontal, Home, Store, Calendar, HeartHandshake, Rocket, CirclePlus } from 'lucide-react'
+import { Menu, MoreHorizontal, Home, Store, Calendar, HeartHandshake, Rocket, CirclePlus, Plus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -307,14 +307,17 @@ export default function Component() {
           </DropdownMenu>
             <h2 className="text-2xl font-bold ml-9 sm:ml-0">Featured Events</h2>
             <div className="flex items-center space-x-2">
-            <CirclePlus onClick={() => router.push('/events/create')} />
+            <Button onClick={() => router.push(`/events/create`)}>
+              <Plus className="mr-2 h-4 w-4" /> New Event
+            </Button>
+            {/* <CirclePlus onClick={() => router.push('/events/create')} /> */}
             <Button variant="outline">See all</Button>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
               <Card key={i}>
-                <CardContent
+                <CardContent 
                 onClick={() => router.push('/events/booking')}
                 className="p-0">
                   <Image
