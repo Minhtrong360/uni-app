@@ -404,6 +404,7 @@ export default function Component() {
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel nameKey="browser" />}
+              
             />
             <RadialBar dataKey="visitors" background>
               <LabelList
