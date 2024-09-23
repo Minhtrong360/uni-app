@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, Legend, Area, AreaChart, PieChart, Pie, Label, RadarChart, Radar, PolarGrid, PolarAngleAxis, RadialBarChart, RadialBar, PolarRadiusAxis, LabelList } from 'recharts'
+import { BarChart, Bar, XAxis, CartesianGrid,  Area, AreaChart, PieChart, Pie, Label, RadarChart, Radar, PolarGrid, PolarAngleAxis, RadialBarChart, RadialBar,  LabelList } from 'recharts'
 import { ClipboardList, Users, Clock, TrendingUp } from "lucide-react"
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
@@ -67,19 +67,8 @@ const recentTickets = [
   { id: '1236', student: 'Charlie Brown', issue: 'Technical Issue', status: 'Open', date: '2023-06-03' },
   { id: '1237', student: 'Diana Prince', issue: 'Billing Question', status: 'Resolved', date: '2023-06-04' },
 ]
-const RadialChartData = [
-    { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  ]
-  const RadialChartConfig = {
-    visitors: {
-      label: "Visitors",
-    },
-    safari: {
-      label: "Safari",
-      color: "hsl(var(--chart-2))",
-    },
-  } satisfies ChartConfig
 
+  
   const StackChartConfig = {
     running: {
       label: "Running",

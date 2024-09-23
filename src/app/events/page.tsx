@@ -240,7 +240,7 @@
 // }
 
 import Image from 'next/image'
-import { Menu, MoreHorizontal, Home, Store, Calendar, HeartHandshake, Rocket, CirclePlus, Plus } from 'lucide-react'
+import { Menu, MoreHorizontal, Home, Store, Calendar, HeartHandshake, Rocket,  Plus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"

@@ -2,7 +2,7 @@
 "use client"
 import React from 'react'
 import { motion } from 'framer-motion'
-import { AlertCircle, Send, FileText, CheckCircle, Users, UserCheck, Tool, MessageCircle, Star, ThumbsUp } from 'lucide-react'
+import { AlertCircle, Send, FileText, CheckCircle, Users, UserCheck, Wrench, MessageCircle, Star, ThumbsUp } from 'lucide-react'
 
 const steps = [
   { icon: AlertCircle, text: "Student Identifies a Problem" },
@@ -11,7 +11,7 @@ const steps = [
   { icon: CheckCircle, text: "Acknowledgment Sent to Student" },
   { icon: Users, text: "Department Reviews the Issue" },
   { icon: UserCheck, text: "Assign to Responsible Staff" },
-  { icon: Tool, text: "Resolution Actions Taken" },
+  { icon: Wrench, text: "Resolution Actions Taken" },
   { icon: MessageCircle, text: "Report Progress to Student" },
   { icon: Star, text: "Issue Resolved" },
   { icon: ThumbsUp, text: "Feedback and Close Case" }
