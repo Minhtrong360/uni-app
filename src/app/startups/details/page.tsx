@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 
 export default function Component() {
   return (
-    <div className="container mx-auto p-4">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white font-bold">
@@ -30,31 +31,20 @@ export default function Component() {
             sustainable urban gardening solutions.
           </p>
           <Image
-            src="/placeholder_image.jpg"
+            src="/placeholder.svg?height=400&width=800"
             alt="EcoPlant team photo"
             width={800}
             height={400}
             className="rounded-lg mb-4 w-full h-auto"
           />
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-            {[
-              {
-                label: "University",
-                value: "Hanoi University of Science and Technology",
-              },
-              { label: "Location", value: "Hanoi, Vietnam" },
-              { label: "Project Start", value: "2023" },
-              { label: "Team Size", value: "5" },
-              { label: "Technology", value: "IoT, Mobile App" },
-              { label: "Funding", value: "$5,000" },
-            ].map((item, index) => (
-              <Card key={index}>
-                <CardContent className="p-4">
-                  <p className="text-lg font-semibold">{item.value}</p>
-                  <p className="text-sm text-gray-500">{item.label}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="flex flex-wrap gap-2 mb-4">
+            <Badge variant="secondary">University Project</Badge>
+            <Badge variant="secondary">Hanoi, Vietnam</Badge>
+            <Badge variant="secondary">Started 2023</Badge>
+            <Badge variant="secondary">5 Team Members</Badge>
+            <Badge variant="secondary">IoT</Badge>
+            <Badge variant="secondary">Mobile App</Badge>
+            <Badge variant="secondary">Funded $5,000</Badge>
           </div>
           <Tabs defaultValue="overview" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
@@ -110,11 +100,13 @@ export default function Component() {
           <Card className="mb-4">
             <CardContent className="p-4">
               <h2 className="font-semibold mb-2">Categories</h2>
-              <ul className="list-disc list-inside">
-                <li>Sustainability</li>
-                <li>Urban Agriculture</li>
-                <li>IoT</li>
-              </ul>
+              <div className="flex flex-wrap gap-2">
+                <Badge>Sustainability</Badge>
+                <Badge>Urban Agriculture</Badge>
+                <Badge>IoT</Badge>
+                <Badge>Mobile App</Badge>
+                <Badge>Student Project</Badge>
+              </div>
             </CardContent>
           </Card>
           <Card className="mb-4">
