@@ -355,7 +355,7 @@ export default function GroupTaskManagement() {
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
-                                    className="bg-background p-4 rounded-md shadow-sm"
+                                    className="bg-background p-4 rounded-md shadow-sm  bg-white"
                                   >
                                     <div className="flex items-center justify-between mb-2">
                                       <div className="flex items-center space-x-2">
@@ -640,7 +640,7 @@ export default function GroupTaskManagement() {
                 <SelectValue placeholder="Filter by member" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All members</SelectItem>
+                <SelectItem value="All members">All members</SelectItem>
                 {members.map((member) => (
                   <SelectItem key={member} value={member}>
                     {member}
@@ -649,7 +649,7 @@ export default function GroupTaskManagement() {
               </SelectContent>
             </Select>
           </div>
-          <div className="space-y-8">
+          <div className="space-y-8  max-w-3xl">
             {completedTasks.map((task, index) => (
               <div key={task.id} className="relative">
                 {index !== completedTasks.length - 1 && (
