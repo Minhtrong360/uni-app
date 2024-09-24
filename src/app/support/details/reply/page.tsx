@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { XIcon, CheckCircle, Clock, AlertCircle, Paperclip } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
-
+import { useRouter } from "next/navigation"
 function PendingTasks() {
   return (
     <Card className="w-full shadow-lg">
@@ -57,6 +57,7 @@ function PendingTasks() {
 }
 
 export default function Reply() {
+  const router = useRouter()
   return (
     <div className="h-screen bg-gray-100 p-4">
       <ScrollArea className="h-full">
@@ -105,9 +106,12 @@ export default function Reply() {
                     </Button>
                   </div>
                   <div className="flex justify-end space-x-2 pt-4">
-                    <Button variant="outline" size="sm">Cancel</Button>
+                    <Button
+                    onClick={() => router.push('/support/details')}
+                    variant="outline" size="sm">Cancel</Button>
                     <Button type="submit" size="sm">Reply</Button>
                   </div>
+                  
                 </form>
               </CardContent>
             </Card>

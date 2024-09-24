@@ -1,10 +1,11 @@
 'use client'
 // https://v0.dev/chat/FmwamKz6rrr
 import { useState } from 'react'
-import { ChevronLeft, CreditCard, Calendar, Lock, CheckCircle, Truck, Clock, MapPin, AlertCircle } from 'lucide-react'
+import { CreditCard, Calendar, Lock, CheckCircle, Truck, Clock, MapPin, AlertCircle, CircleDollarSign, Apple, ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
+
 export default function Checkout() {
   const [cardNumber, setCardNumber] = useState('')
   const [expiryDate, setExpiryDate] = useState('')
@@ -34,12 +35,19 @@ export default function Checkout() {
     return v
   }
 
+  
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
-          <ChevronLeft onClick={() => router.push('/store')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" />
-          <h1 className="text-2xl font-semibold text-gray-900">Checkout</h1>
+        <Button
+          onClick={() => router.push('/store')}
+          size="icon" variant="outline">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="sr-only">Back</span>
+          </Button>
+          {/* <ChevronLeft onClick={() => router.push('/store')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
+          <h1 className="text-2xl font-semibold text-gray-900 ml-2">Checkout</h1>
         </div>
       </header>
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -56,7 +64,7 @@ export default function Checkout() {
                     }`}
                     onClick={() => setPaymentMethod('credit')}
                   >
-                    <Image src="/placeholder.svg?height=24&width=24" alt="Credit Card" width={24} height={24} className="mr-2" />
+                    <CreditCard   className="mr-2" />
                     <span>Credit Card</span>
                   </button>
                   <button
@@ -65,7 +73,7 @@ export default function Checkout() {
                     }`}
                     onClick={() => setPaymentMethod('paypal')}
                   >
-                    <Image src="/placeholder.svg?height=24&width=24" alt="PayPal" width={24} height={24} className="mr-2" />
+                    <CircleDollarSign   className="mr-2" />
                     <span>PayPal</span>
                   </button>
                   <button
@@ -74,7 +82,7 @@ export default function Checkout() {
                     }`}
                     onClick={() => setPaymentMethod('apple')}
                   >
-                    <Image src="/placeholder.svg?height=24&width=24" alt="Apple Pay" width={24} height={24} className="mr-2" />
+                    <Apple className="mr-2" />
                     <span>Apple Pay</span>
                   </button>
                 </div>
@@ -151,7 +159,7 @@ export default function Checkout() {
               <Button 
                 onClick={() => router.push('/store/history')}
                 type="submit"
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors mt-4"
+                className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors mt-4"
               >
                 Pay $14.98
               </Button>

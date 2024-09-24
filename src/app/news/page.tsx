@@ -43,7 +43,7 @@ export default function Component() {
                 <HeartHandshake className="mr-2 h-4 w-4" />
                 <span>Student Support</span>
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push('/startups')}>
+              <DropdownMenuItem onClick={() => router.push('/academic')}>
                 <Rocket className="mr-2 h-4 w-4" />
                 <span>Startup Projects</span>
               </DropdownMenuItem>

@@ -11,8 +11,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { useState } from "react"
-import { UserPlus, MessageSquare, ChevronLeft } from "lucide-react"
-import Link from "next/link"
+import { UserPlus, MessageSquare, ArrowLeft } from "lucide-react"
+
 import AssignTask from "../components/assign-task"
 import { Modal } from "antd"
 import { useRouter } from "next/navigation"
@@ -34,9 +34,12 @@ export default function StudentSupportCenter() {
     <div className="container mx-auto px-4 md:px-8 lg:px-0 py-8 lg:w-[75%]">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
         <div className="flex items-center space-x-4">
-        <Link href="/support/dashboard">
-        <ChevronLeft className="w-6 h-6 text-gray-600" />
-        </Link>
+        <Button
+          onClick={() => router.push('/support/dashboard')}
+          size="icon" variant="outline">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="sr-only">Back</span>
+          </Button>
           <div className="bg-blue-600 text-white p-2 rounded-md">
             <span className="text-2xl font-bold">SC</span>
           </div>

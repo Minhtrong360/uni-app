@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CalendarIcon, ChevronLeft, Clock, MapPin, Users } from 'lucide-react'
+import { ArrowLeft, CalendarIcon, Clock, MapPin, Users } from 'lucide-react'
 import { format } from 'date-fns'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -51,9 +51,15 @@ export default function StudentEventBooking() {
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-0  py-4 flex items-center">
-          <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" />
-          <h1 className="text-2xl font-semibold text-gray-900">Event Booking</h1>
+      <div className="max-w-7xl mx-auto  sm:px-0  py-4 flex items-center">
+      <Button
+          onClick={() => router.push('/events')}
+          size="icon" variant="outline">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="sr-only">Back</span>
+          </Button>
+          {/* <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
+          <h1 className="text-2xl font-semibold text-gray-900 ml-2">Event Booking</h1>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           <Card className="overflow-hidden">

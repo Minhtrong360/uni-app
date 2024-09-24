@@ -1,19 +1,21 @@
-// https://v0.dev/chat/MAcb32KlLGb
+// https://v0.dev/chat/tPXRRIu2jmV
 'use client'
-import { useState} from 'react'
+
+
+import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { CalendarIcon, X, Clock, ChevronLeft } from "lucide-react"
+import { CalendarIcon, X, Clock, ArrowLeft } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent} from "@/components/ui/card"
-
 import { useRouter } from 'next/navigation'
+
 export default function AdminEventCreation() {
   const router = useRouter()
   const [eventDate, setEventDate] = useState<Date>()
@@ -52,15 +54,26 @@ export default function AdminEventCreation() {
     setTags(tags.filter(tag => tag !== tagToRemove))
   }
 
+  const handleBookVenue = () => {
+    router.push('/events/bookvenue')
+    console.log('Book Venue clicked')
+    // Implement venue booking logic here
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-0  py-4 flex items-center">
-          <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" />
-          <h1 className="text-2xl font-semibold text-gray-900">Create University Event</h1>
-        
-      </div>
+     
+        <div className="max-w-7xl mx-auto  sm:px-0  py-4 flex items-center">
+      <Button
+          onClick={() => router.push('/events')}
+          size="icon" variant="outline">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="sr-only">Back</span>
+          </Button>
+          {/* <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
+          <h1 className="text-2xl font-semibold text-gray-900 ml-2">Create University Event</h1>
+        </div>
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="w-full lg:w-1/2">
             <Card>
@@ -144,7 +157,12 @@ export default function AdminEventCreation() {
                     <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
                       Location
                     </label>
-                    <Input id="location" name="location" placeholder="Enter event location" required onChange={handleInputChange} />
+                    <div className="flex space-x-2">
+                      <Input id="location" name="location" placeholder="Enter event location" required onChange={handleInputChange} className="flex-grow" />
+                      <Button
+                    
+                      type="button" onClick={handleBookVenue}>Book Venue</Button>
+                    </div>
                   </div>
 
                   <div>
@@ -206,7 +224,7 @@ export default function AdminEventCreation() {
             <Card className="overflow-hidden">
               <div className="relative h-48">
                 <img
-                  src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=200&width=400"
+                  src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=200&width=400"
                   alt="Event preview"
                   className="w-full h-full object-cover"
                 />

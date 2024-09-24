@@ -81,7 +81,7 @@
 //           <p className="text-xs text-muted-foreground">New merch available</p>
 //         </div>
 //         </Link>
-//         <Link href="/startups">
+//         <Link href="/academic">
 //         <div className="bg-secondary p-4 rounded-lg">
 //           <Rocket className="w-8 h-8 mb-2" />
 //           <h3 className="font-semibold">Startups Contest</h3>
@@ -107,7 +107,9 @@ export default function Home() {
       <header className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Welcome back, Alex!</h1>
         <div className="flex items-center space-x-4">
-          <Button variant="outline" size="icon">
+          <Button
+            onClick={() => router.push('/notifications')}
+          variant="outline" size="icon">
             <Bell className="h-4 w-4" />
           </Button>
           <Link href="/user/user-setting">
@@ -157,7 +159,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground">New merch available</p>
               </div>
               </Link>
-              <Link href="/startups">
+              <Link href="/academic">
               <div className="bg-secondary p-6 rounded-lg">
                 <Rocket className="w-10 h-10 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Startups Contest</h3>

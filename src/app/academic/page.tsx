@@ -13,8 +13,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { BookOpen, FileText, Rocket, Search, Filter, Download, ExternalLink, ThumbsUp, MessageSquare, Info, LayoutGrid, LayoutList } from "lucide-react"
-
+import { BookOpen, FileText, Rocket, Search, Filter, Download, ExternalLink, ThumbsUp, MessageSquare, Info, LayoutGrid, LayoutList, ArrowLeft } from "lucide-react"
+import { useRouter } from 'next/navigation'
 const fakePapers = [
   { id: 1, title: "Quantum Computing Breakthroughs", author: "Dr. Jane Doe", abstract: "Recent advancements in quantum computing stability and error correction.", keywords: ["Quantum Computing", "Computer Science", "Physics"], published: "2023-06-15", citations: 42, doi: "10.1234/qc.2023.01.001" },
   { id: 2, title: "AI in Climate Change Modeling", author: "Prof. John Smith", abstract: "Applying artificial intelligence to improve climate change predictions and mitigation strategies.", keywords: ["AI", "Climate Change", "Environmental Science"], published: "2023-05-22", citations: 38, doi: "10.5678/ai.2023.05.002" },
@@ -36,7 +36,7 @@ const fakeStartups = [
 export default function Component() {
   const [activeTab, setActiveTab] = useState("papers")
   const [viewMode, setViewMode] = useState("card")
-
+  const router = useRouter()
   const renderPapersView = () => {
     if (viewMode === "card") {
       return (
@@ -268,8 +268,7 @@ export default function Component() {
                   <div className="flex items-center space-x-2">
                     <Avatar className="h-6 w-6">
                       <AvatarImage src={`https://i.pravatar.cc/150?u=${startup.id +
-
- 20}`} alt="Founder" />
+                      20}`} alt="Founder" />
                       <AvatarFallback>{startup.founder.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                     </Avatar>
                     <span>{startup.founder}</span>
@@ -341,7 +340,17 @@ export default function Component() {
 
   return (
     <div className="container mx-auto p-4 sm:p-6 space-y-6">
-      <h1 className="text-2xl sm:text-3xl font-bold">University Academic Hub</h1>
+      <div className="max-w-7xl mx-auto  sm:px-0  py-4 flex items-center">
+      <Button
+          onClick={() => router.push('/')}
+          size="icon" variant="outline">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="sr-only">Back</span>
+          </Button>
+          {/* <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
+          <h1 className="text-2xl font-semibold text-gray-900 ml-2">University Academic Hub</h1>
+        </div>
+      {/* <h1 className="text-2xl sm:text-3xl font-bold">University Academic Hub</h1> */}
       
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
         <div className="relative w-full sm:w-64">

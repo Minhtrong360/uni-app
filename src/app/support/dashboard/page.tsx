@@ -1,5 +1,4 @@
 
-
 "use client"
 
 // https://v0.dev/chat/h00S61BwDRA
@@ -9,10 +8,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Book, Calendar, GraduationCap, Search, Users, LayoutGrid, List, Bell, Plus, ChevronLeft } from "lucide-react"
+import { Book, Calendar, GraduationCap, Search, Users, LayoutGrid, List, Bell, Plus, ArrowLeft } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
-import Link from "next/link"
+
 import { useRouter } from "next/navigation"
 
 export default function SchoolSupportDashboard() {
@@ -31,10 +30,16 @@ export default function SchoolSupportDashboard() {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <header className="bg-white dark:bg-gray-800 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/">
+        {/* <Link href="/">
         <ChevronLeft className="w-6 h-6 text-gray-600" />
-        </Link>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Student Support Dashboard</h1>
+        </Link> */}
+        <Button
+          onClick={() => router.push('/')}
+          size="icon" variant="outline">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="sr-only">Back</span>
+          </Button>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white ml-2">SSD</h1>
           <Button variant="ghost" size="icon">
             <Bell className="h-5 w-5" />
             <span className="sr-only">Notifications</span>
