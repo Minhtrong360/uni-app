@@ -24,6 +24,7 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function AdminEventCreation() {
   const router = useRouter();
@@ -340,7 +341,9 @@ export default function AdminEventCreation() {
           <div className="w-full lg:w-1/2">
             <Card className="overflow-hidden">
               <div className="relative h-48">
-                <img
+                <Image
+                  height={200}
+                  width={400}
                   src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=200&width=400"
                   alt="Event preview"
                   className="w-full h-full object-cover"

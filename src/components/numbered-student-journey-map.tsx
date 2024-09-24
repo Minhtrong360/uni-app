@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import {
   AlertCircle,
@@ -9,10 +8,10 @@ import {
   CheckCircle,
   Users,
   UserCheck,
-  Tool,
   MessageCircle,
   Star,
   ThumbsUp,
+  Hammer,
 } from "lucide-react";
 
 const steps = [
@@ -22,7 +21,7 @@ const steps = [
   { icon: CheckCircle, text: "Acknowledgment Sent to Student" },
   { icon: Users, text: "Department Reviews the Issue" },
   { icon: UserCheck, text: "Assign to Responsible Staff" },
-  { icon: Tool, text: "Resolution Actions Taken" },
+  { icon: Hammer, text: "Resolution Actions Taken" },
   { icon: MessageCircle, text: "Report Progress to Student" },
   { icon: Star, text: "Issue Resolved" },
   { icon: ThumbsUp, text: "Feedback and Close Case" },

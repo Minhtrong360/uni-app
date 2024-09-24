@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function LoginComponent({
   onForgotPassword,
 }: {
-  onForgotPassword: () => void;
+  onForgotPassword?: () => void; // Add this if it is missing
 }) {
   return (
     <>

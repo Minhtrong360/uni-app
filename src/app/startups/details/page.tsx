@@ -1,5 +1,3 @@
-"use client";
-// https://v0.dev/chat/b/e06gpLx
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -26,21 +24,24 @@ export default function Component() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="md:col-span-1">
+        <div className="md:col-span-2">
           <p className="mb-4">
             EcoPlant is an innovative student project from Vietnam focusing on
             sustainable urban gardening solutions.
           </p>
           <Image
-            src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=400&width=800"
+            src="/placeholder_image.jpg"
             alt="EcoPlant team photo"
             width={800}
             height={400}
-            className="rounded-lg mb-4 w-full h-auto max-h-[500px] object-cover"
+            className="rounded-lg mb-4 w-full h-auto"
           />
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
             {[
-              { label: "University", value: "Van Lang University" },
+              {
+                label: "University",
+                value: "Hanoi University of Science and Technology",
+              },
               { label: "Location", value: "Hanoi, Vietnam" },
               { label: "Project Start", value: "2023" },
               { label: "Team Size", value: "5" },
@@ -94,7 +95,7 @@ export default function Component() {
                   <p>
                     Our diverse team of five passionate students brings together
                     expertise in computer science, environmental studies, and
-                    agriculture. Led by Minh Nguyen, we are committed to making
+                    agriculture. Led by Minh Nguyen, we're committed to making
                     urban gardening accessible and sustainable for everyone in
                     Vietnam.
                   </p>
@@ -104,7 +105,7 @@ export default function Component() {
           </Tabs>
           <Button className="mt-4">Support Project</Button>
         </div>
-        <div className=" col-span-1">
+        <div>
           <Input type="search" placeholder="Search..." className="mb-4" />
           <Card className="mb-4">
             <CardContent className="p-4">

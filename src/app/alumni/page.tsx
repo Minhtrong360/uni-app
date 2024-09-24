@@ -4,20 +4,25 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, MessageCircle } from "lucide-react";
+import Image from "next/image";
 
 export default function UserProfile() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <Card className="w-full max-w-md">
         <CardHeader className="relative p-0">
-          <img
+          <Image
+            height={100}
+            width={400}
             src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=100&width=400"
             alt="Cover"
             className="w-full h-24 object-cover"
           />
           <div className="absolute bottom-0 left-4 transform translate-y-1/2 flex items-center">
             <div className="relative">
-              <img
+              <Image
+                width={80}
+                height={80}
                 src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=80&width=80"
                 alt="Ashley Watson"
                 className="w-20 h-20 rounded-full border-4 border-white"

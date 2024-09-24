@@ -22,6 +22,7 @@ import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 
 export function AdminEventCreationComponent() {
   const [eventDate, setEventDate] = useState<Date>();
@@ -312,7 +313,9 @@ export function AdminEventCreationComponent() {
           <div className="w-full lg:w-1/2">
             <Card className="overflow-hidden">
               <div className="relative h-48">
-                <img
+                <Image
+                  width={400}
+                  height={200}
                   src="/placeholder.svg?height=200&width=400"
                   alt="Event preview"
                   className="w-full h-full object-cover"

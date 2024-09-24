@@ -55,6 +55,7 @@ import {
   LayoutGrid,
   LayoutList,
 } from "lucide-react";
+import Image from "next/image";
 
 const fakePapers = [
   {
@@ -186,7 +187,9 @@ export default function Component() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {fakePapers.map((paper) => (
             <Card key={paper.id} className="flex flex-col">
-              <img
+              <Image
+                width={400}
+                height={200}
                 src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`}
                 alt="Paper thumbnail"
                 className="w-full h-40 object-cover"
@@ -298,7 +301,9 @@ export default function Component() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {fakeTheses.map((thesis) => (
             <Card key={thesis.id} className="flex flex-col">
-              <img
+              <Image
+                width={400}
+                height={200}
                 src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`}
                 alt="Thesis thumbnail"
                 className="w-full h-40 object-cover"
@@ -432,7 +437,9 @@ export default function Component() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {fakeStartups.map((startup) => (
             <Card key={startup.id} className="flex flex-col">
-              <img
+              <Image
+                width={400}
+                height={200}
                 src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`}
                 alt="Startup thumbnail"
                 className="w-full h-40 object-cover"

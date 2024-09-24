@@ -4,6 +4,7 @@ import { ArrowLeft, Eye, PenSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function UserSetting() {
   return (
@@ -19,7 +20,9 @@ export default function UserSetting() {
           </Link>
         </div>
         <div className="relative mb-6">
-          <img
+          <Image
+            width={100}
+            height={100}
             src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=100&width=100"
             alt="Profile"
             className="w-24 h-24 rounded-full mx-auto"

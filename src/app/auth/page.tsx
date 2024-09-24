@@ -2,17 +2,18 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import LoginComponent from "./login/page";
-import RegisterComponent from "./register/page";
-import ForgotPasswordComponent from "./password-recovery/page";
+import LoginComponent from "./components/login";
+import RegisterComponent from "./components/register";
+import ForgotPasswordComponent from "./components/password-recovery";
 
 export default function AuthContainer() {
   const [view, setView] = useState<"login" | "register" | "forgotPassword">(
     "login",
   );
 
-  const toggleView = (newView: "login" | "register" | "forgotPassword") =>
+  const toggleView = (newView: "login" | "register" | "forgotPassword") => {
     setView(newView);
+  };
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4 overflow-hidden">

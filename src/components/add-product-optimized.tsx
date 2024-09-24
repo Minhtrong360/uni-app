@@ -26,17 +26,13 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
-import { toast } from "@/components/ui/use-toast";
+
 import { Loader2, Plus, X, Camera } from "lucide-react";
 import { useDropzone } from "react-dropzone";
+import { toast } from "@/hooks/use-toast";
+import Image from "next/image";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const ACCEPTED_IMAGE_TYPES = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-];
 
 const schema = z.object({
   name: z
@@ -342,7 +338,9 @@ export function AddProductOptimized() {
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-4">
                     {images.map((file, index) => (
                       <div key={index} className="relative">
-                        <img
+                        <Image
+                          width={300}
+                          height={96}
                           src={URL.createObjectURL(file)}
                           alt={`preview ${index}`}
                           className="w-full h-24 object-cover rounded-lg"

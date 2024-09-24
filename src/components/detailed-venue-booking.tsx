@@ -2,30 +2,21 @@
 
 import { useState } from "react";
 import {
-  Calendar as CalendarIcon,
-  ChevronDown,
-  Filter,
   Plus,
-  Search,
-  SortAsc,
   Trash2,
   Users,
   Clock,
   Calendar as CalendarIconSolid,
-  Building2,
   AlertTriangle,
 } from "lucide-react";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import {
   Dialog,
   DialogContent,
@@ -52,12 +43,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Checkbox } from "@/components/ui/checkbox";
 
 type Booking = {
   id: number;
@@ -131,7 +116,6 @@ const initialBookings: Booking[] = [
 
 export function DetailedVenueBooking() {
   const [bookings, setBookings] = useState<Booking[]>(initialBookings);
-  const [date, setDate] = useState<Date | undefined>(new Date());
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterVenue, setFilterVenue] = useState<string | null>(null);
@@ -383,7 +367,6 @@ export function DetailedVenueBooking() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full"
-            icon={<Search className="h-4 w-4 opacity-50" />}
           />
         </div>
         <div className="flex space-x-2">

@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import Image from "next/image";
 
 export default function AssignTask() {
   return (
@@ -112,7 +113,9 @@ export default function AssignTask() {
             <Card className="p-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <img
+                  <Image
+                    width={40}
+                    height={40}
                     src="/placeholder.svg?height=40&width=40"
                     alt="Attached image thumbnail"
                     className="w-10 h-10 rounded"
