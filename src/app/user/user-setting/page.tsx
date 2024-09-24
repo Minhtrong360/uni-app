@@ -1,11 +1,9 @@
 // https://v0.dev/chat/_ilHMZYNF9i
-"use client"
-import { ArrowLeft, Eye, PenSquare } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import Link from "next/link"
-
-
+"use client";
+import { ArrowLeft, Eye, PenSquare } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export default function UserSetting() {
   return (
@@ -13,10 +11,12 @@ export default function UserSetting() {
       <div className="m-auto w-full max-w-md bg-white p-8 rounded-3xl shadow-lg">
         <div className="flex justify-between items-center mb-6">
           <Link href="/">
-          <ArrowLeft className="w-6 h-6 text-gray-500" />
+            <ArrowLeft className="w-6 h-6 text-gray-500" />
           </Link>
           <h1 className="text-xl font-semibold">My profile</h1>
-          <Link href="/auth"><span className="text-sm">Log out</span> </Link>
+          <Link href="/auth">
+            <span className="text-sm">Log out</span>{" "}
+          </Link>
         </div>
         <div className="relative mb-6">
           <img
@@ -30,7 +30,10 @@ export default function UserSetting() {
         </div>
         <form className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Name
             </label>
             <Input
@@ -40,7 +43,10 @@ export default function UserSetting() {
             />
           </div>
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Phone
             </label>
             <Input
@@ -50,7 +56,10 @@ export default function UserSetting() {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Email
             </label>
             <Input
@@ -61,7 +70,10 @@ export default function UserSetting() {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Password
             </label>
             <div className="relative">
@@ -75,7 +87,10 @@ export default function UserSetting() {
             </div>
           </div>
           <div>
-            <label htmlFor="birthday" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="birthday"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Birthday
             </label>
             <Input
@@ -84,11 +99,9 @@ export default function UserSetting() {
               className=" pr-4 py-3 w-full border-gray-300 text-sm"
             />
           </div>
-          <Button className="w-full  text-white py-3">
-            Save changes
-          </Button>
+          <Button className="w-full  text-white py-3">Save changes</Button>
         </form>
       </div>
     </div>
-  )
+  );
 }

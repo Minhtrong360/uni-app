@@ -1,20 +1,34 @@
-'use client'
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { UploadIcon } from "lucide-react"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { UploadIcon } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export function StudentSupportForm() {
   return (
     <Card className="w-full max-w-3xl mx-auto">
       <CardHeader>
         <CardTitle>Advanced Student Support Request</CardTitle>
-        <CardDescription>Please provide detailed information for your support request</CardDescription>
+        <CardDescription>
+          Please provide detailed information for your support request
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form className="space-y-6">
@@ -63,7 +77,11 @@ export function StudentSupportForm() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="description">Description</Label>
-            <Textarea className="min-h-[100px]" id="description" placeholder="Describe your request in detail" />
+            <Textarea
+              className="min-h-[100px]"
+              id="description"
+              placeholder="Describe your request in detail"
+            />
           </div>
           <div className="space-y-2">
             <Label>Attach Image</Label>
@@ -75,9 +93,12 @@ export function StudentSupportForm() {
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   <UploadIcon className="w-8 h-8 mb-4 text-muted-foreground" />
                   <p className="mb-2 text-sm text-muted-foreground">
-                    <span className="font-semibold">Click to upload</span> or drag and drop
+                    <span className="font-semibold">Click to upload</span> or
+                    drag and drop
                   </p>
-                  <p className="text-xs text-muted-foreground">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                  <p className="text-xs text-muted-foreground">
+                    SVG, PNG, JPG or GIF (MAX. 800x400px)
+                  </p>
                 </div>
                 <Input id="dropzone-file" type="file" className="hidden" />
               </Label>
@@ -98,7 +119,9 @@ export function StudentSupportForm() {
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox id="terms" />
-            <Label htmlFor="terms" className="text-sm text-muted-foreground">I agree to the terms and conditions</Label>
+            <Label htmlFor="terms" className="text-sm text-muted-foreground">
+              I agree to the terms and conditions
+            </Label>
           </div>
           <Button className="w-full" type="submit">
             Submit Request
@@ -106,5 +129,5 @@ export function StudentSupportForm() {
         </form>
       </CardContent>
     </Card>
-  )
+  );
 }

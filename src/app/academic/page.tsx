@@ -1,408 +1,743 @@
+"use client";
 
-"use client"
-// https://v0.dev/chat/7dQ6Sq01Ydo
-import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { BookOpen, FileText, Rocket, Search, Filter, Download, ExternalLink, ThumbsUp, MessageSquare, Info, LayoutGrid, LayoutList, ArrowLeft } from "lucide-react"
-import { useRouter } from 'next/navigation'
-const fakePapers = [
-  { id: 1, title: "Quantum Computing Breakthroughs", author: "Dr. Jane Doe", abstract: "Recent advancements in quantum computing stability and error correction.", keywords: ["Quantum Computing", "Computer Science", "Physics"], published: "2023-06-15", citations: 42, doi: "10.1234/qc.2023.01.001" },
-  { id: 2, title: "AI in Climate Change Modeling", author: "Prof. John Smith", abstract: "Applying artificial intelligence to improve climate change predictions and mitigation strategies.", keywords: ["AI", "Climate Change", "Environmental Science"], published: "2023-05-22", citations: 38, doi: "10.5678/ai.2023.05.002" },
-  { id: 3, title: "Nanotechnology in Drug Delivery", author: "Dr. Emily Chen", abstract: "Innovative nanotechnology approaches for targeted drug delivery in cancer treatment.", keywords: ["Nanotechnology", "Pharmacology", "Oncology"], published: "2023-07-03", citations: 29, doi: "10.9101/nano.2023.07.003" },
-]
-
-const fakeTheses = [
-  { id: 1, title: "Machine Learning in Healthcare Diagnostics: Improving Accuracy and Efficiency of Medical Diagnoses through Advanced Algorithms", student: "Alice Smith", abstract: "Investigating machine learning algorithms for improving medical diagnoses accuracy.", keywords: ["Machine Learning", "Healthcare", "Data Science"], supervisor: "Prof. Robert Johnson", department: "Computer Science", progress: 75, completion: "2024-05" },
-  { id: 2, title: "Sustainable Urban Planning Strategies for Future Smart Cities: Integrating Green Technologies and Social Equity", student: "Tom Brown", abstract: "Developing eco-friendly urban planning methodologies for future smart cities.", keywords: ["Urban Planning", "Sustainability", "Smart Cities"], supervisor: "Dr. Lisa Green", department: "Environmental Studies", progress: 60, completion: "2024-08" },
-  { id: 3, title: "Neurolinguistic Patterns in Bilingual Speakers: A Comprehensive Study of Language Switching and Cognitive Load", student: "Maria Garcia", abstract: "Analyzing brain activity patterns in bilingual individuals during language switching.", keywords: ["Neuroscience", "Linguistics", "Bilingualism"], supervisor: "Prof. David Lee", department: "Psychology", progress: 90, completion: "2023-12" },
-]
-
-const fakeStartups = [
-  { id: 1, name: "EcoTech Solutions", founder: "Michael Johnson", description: "Developing IoT devices for smart homes to reduce energy consumption.", tags: ["Green Tech", "IoT", "Sustainability"], founded: "2022", teamSize: 5, fundingStage: "Seed", mentor: "Sarah Lee, CEO of GreenFuture Inc.", supporters: 128 },
-  { id: 2, name: "HealthAI", founder: "Jessica Wong", description: "AI-powered personal health assistant for preventive care and early disease detection.", tags: ["Healthcare", "AI", "MedTech"], founded: "2021", teamSize: 8, fundingStage: "Series A", mentor: "Dr. Mark Thompson, Former CTO of MedTech Corp", supporters: 256 },
-  { id: 3, name: "EduVR", founder: "Alex Patel", description: "Virtual reality platform for immersive educational experiences across various subjects.", tags: ["EdTech", "VR", "E-learning"], founded: "2023", teamSize: 4, fundingStage: "Pre-seed", mentor: "Prof. Rachel Adams, Education Innovation Expert", supporters: 75 },
-]
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  BookOpen,
+  GraduationCap,
+  Rocket,
+  Calendar,
+  User,
+  LayoutGrid,
+  LayoutList,
+  Clock,
+  Tag,
+  FileText,
+  Plus,
+  Search,
+} from "lucide-react";
+import Image from "next/image";
 
 export default function Component() {
-  const [activeTab, setActiveTab] = useState("papers")
-  const [viewMode, setViewMode] = useState("card")
-  const router = useRouter()
-  const renderPapersView = () => {
-    if (viewMode === "card") {
-      return (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {fakePapers.map((paper) => (
-            <Card key={paper.id} className="flex flex-col">
-              <img src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`} alt="Paper thumbnail" className="w-full h-40 object-cover" />
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span className="text-lg truncate">{paper.title}</span>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="ghost" size="icon"><Info className="h-4 w-4" /></Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-80">
-                      <div className="space-y-2">
-                        <p className="text-sm font-medium">Abstract</p>
-                        <p className="text-sm">{paper.abstract}</p>
-                        <p className="text-sm font-medium">Published: {paper.published}</p>
-                        <p className="text-sm font-medium">Citations: {paper.citations}</p>
-                        <p className="text-sm font-medium">DOI: {paper.doi}</p>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                </CardTitle>
-                <CardDescription>
-                  <div className="flex items-center space-x-2">
-                    <Avatar className="h-6 w-6">
-                      <AvatarImage src={`https://i.pravatar.cc/150?u=${paper.id}`} alt="Author" />
-                      <AvatarFallback>{paper.author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <span>{paper.author}</span>
-                  </div>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {paper.keywords.map((keyword, index) => (
-                    <Badge key={index} variant="secondary">{keyword}</Badge>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline">
-                  <FileText className="mr-2 h-4 w-4" />
-                  View Paper
-                </Button>
-                <Button variant="ghost" size="icon">
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      )
-    } else {
-      return (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>Author</TableHead>
-              <TableHead>Keywords</TableHead>
-              <TableHead>Published</TableHead>
-              <TableHead>Citations</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {fakePapers.map((paper) => (
-              <TableRow key={paper.id}>
-                <TableCell>{paper.title}</TableCell>
-                <TableCell>{paper.author}</TableCell>
-                <TableCell>{paper.keywords.join(", ")}</TableCell>
-                <TableCell>{paper.published}</TableCell>
-                <TableCell>{paper.citations}</TableCell>
-                <TableCell>
-                  <Button variant="ghost" size="icon">
-                    <FileText className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="icon">
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      )
-    }
-  }
+  const [viewMode, setViewMode] = React.useState<"table" | "card">("card");
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [selectedProjectType, setSelectedProjectType] = React.useState("");
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [selectedStatus, setSelectedStatus] = React.useState("All");
+  const [selectedProjectTypeFilter, setSelectedProjectTypeFilter] =
+    React.useState("All");
+  const [selectedTagFilter, setSelectedTagFilter] = React.useState("All");
 
-  const renderThesesView = () => {
-    if (viewMode === "card") {
-      return (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {fakeTheses.map((thesis) => (
-            <Card key={thesis.id} className="flex flex-col">
-              <img src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`} alt="Thesis thumbnail" className="w-full h-40 object-cover" />
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <span className="text-lg truncate cursor-help">{thesis.title}</span>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p className="max-w-xs">{thesis.title}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="ghost" size="icon"><Info className="h-4 w-4" /></Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-80">
-                      <div className="space-y-2">
-                        <p className="text-sm font-medium">Abstract</p>
-                        <p className="text-sm">{thesis.abstract}</p>
-                        <p className="text-sm font-medium">Supervisor: {thesis.supervisor}</p>
-                        <p className="text-sm font-medium">Department: {thesis.department}</p>
-                        <p className="text-sm font-medium">Expected Completion: {thesis.completion}</p>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                </CardTitle>
-                <CardDescription>
-                  <div className="flex items-center space-x-2">
-                    <Avatar className="h-6 w-6">
-                      <AvatarImage src={`https://i.pravatar.cc/150?u=${thesis.id + 10}`} alt="Student" />
-                      <AvatarFallback>{thesis.student.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <span>{thesis.student}</span>
-                  </div>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {thesis.keywords.map((keyword, index) => (
-                    <Badge key={index} variant="secondary">{keyword}</Badge>
-                  ))}
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>Progress</span>
-                    <span>{thesis.progress}%</span>
-                  </div>
-                  <Progress value={thesis.progress} className="w-full" />
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Read Abstract
-                </Button>
-                <Button variant="ghost" size="icon">
-                  <MessageSquare className="h-4 w-4" />
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      )
-    } else {
-      return (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>Student</TableHead>
-              <TableHead>Keywords</TableHead>
-              <TableHead>Supervisor</TableHead>
-              <TableHead>Progress</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {fakeTheses.map((thesis) => (
-              <TableRow key={thesis.id}>
-                <TableCell>{thesis.title}</TableCell>
-                <TableCell>{thesis.student}</TableCell>
-                <TableCell>{thesis.keywords.join(", ")}</TableCell>
-                <TableCell>{thesis.supervisor}</TableCell>
-                <TableCell>
-                  <Progress value={thesis.progress} className="w-full" />
-                </TableCell>
-                <TableCell>
-                  <Button variant="ghost" size="icon">
-                    <BookOpen className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="icon">
-                    <MessageSquare className="h-4 w-4" />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      )
-    }
-  }
+  const projectTypes = [
+    {
+      name: "Academic Papers",
+      icon: BookOpen,
+      count: 45,
+      completed: 32,
+      inProgress: 10,
+      pending: 3,
+    },
+    {
+      name: "Graduation Theses",
+      icon: GraduationCap,
+      count: 78,
+      completed: 50,
+      inProgress: 25,
+      pending: 3,
+    },
+    {
+      name: "Startup Activities",
+      icon: Rocket,
+      count: 23,
+      completed: 15,
+      inProgress: 5,
+      pending: 3,
+    },
+  ];
 
-  const renderStartupsView = () => {
-    if (viewMode === "card") {
-      return (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {fakeStartups.map((startup) => (
-            <Card key={startup.id} className="flex flex-col">
-              <img src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`} alt="Startup thumbnail" className="w-full h-40 object-cover" />
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span className="text-lg truncate">{startup.name}</span>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="ghost" size="icon"><Info className="h-4 w-4" /></Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-80">
-                      <div className="space-y-2">
-                        <p className="text-sm">{startup.description}</p>
-                        <p className="text-sm font-medium">Founded: {startup.founded}</p>
-                        <p className="text-sm font-medium">Team Size: {startup.teamSize}</p>
-                        <p className="text-sm font-medium">Funding Stage: {startup.fundingStage}</p>
-                        <p className="text-sm font-medium">Mentor: {startup.mentor}</p>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                </CardTitle>
-                <CardDescription>
-                  <div className="flex items-center space-x-2">
-                    <Avatar className="h-6 w-6">
-                      <AvatarImage src={`https://i.pravatar.cc/150?u=${startup.id +
-                      20}`} alt="Founder" />
-                      <AvatarFallback>{startup.founder.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <span>{startup.founder}</span>
-                  </div>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {startup.tags.map((tag, index) => (
-                    <Badge key={index} variant="secondary">{tag}</Badge>
-                  ))}
-                </div>
-                <div className="flex items-center space-x-2 text-sm">
-                  <ThumbsUp className="h-4 w-4" />
-                  <span>{startup.supporters} Supporters</span>
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline">
-                  <Rocket className="mr-2 h-4 w-4" />
-                  View Pitch Deck
-                </Button>
-                <Button variant="ghost" size="icon">
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      )
-    } else {
-      return (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Founder</TableHead>
-              <TableHead>Tags</TableHead>
-              <TableHead>Founded</TableHead>
-              <TableHead>Funding Stage</TableHead>
-              <TableHead>Supporters</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {fakeStartups.map((startup) => (
-              <TableRow key={startup.id}>
-                <TableCell>{startup.name}</TableCell>
-                <TableCell>{startup.founder}</TableCell>
-                <TableCell>{startup.tags.join(", ")}</TableCell>
-                <TableCell>{startup.founded}</TableCell>
-                <TableCell>{startup.fundingStage}</TableCell>
-                <TableCell>{startup.supporters}</TableCell>
-                <TableCell>
-                  <Button variant="ghost" size="icon">
-                    <Rocket className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="icon">
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      )
+  const projects = {
+    "Academic Papers": [
+      {
+        id: 1,
+        title: "AI in Education",
+        author: "Dr. Smith",
+        date: "2023-09-15",
+        image: "/placeholder_image.jpg",
+        status: "In Progress",
+        progress: 75,
+        tags: ["AI", "Education"],
+        abstract:
+          "This paper explores the impact of AI on modern educational practices...",
+        lastUpdated: "2023-09-20",
+        estimatedCompletion: "2023-10-15",
+        estimatedLaunch: "",
+      },
+      {
+        id: 2,
+        title: "Machine Learning in Healthcare",
+        author: "Dr. Johnson",
+        date: "2023-09-12",
+        image: "/placeholder_image.jpg",
+        status: "Completed",
+        progress: 100,
+        tags: ["Machine Learning", "Healthcare"],
+        abstract:
+          "An in-depth analysis of machine learning applications in healthcare...",
+        lastUpdated: "2023-09-18",
+        estimatedCompletion: "2023-09-18",
+        estimatedLaunch: "",
+      },
+    ],
+    "Graduation Theses": [
+      {
+        id: 1,
+        title: "Sustainable Energy Solutions",
+        author: "Jane Doe",
+        date: "2023-09-14",
+        image: "/placeholder_image.jpg",
+        status: "In Progress",
+        progress: 60,
+        tags: ["Sustainability", "Energy"],
+        abstract:
+          "Investigating innovative approaches to sustainable energy production and distribution...",
+        lastUpdated: "2023-09-19",
+        estimatedCompletion: "2023-12-01",
+        estimatedLaunch: "",
+      },
+      {
+        id: 2,
+        title: "Urban Planning Strategies",
+        author: "Mike Johnson",
+        date: "2023-09-11",
+        image: "/placeholder_image.jpg",
+        status: "In Review",
+        progress: 95,
+        tags: ["Urban Planning"],
+        abstract:
+          "Analyzing effective urban planning strategies for rapidly growing cities...",
+        lastUpdated: "2023-09-16",
+        estimatedCompletion: "2023-09-30",
+        estimatedLaunch: "",
+      },
+    ],
+    "Startup Activities": [
+      {
+        id: 1,
+        title: "EduTech Platform",
+        author: "John Brown",
+        date: "2023-09-13",
+        image: "/placeholder_image.jpg",
+        status: "Seed Funding",
+        progress: 30,
+        tags: ["EdTech", "SaaS"],
+        abstract:
+          "Developing an AI-driven educational technology platform for personalized learning...",
+        lastUpdated: "2023-09-18",
+        estimatedLaunch: "2024-03-01",
+        estimatedCompletion: "",
+      },
+      {
+        id: 2,
+        title: "Green Energy Startup",
+        author: "Sarah Wilson",
+        date: "2023-09-10",
+        image: "/placeholder_image.jpg",
+        status: "Prototype",
+        progress: 50,
+        tags: ["Green Energy", "Sustainability"],
+        abstract:
+          "Creating innovative solar energy solutions for residential use...",
+        lastUpdated: "2023-09-16",
+        estimatedLaunch: "2024-06-15",
+        estimatedCompletion: "",
+      },
+    ],
+  };
+
+  const allTags = Array.from(
+    new Set(
+      Object.values(projects).flatMap((projectList) =>
+        projectList.flatMap((project) => project.tags),
+      ),
+    ),
+  );
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    setIsModalOpen(false);
+  };
+
+  const renderForm = () => {
+    switch (selectedProjectType) {
+      case "Academic Papers":
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="title">Paper Title</Label>
+              <Input id="title" placeholder="Enter paper title" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="authors">Authors</Label>
+              <Input
+                id="authors"
+                placeholder="Enter authors (comma-separated)"
+              />
+            </div>
+            <div className="space-y-2 md:col-span-2">
+              <Label htmlFor="abstract">Abstract</Label>
+              <Textarea id="abstract" placeholder="Enter paper abstract" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="journal">Journal</Label>
+              <Input id="journal" placeholder="Enter journal name" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="publication-date">Publication Date</Label>
+              <Input id="publication-date" type="date" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="keywords">Keywords</Label>
+              <Input
+                id="keywords"
+                placeholder="Enter keywords (comma-separated)"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="doi">DOI</Label>
+              <Input id="doi" placeholder="Enter DOI" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="paper-upload">Upload Paper (PDF)</Label>
+              <Input id="paper-upload" type="file" accept=".pdf" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="cover-image">Cover Image</Label>
+              <Input id="cover-image" type="file" accept="image/*" />
+            </div>
+          </div>
+        );
+      case "Graduation Theses":
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="title">Thesis Title</Label>
+              <Input id="title" placeholder="Enter thesis title" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="author">Author</Label>
+              <Input id="author" placeholder="Enter author name" />
+            </div>
+            <div className="space-y-2 md:col-span-2">
+              <Label htmlFor="abstract">Abstract</Label>
+              <Textarea id="abstract" placeholder="Enter thesis abstract" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="supervisor">Supervisor</Label>
+              <Input id="supervisor" placeholder="Enter supervisor name" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="department">Department</Label>
+              <Input id="department" placeholder="Enter department name" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="defense-date">Defense Date</Label>
+              <Input id="defense-date" type="date" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="keywords">Keywords</Label>
+              <Input
+                id="keywords"
+                placeholder="Enter keywords (comma-separated)"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="thesis-upload">Upload Thesis (PDF)</Label>
+              <Input id="thesis-upload" type="file" accept=".pdf" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="presentation-upload">
+                Upload Presentation (PPTX)
+              </Label>
+              <Input id="presentation-upload" type="file" accept=".pptx" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="cover-image">Cover Image</Label>
+              <Input id="cover-image" type="file" accept="image/*" />
+            </div>
+          </div>
+        );
+      case "Startup Activities":
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="startup-name">Startup Name</Label>
+              <Input id="startup-name" placeholder="Enter startup name" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="founder">Founder(s)</Label>
+              <Input id="founder" placeholder="Enter founder name(s)" />
+            </div>
+            <div className="space-y-2 md:col-span-2">
+              <Label htmlFor="description">Description</Label>
+              <Textarea
+                id="description"
+                placeholder="Enter startup description"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="industry">Industry</Label>
+              <Input id="industry" placeholder="Enter industry" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="founding-date">Founding Date</Label>
+              <Input id="founding-date" type="date" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="funding-stage">Funding Stage</Label>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select funding stage" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Seed">Seed</SelectItem>
+                  <SelectItem value="Series A">Series A</SelectItem>
+                  <SelectItem value="Series B">Series B</SelectItem>
+                  <SelectItem value="Series C">Series C</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="funding-amount">Funding Amount</Label>
+              <Input
+                id="funding-amount"
+                type="number"
+                placeholder="Enter funding amount"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="team-size">Team Size</Label>
+              <Input
+                id="team-size"
+                type="number"
+                placeholder="Enter team size"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="pitch-deck">Upload Pitch Deck (PDF)</Label>
+              <Input id="pitch-deck" type="file" accept=".pdf" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="business-plan">Upload Business Plan (PDF)</Label>
+              <Input id="business-plan" type="file" accept=".pdf" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="logo">Upload Logo</Label>
+              <Input id="logo" type="file" accept="image/*" />
+            </div>
+          </div>
+        );
+      default:
+        return null;
     }
-  }
+  };
+
+  const filteredProjects = Object.entries(projects).flatMap(
+    ([type, projectList]) => {
+      return projectList.filter((project) => {
+        const matchesSearch =
+          project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          project.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          project.abstract.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesStatus =
+          selectedStatus === "All" || project.status === selectedStatus;
+        const matchesProjectType =
+          selectedProjectTypeFilter === "All" ||
+          type === selectedProjectTypeFilter;
+        const matchesTag =
+          selectedTagFilter === "All" ||
+          project.tags.includes(selectedTagFilter);
+        return (
+          matchesSearch && matchesStatus && matchesProjectType && matchesTag
+        );
+      });
+    },
+  );
 
   return (
-    <div className="container mx-auto p-4 sm:p-6 space-y-6">
-      <div className="max-w-7xl mx-auto  sm:px-0  py-4 flex items-center">
-      <Button
-          onClick={() => router.push('/')}
-          size="icon" variant="outline">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="sr-only">Back</span>
-          </Button>
-          {/* <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
-          <h1 className="text-2xl font-semibold text-gray-900 ml-2">University Academic Hub</h1>
+    <div className="flex flex-col min-h-screen">
+      <header className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          <h1 className="text-2xl font-semibold text-gray-900">
+            University Admin Dashboard
+          </h1>
+          <nav>
+            <ul className="flex space-x-4">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-500 hover:text-gray-700 flex items-center"
+                >
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-500 hover:text-gray-700 flex items-center"
+                >
+                  <User className="mr-2 h-4 w-4" />
+                  Users
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-500 hover:text-gray-700 flex items-center"
+                >
+                  <Calendar className="mr-2 h-4 w-4" />
+                  Calendar
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-      {/* <h1 className="text-2xl sm:text-3xl font-bold">University Academic Hub</h1> */}
-      
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-        <div className="relative w-full sm:w-64">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input placeholder="Search..." className="pl-8" />
+      </header>
+
+      <main className="flex-grow bg-gray-100 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+            {projectTypes.map((type) => (
+              <Card key={type.name}>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    {type.name}
+                  </CardTitle>
+                  <type.icon className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">{type.count}</div>
+                  <p className="text-xs text-muted-foreground">
+                    Total projects
+                  </p>
+                  <div className="mt-4 space-y-2">
+                    <div className="flex justify-between text-xs">
+                      <span>Completed</span>
+                      <span>{type.completed}</span>
+                    </div>
+                    <Progress
+                      value={(type.completed / type.count) * 100}
+                      className="h-1"
+                    />
+                    <div className="flex justify-between text-xs">
+                      <span>In Progress</span>
+                      <span>{type.inProgress}</span>
+                    </div>
+                    <Progress
+                      value={(type.inProgress / type.count) * 100}
+                      className="h-1"
+                    />
+                    <div className="flex justify-between text-xs">
+                      <span>Pending</span>
+                      <span>{type.pending}</span>
+                    </div>
+                    <Progress
+                      value={(type.pending / type.count) * 100}
+                      className="h-1"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
+              <CardTitle>Projects</CardTitle>
+              <div className="flex space-x-2">
+                <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                  <DialogTrigger asChild>
+                    <Button variant="default" size="sm">
+                      <Plus className="mr-2 h-4 w-4" />
+                      Add New
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[700px]">
+                    <DialogHeader>
+                      <DialogTitle>Add New Project</DialogTitle>
+                      <DialogDescription>
+                        Enter the details for the new project. Click save when
+                        you&apos;re done.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <ScrollArea className="max-h-[60vh] overflow-y-auto">
+                      <form onSubmit={handleSubmit} className="space-y-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="project-type">Project Type</Label>
+                          <Select
+                            onValueChange={(value) =>
+                              setSelectedProjectType(value)
+                            }
+                          >
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select project type" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="Academic Papers">
+                                Academic Papers
+                              </SelectItem>
+                              <SelectItem value="Graduation Theses">
+                                Graduation Theses
+                              </SelectItem>
+                              <SelectItem value="Startup Activities">
+                                Startup Activities
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        {renderForm()}
+                        <Button type="submit">Save</Button>
+                      </form>
+                    </ScrollArea>
+                  </DialogContent>
+                </Dialog>
+                <Button
+                  variant={viewMode === "table" ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setViewMode("table")}
+                >
+                  <LayoutList className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant={viewMode === "card" ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setViewMode("card")}
+                >
+                  <LayoutGrid className="h-4 w-4" />
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="mb-4 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                <div className="relative flex-grow">
+                  <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <Input
+                    type="text"
+                    placeholder="Search projects..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-8"
+                  />
+                </div>
+                <Select
+                  value={selectedProjectTypeFilter}
+                  onValueChange={setSelectedProjectTypeFilter}
+                >
+                  <SelectTrigger className="w-full sm:w-[180px]">
+                    <SelectValue placeholder="Project type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="All">All Types</SelectItem>
+                    <SelectItem value="Academic Papers">
+                      Academic Papers
+                    </SelectItem>
+                    <SelectItem value="Graduation Theses">
+                      Graduation Theses
+                    </SelectItem>
+                    <SelectItem value="Startup Activities">
+                      Startup Activities
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select
+                  value={selectedTagFilter}
+                  onValueChange={setSelectedTagFilter}
+                >
+                  <SelectTrigger className="w-full sm:w-[180px]">
+                    <SelectValue placeholder="Filter by tag" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="All">All Tags</SelectItem>
+                    {allTags.map((tag) => (
+                      <SelectItem key={tag} value={tag}>
+                        {tag}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Select
+                  value={selectedStatus}
+                  onValueChange={setSelectedStatus}
+                >
+                  <SelectTrigger className="w-full sm:w-[180px]">
+                    <SelectValue placeholder="Filter by status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="All">All Statuses</SelectItem>
+                    <SelectItem value="In Progress">In Progress</SelectItem>
+                    <SelectItem value="Completed">Completed</SelectItem>
+                    <SelectItem value="In Review">In Review</SelectItem>
+                    <SelectItem value="Pending">Pending</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              {viewMode === "table" ? (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Title</TableHead>
+                      <TableHead>Author</TableHead>
+                      <TableHead>Type</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Progress</TableHead>
+                      <TableHead>Last Updated</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredProjects.map((project) => (
+                      <TableRow key={project.id}>
+                        <TableCell>{project.title}</TableCell>
+                        <TableCell>{project.author}</TableCell>
+                        <TableCell>
+                          {Object.keys(projects).find((key) =>
+                            projects[key as keyof typeof projects].includes(
+                              project,
+                            ),
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          <Badge
+                            variant={
+                              project.status === "Completed"
+                                ? "default"
+                                : "secondary"
+                            }
+                          >
+                            {project.status}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Progress
+                            value={project.progress}
+                            className="h-2 w-24"
+                          />
+                        </TableCell>
+                        <TableCell>{project.lastUpdated}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {filteredProjects.map((project) => (
+                    <Card key={project.id}>
+                      <CardHeader>
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={200}
+                          height={100}
+                          className="w-full h-auto object-cover rounded-t-lg"
+                        />
+                      </CardHeader>
+                      <CardContent>
+                        <h3 className="font-semibold mb-2">{project.title}</h3>
+                        <div className="flex justify-between items-center mb-2">
+                          <Badge
+                            variant={
+                              project.status === "Completed"
+                                ? "default"
+                                : "secondary"
+                            }
+                          >
+                            {project.status}
+                          </Badge>
+                          <Progress
+                            value={project.progress}
+                            className="h-2 w-24"
+                          />
+                        </div>
+                        <p className="text-sm text-gray-500 flex items-center mb-1">
+                          <User className="mr-2 h-4 w-4" /> {project.author}
+                        </p>
+                        <p className="text-sm text-gray-500 flex items-center mb-1">
+                          <Calendar className="mr-2 h-4 w-4" /> {project.date}
+                        </p>
+                        <p className="text-sm text-gray-500 flex items-center mb-1">
+                          <Clock className="mr-2 h-4 w-4" /> Last updated:{" "}
+                          {project.lastUpdated}
+                        </p>
+                        <div className="flex flex-wrap gap-1 mt-2">
+                          {project.tags.map((tag, index) => (
+                            <Badge
+                              key={index}
+                              variant="outline"
+                              className="text-xs"
+                            >
+                              <Tag className="mr-1 h-3 w-3" />
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                        <details className="mt-2">
+                          <summary className="text-sm font-medium cursor-pointer">
+                            Abstract
+                          </summary>
+                          <p className="text-sm text-gray-500 mt-1">
+                            {project.abstract}
+                          </p>
+                        </details>
+                        {"estimatedCompletion" in project && (
+                          <p className="text-sm text-gray-500 flex items-center mt-2">
+                            <FileText className="mr-2 h-4 w-4" /> Est.
+                            Completion: {project.estimatedCompletion}
+                          </p>
+                        )}
+                        {"estimatedLaunch" in project && (
+                          <p className="text-sm text-gray-500 flex items-center mt-2">
+                            <Rocket className="mr-2 h-4 w-4" /> Est. Launch:{" "}
+                            {project.estimatedLaunch}
+                          </p>
+                        )}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by department" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="cs">Computer Science</SelectItem>
-              <SelectItem value="eng">Engineering</SelectItem>
-              <SelectItem value="bio">Biology</SelectItem>
-              <SelectItem value="psych">Psychology</SelectItem>
-            </SelectContent>
-          </Select>
-          <Button variant="outline">
-            <Filter className="mr-2 h-4 w-4" />
-            More Filters
-          </Button>
-          <Button variant="outline">
-            <Download className="mr-2 h-4 w-4" />
-            Export
-          </Button>
-          <Button variant="outline" onClick={() => setViewMode(viewMode === "card" ? "table" : "card")}>
-            {viewMode === "card" ? <LayoutList className="mr-2 h-4 w-4" /> : <LayoutGrid className="mr-2 h-4 w-4" />}
-            {viewMode === "card" ? "Table View" : "Card View"}
-          </Button>
-        </div>
-      </div>
-      
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="papers">Academic Papers</TabsTrigger>
-          <TabsTrigger value="theses">Graduation Theses</TabsTrigger>
-          <TabsTrigger value="startups">Student Startups</TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="papers">
-          {renderPapersView()}
-        </TabsContent>
-        
-        <TabsContent value="theses">
-          {renderThesesView()}
-        </TabsContent>
-        
-        <TabsContent value="startups">
-          {renderStartupsView()}
-        </TabsContent>
-      </Tabs>
+      </main>
     </div>
-  )
+  );
 }

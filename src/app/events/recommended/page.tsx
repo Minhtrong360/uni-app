@@ -1,13 +1,20 @@
-"use client"
+"use client";
 // https://v0.dev/chat/QzgE90RGPCA
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Calendar, Clock, MapPin, Users } from "lucide-react"
-import { Modal } from "antd"
-import Feedback from "../components/Feedback"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Calendar, Clock, MapPin, Users } from "lucide-react";
+import { Modal } from "antd";
+import Feedback from "../components/Feedback";
 
 const recommendedEvents = [
   {
@@ -18,7 +25,8 @@ const recommendedEvents = [
     time: "14:00 - 17:00",
     location: "Virtual",
     attendees: 50,
-    description: "Learn about the latest advancements in AI and machine learning in this interactive workshop."
+    description:
+      "Learn about the latest advancements in AI and machine learning in this interactive workshop.",
   },
   {
     id: 2,
@@ -28,7 +36,8 @@ const recommendedEvents = [
     time: "10:00 - 16:00",
     location: "University Main Hall",
     attendees: 200,
-    description: "Connect with top tech companies and explore internship and job opportunities."
+    description:
+      "Connect with top tech companies and explore internship and job opportunities.",
   },
   {
     id: 3,
@@ -38,17 +47,18 @@ const recommendedEvents = [
     time: "09:00 - 21:00",
     location: "Innovation Center",
     attendees: 100,
-    description: "Join a 12-hour hackathon to develop solutions for social good using technology."
-  }
-]
+    description:
+      "Join a 12-hour hackathon to develop solutions for social good using technology.",
+  },
+];
 
 export default function Component() {
-  const [savedEvents, setSavedEvents] = useState<number[]>([])
+  const [savedEvents, setSavedEvents] = useState<number[]>([]);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
-    setIsModalVisible(true); 
+    setIsModalVisible(true);
   };
 
   const handleCancel = () => {
@@ -56,27 +66,29 @@ export default function Component() {
   };
 
   const toggleSaveEvent = (eventId: number) => {
-    setSavedEvents(prev =>
+    setSavedEvents((prev) =>
       prev.includes(eventId)
-        ? prev.filter(id => id !== eventId)
-        : [...prev, eventId]
-    )
-  }
+        ? prev.filter((id) => id !== eventId)
+        : [...prev, eventId],
+    );
+  };
 
-//   const handleFeedback = (eventId: number) => {
-//     console.log(`Provide feedback for event ${eventId}`)
-//     // Here you would typically open a modal or navigate to a feedback page
-//   }
+  //   const handleFeedback = (eventId: number) => {
+  //     console.log(`Provide feedback for event ${eventId}`)
+  //     // Here you would typically open a modal or navigate to a feedback page
+  //   }
 
   return (
     <Card className="w-full max-w-4xl mx-auto">
       <CardHeader>
         <CardTitle>Recommended Events</CardTitle>
-        <CardDescription>Based on your preferences, we think you will love these events!</CardDescription>
+        <CardDescription>
+          Based on your preferences, we think you will love these events!
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <ScrollArea className="h-[600px] pr-4">
-          {recommendedEvents.map(event => (
+          {recommendedEvents.map((event) => (
             <Card key={event.id} className="mb-4">
               <CardHeader>
                 <div className="flex justify-between items-start">
@@ -106,42 +118,42 @@ export default function Component() {
                     <span>{event.attendees} attendees</span>
                   </div>
                 </div>
-                
               </CardContent>
               <CardFooter>
                 <div className="flex space-x-2">
                   <Button
                     onClick={() => toggleSaveEvent(event.id)}
-                    variant={savedEvents.includes(event.id) ? "secondary" : "default"}
+                    variant={
+                      savedEvents.includes(event.id) ? "secondary" : "default"
+                    }
                   >
-                    {savedEvents.includes(event.id) ? "Unsave Event" : "Save Event"}
+                    {savedEvents.includes(event.id)
+                      ? "Unsave Event"
+                      : "Save Event"}
                   </Button>
-                  <Button
-                    onClick={showModal}
-                    variant="outline"
-                  >
+                  <Button onClick={showModal} variant="outline">
                     Feedback
                   </Button>
-                  
                 </div>
               </CardFooter>
             </Card>
           ))}
         </ScrollArea>
         <Modal
-                    title="Feedback Form"
-                    open={isModalVisible}
-                    onCancel={handleCancel}
-                    footer={null} 
-                    >   
-                    <Feedback />
-                </Modal>
+          title="Feedback Form"
+          open={isModalVisible}
+          onCancel={handleCancel}
+          footer={null}
+        >
+          <Feedback />
+        </Modal>
       </CardContent>
       <CardFooter>
         <p className="text-sm text-muted-foreground">
-          Events are recommended based on your preferences. Update your preferences to see different events.
+          Events are recommended based on your preferences. Update your
+          preferences to see different events.
         </p>
       </CardFooter>
     </Card>
-  )
+  );
 }

@@ -1,17 +1,23 @@
 // https://v0.dev/chat/2g-W7bCeDmV
-'use client'
-import { ArrowLeft,  Search } from "lucide-react"
+"use client";
+import { ArrowLeft, Search } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -19,11 +25,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { useRouter } from 'next/navigation'
+} from "@/components/ui/table";
+import { useRouter } from "next/navigation";
 
 export default function OrderHistory() {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <div className="flex flex-col min-h-screen">
       {/* <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6">
@@ -37,8 +43,10 @@ export default function OrderHistory() {
       <main className="flex-1 p-4 md:p-6">
         <div className="flex items-center gap-4">
           <Button
-          onClick={() => router.push('/store')}
-          size="icon" variant="outline">
+            onClick={() => router.push("/store")}
+            size="icon"
+            variant="outline"
+          >
             <ArrowLeft className="w-4 h-4" />
             <span className="sr-only">Back</span>
           </Button>
@@ -80,7 +88,11 @@ export default function OrderHistory() {
               </div>
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
-                <Input className="pl-8" placeholder="Search orders" type="search" />
+                <Input
+                  className="pl-8"
+                  placeholder="Search orders"
+                  type="search"
+                />
               </div>
             </CardContent>
           </Card>
@@ -155,5 +167,5 @@ export default function OrderHistory() {
         </div>
       </main>
     </div>
-  )
+  );
 }

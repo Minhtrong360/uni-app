@@ -1,9 +1,9 @@
 // https://v0.dev/chat/fANLPFb6M4Q
-'use client'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { MapPin, MessageCircle } from "lucide-react"
+"use client";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { MapPin, MessageCircle } from "lucide-react";
 
 export default function UserProfile() {
   return (
@@ -37,10 +37,13 @@ export default function UserProfile() {
             <span>1289 North Street, San Antonio, TX 78201</span>
           </div>
           <p className="text-sm text-gray-600 mb-4">
-            Talks about #managing, #careeradvice, #talentmanagement, #businessconsulting, #humancapital
+            Talks about #managing, #careeradvice, #talentmanagement,
+            #businessconsulting, #humancapital
           </p>
           <div className="flex space-x-2 mb-4">
-            <Button className="flex-1" variant="outline">Following</Button>
+            <Button className="flex-1" variant="outline">
+              Following
+            </Button>
             <Button className="flex-1">
               <MessageCircle className="w-4 h-4 mr-2" />
               Message
@@ -49,7 +52,8 @@ export default function UserProfile() {
           <div className="mb-4">
             <h3 className="font-semibold mb-2">About</h3>
             <p className="text-sm text-gray-600">
-              Quis amet magna sint pariatur elit irure quis officia labore esse. Proident Lorem sit ullamco minim
+              Quis amet magna sint pariatur elit irure quis officia labore esse.
+              Proident Lorem sit ullamco minim
             </p>
           </div>
           <div>
@@ -63,5 +67,5 @@ export default function UserProfile() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

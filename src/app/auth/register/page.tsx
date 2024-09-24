@@ -1,9 +1,9 @@
 // https://v0.dev/chat/3_ZkhAryuZe
-"use client"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Mail, Lock, Eye, User } from "lucide-react"
-import Image from "next/image"
+"use client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Mail, Lock, Eye, User } from "lucide-react";
+import Image from "next/image";
 
 export default function RegisterComponent() {
   return (
@@ -14,7 +14,10 @@ export default function RegisterComponent() {
       </div>
       <form className="space-y-6">
         <div className="relative">
-          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <User
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            size={20}
+          />
           <Input
             className="pl-10 pr-4 py-3 w-full border-gray-300 text-sm"
             placeholder="Enter your full name"
@@ -22,7 +25,10 @@ export default function RegisterComponent() {
           />
         </div>
         <div className="relative">
-          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <Mail
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            size={20}
+          />
           <Input
             className="pl-10 pr-4 py-3 w-full border-gray-300 text-sm"
             placeholder="Enter your email address"
@@ -30,26 +36,36 @@ export default function RegisterComponent() {
           />
         </div>
         <div className="relative">
-          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <Lock
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            size={20}
+          />
           <Input
             className="pl-10 pr-10 py-3 w-full border-gray-300 text-sm"
             placeholder="Enter your password"
             type="password"
           />
-          <Eye className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer" size={20} />
+          <Eye
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
+            size={20}
+          />
         </div>
         <div className="relative">
-          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <Lock
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            size={20}
+          />
           <Input
             className="pl-10 pr-10 py-3 w-full border-gray-300 text-sm"
             placeholder="Confirm your password"
             type="password"
           />
-          <Eye className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer" size={20} />
+          <Eye
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
+            size={20}
+          />
         </div>
-        <Button className="w-full  text-white py-3">
-          Sign Up
-        </Button>
+        <Button className="w-full  text-white py-3">Sign Up</Button>
       </form>
       <div className="flex items-center justify-center space-x-4">
         <div className="h-px bg-gray-300 w-full" />
@@ -58,15 +74,30 @@ export default function RegisterComponent() {
       </div>
       <div className="flex justify-center space-x-4">
         <Button variant="outline" className="rounded-full p-2">
-          <Image src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=24&width=24" alt="Google" width={24} height={24} />
+          <Image
+            src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=24&width=24"
+            alt="Google"
+            width={24}
+            height={24}
+          />
         </Button>
         <Button variant="outline" className="rounded-full p-2">
-          <Image src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=24&width=24" alt="Facebook" width={24} height={24} />
+          <Image
+            src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=24&width=24"
+            alt="Facebook"
+            width={24}
+            height={24}
+          />
         </Button>
         <Button variant="outline" className="rounded-full p-2">
-          <Image src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=24&width=24" alt="Apple" width={24} height={24} />
+          <Image
+            src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=24&width=24"
+            alt="Apple"
+            width={24}
+            height={24}
+          />
         </Button>
       </div>
     </>
-  )
+  );
 }

@@ -1,53 +1,68 @@
-'use client'
+"use client";
 // https://v0.dev/chat/FmwamKz6rrr
-import { useState } from 'react'
-import { CreditCard, Calendar, Lock, CheckCircle, Truck, Clock, MapPin, AlertCircle, CircleDollarSign, Apple, ArrowLeft } from 'lucide-react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
+import { useState } from "react";
+import {
+  CreditCard,
+  Calendar,
+  Lock,
+  CheckCircle,
+  Truck,
+  Clock,
+  MapPin,
+  AlertCircle,
+  CircleDollarSign,
+  Apple,
+  ArrowLeft,
+} from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function Checkout() {
-  const [cardNumber, setCardNumber] = useState('')
-  const [expiryDate, setExpiryDate] = useState('')
-  const [cvv, setCvv] = useState('')
-  const [paymentMethod, setPaymentMethod] = useState('credit')
-  const router = useRouter()
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("credit");
+  const router = useRouter();
   const formatCardNumber = (value: string) => {
-    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
-    const matches = v.match(/\d{4,16}/g)
-    const match = (matches && matches[0]) || ''
-    const parts = []
+    const v = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
+    const matches = v.match(/\d{4,16}/g);
+    const match = (matches && matches[0]) || "";
+    const parts = [];
     for (let i = 0, len = match.length; i < len; i += 4) {
-      parts.push(match.substring(i, i + 4))
+      parts.push(match.substring(i, i + 4));
     }
     if (parts.length) {
-      return parts.join(' ')
+      return parts.join(" ");
     } else {
-      return value
+      return value;
     }
-  }
+  };
 
   const formatExpiryDate = (value: string) => {
-    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+    const v = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
     if (v.length >= 2) {
-      return `${v.slice(0, 2)}/${v.slice(2, 4)}`
+      return `${v.slice(0, 2)}/${v.slice(2, 4)}`;
     }
-    return v
-  }
+    return v;
+  };
 
-  
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
-        <Button
-          onClick={() => router.push('/store')}
-          size="icon" variant="outline">
+          <Button
+            onClick={() => router.push("/store")}
+            size="icon"
+            variant="outline"
+          >
             <ArrowLeft className="w-4 h-4" />
             <span className="sr-only">Back</span>
           </Button>
           {/* <ChevronLeft onClick={() => router.push('/store')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
-          <h1 className="text-2xl font-semibold text-gray-900 ml-2">Checkout</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 ml-2">
+            Checkout
+          </h1>
         </div>
       </header>
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -56,41 +71,52 @@ export default function Checkout() {
             <h2 className="text-lg font-semibold mb-4">Payment Details</h2>
             <div className="bg-white shadow-sm rounded-lg p-6">
               <div className="mb-4">
-                <h3 className="text-sm font-medium text-gray-700 mb-2">Payment Method</h3>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">
+                  Payment Method
+                </h3>
                 <div className="flex space-x-4">
                   <button
                     className={`flex items-center justify-center px-4 py-2 border rounded-md ${
-                      paymentMethod === 'credit' ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
+                      paymentMethod === "credit"
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-300"
                     }`}
-                    onClick={() => setPaymentMethod('credit')}
+                    onClick={() => setPaymentMethod("credit")}
                   >
-                    <CreditCard   className="mr-2" />
+                    <CreditCard className="mr-2" />
                     <span>Credit Card</span>
                   </button>
                   <button
                     className={`flex items-center justify-center px-4 py-2 border rounded-md ${
-                      paymentMethod === 'paypal' ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
+                      paymentMethod === "paypal"
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-300"
                     }`}
-                    onClick={() => setPaymentMethod('paypal')}
+                    onClick={() => setPaymentMethod("paypal")}
                   >
-                    <CircleDollarSign   className="mr-2" />
+                    <CircleDollarSign className="mr-2" />
                     <span>PayPal</span>
                   </button>
                   <button
                     className={`flex items-center justify-center px-4 py-2 border rounded-md ${
-                      paymentMethod === 'apple' ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
+                      paymentMethod === "apple"
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-300"
                     }`}
-                    onClick={() => setPaymentMethod('apple')}
+                    onClick={() => setPaymentMethod("apple")}
                   >
                     <Apple className="mr-2" />
                     <span>Apple Pay</span>
                   </button>
                 </div>
               </div>
-              {paymentMethod === 'credit' && (
+              {paymentMethod === "credit" && (
                 <form>
                   <div className="mb-4">
-                    <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label
+                      htmlFor="cardNumber"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
                       Card Number
                     </label>
                     <div className="relative">
@@ -100,7 +126,9 @@ export default function Checkout() {
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="1234 5678 9012 3456"
                         value={cardNumber}
-                        onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
+                        onChange={(e) =>
+                          setCardNumber(formatCardNumber(e.target.value))
+                        }
                         maxLength={19}
                       />
                       <CreditCard className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
@@ -108,7 +136,10 @@ export default function Checkout() {
                   </div>
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="expiryDate"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Expiry Date
                       </label>
                       <div className="relative">
@@ -118,14 +149,19 @@ export default function Checkout() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="MM/YY"
                           value={expiryDate}
-                          onChange={(e) => setExpiryDate(formatExpiryDate(e.target.value))}
+                          onChange={(e) =>
+                            setExpiryDate(formatExpiryDate(e.target.value))
+                          }
                           maxLength={5}
                         />
                         <Calendar className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="cvv" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="cvv"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         CVV
                       </label>
                       <div className="relative">
@@ -135,7 +171,11 @@ export default function Checkout() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="123"
                           value={cvv}
-                          onChange={(e) => setCvv(e.target.value.replace(/\D/g, '').slice(0, 3))}
+                          onChange={(e) =>
+                            setCvv(
+                              e.target.value.replace(/\D/g, "").slice(0, 3),
+                            )
+                          }
                           maxLength={3}
                         />
                         <Lock className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
@@ -144,20 +184,36 @@ export default function Checkout() {
                   </div>
                 </form>
               )}
-              {paymentMethod === 'paypal' && (
+              {paymentMethod === "paypal" && (
                 <div className="text-center py-4">
-                  <p className="text-gray-600 mb-4">You will be redirected to PayPal to complete your payment.</p>
-                  <Image src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150" alt="PayPal" width={150} height={40} className="mx-auto" />
+                  <p className="text-gray-600 mb-4">
+                    You will be redirected to PayPal to complete your payment.
+                  </p>
+                  <Image
+                    src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150"
+                    alt="PayPal"
+                    width={150}
+                    height={40}
+                    className="mx-auto"
+                  />
                 </div>
               )}
-              {paymentMethod === 'apple' && (
+              {paymentMethod === "apple" && (
                 <div className="text-center py-4">
-                  <p className="text-gray-600 mb-4">Complete your payment with Apple Pay.</p>
-                  <Image src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150" alt="Apple Pay" width={150} height={40} className="mx-auto" />
+                  <p className="text-gray-600 mb-4">
+                    Complete your payment with Apple Pay.
+                  </p>
+                  <Image
+                    src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150"
+                    alt="Apple Pay"
+                    width={150}
+                    height={40}
+                    className="mx-auto"
+                  />
                 </div>
               )}
-              <Button 
-                onClick={() => router.push('/store/history')}
+              <Button
+                onClick={() => router.push("/store/history")}
                 type="submit"
                 className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors mt-4"
               >
@@ -165,7 +221,9 @@ export default function Checkout() {
               </Button>
             </div>
             <div className="mt-6 bg-white shadow-sm rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4">Delivery Information</h3>
+              <h3 className="text-lg font-semibold mb-4">
+                Delivery Information
+              </h3>
               <div className="space-y-4">
                 <div className="flex items-center">
                   <Truck className="h-5 w-5 text-gray-400 mr-2" />
@@ -188,11 +246,11 @@ export default function Checkout() {
               <div className="space-y-4 mb-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Image 
-                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=64&width=64" 
-                      alt="Chicken Burger" 
-                      width={64} 
-                      height={64} 
+                    <Image
+                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=64&width=64"
+                      alt="Chicken Burger"
+                      width={64}
+                      height={64}
                       className="rounded-md mr-4"
                     />
                     <div>
@@ -204,11 +262,11 @@ export default function Checkout() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Image 
-                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=64&width=64" 
-                      alt="French Fries" 
-                      width={64} 
-                      height={64} 
+                    <Image
+                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=64&width=64"
+                      alt="French Fries"
+                      width={64}
+                      height={64}
                       className="rounded-md mr-4"
                     />
                     <div>
@@ -256,5 +314,5 @@ export default function Checkout() {
         </div>
       </footer>
     </div>
-  )
+  );
 }

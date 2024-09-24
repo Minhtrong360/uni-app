@@ -1,20 +1,34 @@
-'use client'
+"use client";
 // https://v0.dev/chat/_22qfnAlbv1
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { UploadIcon, XIcon } from "lucide-react"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { UploadIcon, XIcon } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function AssignTask() {
   return (
     <Card className="w-full max-w-3xl mx-auto">
       <CardHeader>
         <CardTitle>Assign Task to PIC</CardTitle>
-        <CardDescription>Please provide detailed information for task assignment</CardDescription>
+        <CardDescription>
+          Please provide detailed information for task assignment
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form className="space-y-6">
@@ -31,7 +45,7 @@ export default function AssignTask() {
               </SelectContent>
             </Select>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="ticket-id">Ticket ID</Label>
@@ -42,12 +56,12 @@ export default function AssignTask() {
               <Input id="student" value="Jane Doe" readOnly />
             </div>
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="category">Category</Label>
             <Input id="category" value="Technical Support" readOnly />
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="status">Status</Label>
@@ -78,9 +92,9 @@ export default function AssignTask() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="description">Description</Label>
-            <Textarea 
-              className="min-h-[100px]" 
-              id="description" 
+            <Textarea
+              className="min-h-[100px]"
+              id="description"
               value="Hello this is ticket"
               readOnly
             />
@@ -98,8 +112,14 @@ export default function AssignTask() {
             <Card className="p-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <img src="/placeholder.svg?height=40&width=40" alt="Attached image thumbnail" className="w-10 h-10 rounded" />
-                  <span className="text-sm font-medium">error_screenshot.png</span>
+                  <img
+                    src="/placeholder.svg?height=40&width=40"
+                    alt="Attached image thumbnail"
+                    className="w-10 h-10 rounded"
+                  />
+                  <span className="text-sm font-medium">
+                    error_screenshot.png
+                  </span>
                 </div>
                 <Button variant="ghost" size="icon">
                   <XIcon className="h-4 w-4" />
@@ -140,5 +160,5 @@ export default function AssignTask() {
         </form>
       </CardContent>
     </Card>
-  )
+  );
 }

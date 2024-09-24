@@ -1,41 +1,53 @@
-'use client'
+"use client";
 // https://v0.dev/chat/MJHHSARTqOd
-import { Bell, Clock, AlertTriangle, ArrowLeft } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
+import { Bell, Clock, AlertTriangle, ArrowLeft } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 export default function Component() {
-    const route = useRouter()
+  const route = useRouter();
   return (
     <div className="p-4 space-y-4 max-w-4xl mx-auto">
-   
       <div className="max-w-7xl mx-auto   py-4 flex items-center">
-        <Button
-          onClick={() => route.push('/')}
-          size="icon" variant="outline">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="sr-only">Back</span>
-          </Button>
-          {/* <ChevronLeft onClick={() => router.push('/store')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
-          <h1 className="text-2xl font-semibold text-gray-900 ml-2">Admin Notifications</h1>
-        </div>
+        <Button onClick={() => route.push("/")} size="icon" variant="outline">
+          <ArrowLeft className="w-4 h-4" />
+          <span className="sr-only">Back</span>
+        </Button>
+        {/* <ChevronLeft onClick={() => router.push('/store')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
+        <h1 className="text-2xl font-semibold text-gray-900 ml-2">
+          Admin Notifications
+        </h1>
+      </div>
       {/* New Ticket Notification */}
       <Card>
         <CardHeader className="flex flex-row items-center gap-4">
           <Bell className="h-6 w-6 text-blue-500" />
           <div>
             <CardTitle>New Support Ticket</CardTitle>
-            <CardDescription>Student ID: 12345 | Timestamp: 2023-09-23 10:30 AM</CardDescription>
+            <CardDescription>
+              Student ID: 12345 | Timestamp: 2023-09-23 10:30 AM
+            </CardDescription>
           </div>
           <Badge className="ml-auto">New</Badge>
         </CardHeader>
         <CardContent>
-          <p>A student has submitted a new ticket regarding an issue with course registration.</p>
+          <p>
+            A student has submitted a new ticket regarding an issue with course
+            registration.
+          </p>
           <div className="mt-2">
             <Badge variant="outline">Course Registration</Badge>
-            <Badge variant="outline" className="ml-2">Technical Support</Badge>
+            <Badge variant="outline" className="ml-2">
+              Technical Support
+            </Badge>
           </div>
         </CardContent>
       </Card>
@@ -50,7 +62,10 @@ export default function Component() {
           </div>
         </CardHeader>
         <CardContent>
-          <p>Please follow up on the course registration issue ticket within the next 24 hours.</p>
+          <p>
+            Please follow up on the course registration issue ticket within the
+            next 24 hours.
+          </p>
         </CardContent>
       </Card>
 
@@ -59,7 +74,8 @@ export default function Component() {
         <AlertTriangle className="h-4 w-4" />
         <AlertTitle>High Priority Ticket</AlertTitle>
         <AlertDescription>
-          The submitted ticket has been flagged as high priority and requires immediate attention.
+          The submitted ticket has been flagged as high priority and requires
+          immediate attention.
         </AlertDescription>
       </Alert>
 
@@ -82,5 +98,5 @@ export default function Component() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
