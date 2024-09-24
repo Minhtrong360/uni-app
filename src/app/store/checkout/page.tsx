@@ -18,7 +18,9 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
+
 export default function Checkout() {
+  console.log("Trick");
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");
@@ -66,6 +68,7 @@ export default function Checkout() {
         </div>
       </header>
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
             <h2 className="text-lg font-semibold mb-4">Payment Details</h2>
@@ -187,7 +190,7 @@ export default function Checkout() {
               {paymentMethod === "paypal" && (
                 <div className="text-center py-4">
                   <p className="text-gray-600 mb-4">
-                    You will be redirected to PayPal to complete your payment.
+                    You will be redirected to PayPal to complete your payment.git
                   </p>
                   <Image
                     src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150"
