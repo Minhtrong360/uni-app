@@ -9,10 +9,10 @@ import Image from "next/image";
 export default function UserSetting() {
   return (
     <div className="flex min-h-screen bg-gray-100">
-      <div className="m-auto w-full max-w-md bg-white p-8 rounded-3xl shadow-lg">
-        <div className="flex justify-between items-center mb-6">
+      <div className="m-auto w-full max-w-md rounded-3xl bg-white p-8 shadow-lg">
+        <div className="mb-6 flex items-center justify-between">
           <Link href="/">
-            <ArrowLeft className="w-6 h-6 text-gray-500" />
+            <ArrowLeft className="h-6 w-6 text-gray-500" />
           </Link>
           <h1 className="text-xl font-semibold">My profile</h1>
           <Link href="/auth">
@@ -25,43 +25,43 @@ export default function UserSetting() {
             height={100}
             src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=100&width=100"
             alt="Profile"
-            className="w-24 h-24 rounded-full mx-auto"
+            className="mx-auto h-24 w-24 rounded-full"
           />
-          <div className="absolute bottom-0 right-1/3 bg-black rounded-full p-2">
-            <PenSquare className="w-4 h-4 text-white" />
+          <div className="absolute bottom-0 right-1/3 rounded-full bg-black p-2">
+            <PenSquare className="h-4 w-4 text-white" />
           </div>
         </div>
         <form className="space-y-4">
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="mb-1 block text-sm font-medium text-gray-700"
             >
               Name
             </label>
             <Input
               id="name"
               defaultValue="James Harrid"
-              className=" pr-4 py-3 w-full border-gray-300 text-sm"
+              className="w-full border-gray-300 py-3 pr-4 text-sm"
             />
           </div>
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="mb-1 block text-sm font-medium text-gray-700"
             >
               Phone
             </label>
             <Input
               id="phone"
               defaultValue="123-456-7890"
-              className=" pr-4 py-3 w-full border-gray-300 text-sm"
+              className="w-full border-gray-300 py-3 pr-4 text-sm"
             />
           </div>
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="mb-1 block text-sm font-medium text-gray-700"
             >
               Email
             </label>
@@ -69,13 +69,13 @@ export default function UserSetting() {
               id="email"
               type="email"
               defaultValue="example@email.com"
-              className=" pr-4 py-3 w-full border-gray-300 text-sm"
+              className="w-full border-gray-300 py-3 pr-4 text-sm"
             />
           </div>
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="mb-1 block text-sm font-medium text-gray-700"
             >
               Password
             </label>
@@ -84,25 +84,25 @@ export default function UserSetting() {
                 id="password"
                 type="password"
                 defaultValue="••••••••••"
-                className=" pr-4 py-3 w-full border-gray-300 text-sm"
+                className="w-full border-gray-300 py-3 pr-4 text-sm"
               />
-              <Eye className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Eye className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
             </div>
           </div>
           <div>
             <label
               htmlFor="birthday"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="mb-1 block text-sm font-medium text-gray-700"
             >
               Birthday
             </label>
             <Input
               id="birthday"
               placeholder="Set birthday"
-              className=" pr-4 py-3 w-full border-gray-300 text-sm"
+              className="w-full border-gray-300 py-3 pr-4 text-sm"
             />
           </div>
-          <Button className="w-full  text-white py-3">Save changes</Button>
+          <Button className="w-full py-3 text-white">Save changes</Button>
         </form>
       </div>
     </div>

@@ -28,18 +28,18 @@ export default function StudentSupportCenter() {
   };
 
   return (
-    <div className="container mx-auto px-4 md:px-8 lg:px-0 py-8 lg:w-[75%]">
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
+    <div className="container mx-auto px-4 py-8 md:px-8 lg:w-[75%] lg:px-0">
+      <header className="mb-8 flex flex-col items-start justify-between space-y-4 md:flex-row md:items-center md:space-y-0">
         <div className="flex items-center space-x-4">
           <Button
             onClick={() => router.push("/support/dashboard")}
             size="icon"
             variant="outline"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="h-4 w-4" />
             <span className="sr-only">Back</span>
           </Button>
-          <div className="bg-blue-600 text-white p-2 rounded-md">
+          <div className="rounded-md bg-blue-600 p-2 text-white">
             <span className="text-2xl font-bold">SC</span>
           </div>
           <div>
@@ -68,7 +68,7 @@ export default function StudentSupportCenter() {
         </Modal>
       </header>
 
-      <main className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <main className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <p className="mb-4">
             The Student Support Center is dedicated to addressing the challenges
@@ -77,7 +77,7 @@ export default function StudentSupportCenter() {
             solutions to ensure every student succeeds.
           </p>
           <Card className="mb-8">
-            <CardContent className="p-0 relative">
+            <CardContent className="relative p-0">
               <Dialog open={isImageOpen} onOpenChange={setIsImageOpen}>
                 <DialogTrigger asChild>
                   <Image
@@ -85,7 +85,7 @@ export default function StudentSupportCenter() {
                     alt="Supportive image"
                     width={600}
                     height={400}
-                    className="w-full h-64 sm:h-80 md:h-96 object-cover rounded-t-lg cursor-pointer"
+                    className="h-64 w-full cursor-pointer rounded-t-lg object-cover sm:h-80 md:h-96"
                   />
                 </DialogTrigger>
                 <DialogContent className="max-w-3xl">
@@ -94,31 +94,31 @@ export default function StudentSupportCenter() {
                     alt="Supportive image"
                     width={1200}
                     height={800}
-                    className="w-full h-auto object-contain"
+                    className="h-auto w-full object-contain"
                   />
                 </DialogContent>
               </Dialog>
-              <div className="absolute top-2 right-2 flex flex-wrap gap-2 max-w-[calc(100%-1rem)]">
+              <div className="absolute right-2 top-2 flex max-w-[calc(100%-1rem)] flex-wrap gap-2">
                 <Badge className="bg-blue-500 text-white">Mental Health</Badge>
                 <Badge className="bg-yellow-500 text-white">In Progress</Badge>
                 <Badge className="bg-red-500 text-white">High Priority</Badge>
               </div>
               <div className="p-4 sm:p-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                   <Badge variant="secondary" className="justify-start">
-                    <span className="font-semibold mr-1">Location:</span>
+                    <span className="mr-1 font-semibold">Location:</span>
                     <span className="truncate">Main Campus, Building B</span>
                   </Badge>
                   <Badge variant="secondary" className="justify-start">
-                    <span className="font-semibold mr-1">Ticket Issued:</span>
+                    <span className="mr-1 font-semibold">Ticket Issued:</span>
                     <span className="truncate">2023-09-19 14:30</span>
                   </Badge>
                   <Badge variant="secondary" className="justify-start">
-                    <span className="font-semibold mr-1">Student Email:</span>
+                    <span className="mr-1 font-semibold">Student Email:</span>
                     <span className="truncate">student@university.edu</span>
                   </Badge>
                   <Badge variant="secondary" className="justify-start">
-                    <span className="font-semibold mr-1">Student Name:</span>
+                    <span className="mr-1 font-semibold">Student Name:</span>
                     <span className="truncate">John Doe</span>
                   </Badge>
                 </div>
@@ -169,7 +169,7 @@ export default function StudentSupportCenter() {
               </Card>
             </TabsContent>
           </Tabs>
-          <Button className="mt-4 mb-8">Get Support Now</Button>
+          <Button className="mb-8 mt-4">Get Support Now</Button>
           <Card>
             <CardHeader>
               <CardTitle>Activities Timeline</CardTitle>
@@ -177,7 +177,7 @@ export default function StudentSupportCenter() {
             <CardContent>
               <ol className="relative border-l border-gray-200 dark:border-gray-700">
                 <li className="mb-10 ml-4">
-                  <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                  <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
                   <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                     September 19, 2023, 14:30
                   </time>
@@ -189,7 +189,7 @@ export default function StudentSupportCenter() {
                   </p>
                 </li>
                 <li className="mb-10 ml-4">
-                  <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                  <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
                   <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                     September 19, 2023, 15:00
                   </time>
@@ -202,7 +202,7 @@ export default function StudentSupportCenter() {
                   </p>
                 </li>
                 <li className="ml-4">
-                  <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                  <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
                   <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                     September 19, 2023, 15:30
                   </time>

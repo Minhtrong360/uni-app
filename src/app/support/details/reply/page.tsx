@@ -65,7 +65,7 @@ function PendingTasks() {
             },
           ].map((task) => (
             <Card key={task.id} className="p-4">
-              <div className="flex justify-between items-start mb-2">
+              <div className="mb-2 flex items-start justify-between">
                 <h3 className="font-semibold">{task.title}</h3>
                 <Badge
                   variant={
@@ -79,17 +79,17 @@ function PendingTasks() {
                   {task.status}
                 </Badge>
               </div>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="mb-4 text-sm text-gray-600">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
-              <div className="flex justify-between items-center">
-                <span className="text-xs text-gray-500 flex items-center">
+              <div className="flex items-center justify-between">
+                <span className="flex items-center text-xs text-gray-500">
                   {task.status === "completed" ? (
-                    <CheckCircle className="w-4 h-4 mr-1 text-green-500" />
+                    <CheckCircle className="mr-1 h-4 w-4 text-green-500" />
                   ) : task.status === "urgent" ? (
-                    <AlertCircle className="w-4 h-4 mr-1 text-red-500" />
+                    <AlertCircle className="mr-1 h-4 w-4 text-red-500" />
                   ) : (
-                    <Clock className="w-4 h-4 mr-1 text-blue-500" />
+                    <Clock className="mr-1 h-4 w-4 text-blue-500" />
                   )}
                   {task.dueIn}
                 </span>
@@ -108,7 +108,7 @@ export default function Reply() {
   return (
     <div className="h-screen bg-gray-100 p-4">
       <ScrollArea className="h-full">
-        <div className="flex flex-col sm:flex-row gap-4 pb-4">
+        <div className="flex flex-col gap-4 pb-4 sm:flex-row">
           <div className="flex-1">
             <Card className="w-full shadow-lg">
               <CardHeader className="bg-white text-black">
@@ -121,7 +121,7 @@ export default function Reply() {
               </CardHeader>
               <CardContent className="p-4">
                 <form className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="ticket-id">Ticket ID</Label>
                       <Input

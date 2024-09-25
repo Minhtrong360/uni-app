@@ -29,7 +29,7 @@ import {
 
 export default function OrderHistory() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <main className="flex-1 p-4 md:p-6">
         <div className="flex items-center gap-4">
           <h1 className="text-lg font-semibold md:text-2xl">Order History</h1>

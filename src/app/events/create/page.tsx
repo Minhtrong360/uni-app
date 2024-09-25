@@ -76,14 +76,14 @@ export default function AdminEventCreation() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="max-w-7xl mx-auto  sm:px-0  py-4 flex items-center">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto flex max-w-7xl items-center py-4 sm:px-0">
           {/* <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
-          <h1 className="text-2xl font-semibold text-gray-900 ml-2">
+          <h1 className="ml-2 text-2xl font-semibold text-gray-900">
             Create University Event
           </h1>
         </div>
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col gap-6 lg:flex-row">
           <div className="w-full lg:w-1/2">
             <Card>
               <CardContent className="p-6">
@@ -91,7 +91,7 @@ export default function AdminEventCreation() {
                   <div>
                     <label
                       htmlFor="eventName"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Event Name
                     </label>
@@ -107,7 +107,7 @@ export default function AdminEventCreation() {
                   <div>
                     <label
                       htmlFor="eventDescription"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Event Description
                     </label>
@@ -123,7 +123,7 @@ export default function AdminEventCreation() {
                   <div>
                     <label
                       htmlFor="eventCategory"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Event Category
                     </label>
@@ -151,7 +151,7 @@ export default function AdminEventCreation() {
                   <div>
                     <label
                       htmlFor="eventDate"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Event Date
                     </label>
@@ -187,7 +187,7 @@ export default function AdminEventCreation() {
                     <div>
                       <label
                         htmlFor="startTime"
-                        className="block text-sm font-medium text-gray-700 mb-1"
+                        className="mb-1 block text-sm font-medium text-gray-700"
                       >
                         Start Time
                       </label>
@@ -202,7 +202,7 @@ export default function AdminEventCreation() {
                     <div>
                       <label
                         htmlFor="endTime"
-                        className="block text-sm font-medium text-gray-700 mb-1"
+                        className="mb-1 block text-sm font-medium text-gray-700"
                       >
                         End Time
                       </label>
@@ -219,7 +219,7 @@ export default function AdminEventCreation() {
                   <div>
                     <label
                       htmlFor="location"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Location
                     </label>
@@ -241,7 +241,7 @@ export default function AdminEventCreation() {
                   <div>
                     <label
                       htmlFor="organizer"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Organizer
                     </label>
@@ -257,7 +257,7 @@ export default function AdminEventCreation() {
                   <div>
                     <label
                       htmlFor="maxAttendees"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Maximum Attendees
                     </label>
@@ -275,7 +275,7 @@ export default function AdminEventCreation() {
                   <div>
                     <label
                       htmlFor="eventImage"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Event Image
                     </label>
@@ -290,16 +290,16 @@ export default function AdminEventCreation() {
                   <div>
                     <label
                       htmlFor="eventTags"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Event Tags
                     </label>
-                    <div className="flex flex-wrap gap-2 mb-2">
+                    <div className="mb-2 flex flex-wrap gap-2">
                       {tags.map((tag, index) => (
                         <Badge
                           key={index}
                           variant="secondary"
-                          className="text-sm py-1 px-2"
+                          className="px-2 py-1 text-sm"
                         >
                           {tag}
                           <button
@@ -338,37 +338,37 @@ export default function AdminEventCreation() {
                   width={400}
                   src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=200&width=400"
                   alt="Event preview"
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
               <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-2">
+                <h2 className="mb-2 text-2xl font-bold">
                   {formData.eventName || "Event Name"}
                 </h2>
-                <p className="text-gray-600 mb-4">
+                <p className="mb-4 text-gray-600">
                   {formData.eventDescription ||
                     "Event description will appear here. Provide a brief overview of your event to attract attendees."}
                 </p>
-                <div className="flex items-center mb-4">
-                  <CalendarIcon className="w-5 h-5 mr-2 text-gray-500" />
+                <div className="mb-4 flex items-center">
+                  <CalendarIcon className="mr-2 h-5 w-5 text-gray-500" />
                   <span>
                     {eventDate
                       ? format(eventDate, "MMMM d, yyyy")
                       : "Date not set"}
                   </span>
                 </div>
-                <div className="flex items-center mb-4">
-                  <Clock className="w-5 h-5 mr-2 text-gray-500" />
+                <div className="mb-4 flex items-center">
+                  <Clock className="mr-2 h-5 w-5 text-gray-500" />
                   <span>
                     {formData.startTime && formData.endTime
                       ? `${formData.startTime} - ${formData.endTime}`
                       : "Time not set"}
                   </span>
                 </div>
-                <div className="flex items-center mb-4">
+                <div className="mb-4 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 mr-2 text-gray-500"
+                    className="mr-2 h-5 w-5 text-gray-500"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -388,7 +388,7 @@ export default function AdminEventCreation() {
                   </svg>
                   <span>{formData.location || "Location not set"}</span>
                 </div>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="mb-4 flex flex-wrap gap-2">
                   {tags.length > 0 ? (
                     tags.map((tag, index) => (
                       <Badge
@@ -405,7 +405,7 @@ export default function AdminEventCreation() {
                     </Badge>
                   )}
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">
                     Organized by: {formData.organizer || "TBA"}
                   </span>

@@ -45,7 +45,7 @@ export default function Feedback() {
 
   if (submitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto">
+      <Card className="mx-auto w-full max-w-2xl">
         <CardHeader>
           <CardTitle>Thank You for Your Feedback!</CardTitle>
           <CardDescription>
@@ -58,7 +58,7 @@ export default function Feedback() {
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <Card className="mx-auto w-full max-w-2xl">
       <CardHeader>
         <CardTitle>Event Feedback</CardTitle>
         <CardDescription>
@@ -117,9 +117,9 @@ export default function Feedback() {
                   {[1, 2, 3, 4, 5].map((star) => (
                     <StarIcon
                       key={star}
-                      className={`w-6 h-6 cursor-pointer ${
+                      className={`h-6 w-6 cursor-pointer ${
                         star <= (ratings[aspect.id] || 0)
-                          ? "text-yellow-400 fill-yellow-400"
+                          ? "fill-yellow-400 text-yellow-400"
                           : "text-gray-300"
                       }`}
                       onClick={() => handleRating(aspect.id, star)}

@@ -16,12 +16,12 @@ export default function AuthContainer() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4 overflow-hidden">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gray-50 p-4">
       {/* Content */}
-      <div className="relative z-10 w-full max-w-md space-y-8 bg-white bg-opacity-90 p-8 rounded-3xl shadow-lg">
-        <div className="flex items-center justify-between w-full"></div>
+      <div className="relative z-10 w-full max-w-md space-y-8 rounded-3xl bg-white bg-opacity-90 p-8 shadow-lg">
+        <div className="flex w-full items-center justify-between"></div>
         <div className="flex flex-col items-center space-y-2">
-          <div className="relative w-16 h-16">
+          <div className="relative h-16 w-16">
             <Image
               src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=64&width=64"
               alt="Logo"

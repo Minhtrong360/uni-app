@@ -186,12 +186,12 @@ export default function Component() {
   }, []);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-6">
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
+      <h1 className="mb-6 text-2xl font-bold sm:text-3xl">
         Student Support Center Dashboard
       </h1>
 
-      <div className="grid gap-4 sm:gap-6 mb-6 sm:mb-8 grid-cols-2 sm:grid-cols-4">
+      <div className="mb-6 grid grid-cols-2 gap-4 sm:mb-8 sm:grid-cols-4 sm:gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Tickets</CardTitle>
@@ -251,7 +251,7 @@ export default function Component() {
         </Card>
       </div>
 
-      <div className="grid gap-4 sm:gap-6 mb-6 sm:mb-8 grid-cols-1 lg:grid-cols-3">
+      <div className="mb-6 grid grid-cols-1 gap-4 sm:mb-8 sm:gap-6 lg:grid-cols-3">
         <Card>
           <CardHeader>
             <CardTitle>Area Chart - Stacked</CardTitle>

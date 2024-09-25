@@ -70,19 +70,19 @@ export default function Header() {
   return (
     <header
       className={
-        "bg-white fixed top-0 left-0 right-0 shadow-sm border-b z-50 px-2"
+        "fixed left-0 right-0 top-0 z-50 border-b bg-white px-2 shadow-sm"
       }
     >
-      <div className="container mx-auto flex justify-between items-center h-16">
+      <div className="container mx-auto flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="w-10 h-10"
+            className="h-10 w-10"
             aria-label="Menu"
             onClick={() => setIsOpen(true)}
           >
-            <Compass className="w-5 h-5" />
+            <Compass className="h-5 w-5" />
           </Button>
           {typeof window !== "undefined" && (
             <Breadcrumb className="ml-2">
@@ -100,7 +100,7 @@ export default function Header() {
                     </BreadcrumbLink>
                     {index < breadcrumbs.length - 1 && (
                       <BreadcrumbSeparator>
-                        <ChevronRight className="w-4 h-4 text-gray-400" />
+                        <ChevronRight className="h-4 w-4 text-gray-400" />
                       </BreadcrumbSeparator>
                     )}
                   </BreadcrumbItem>
@@ -114,18 +114,18 @@ export default function Header() {
             <Input
               type="text"
               placeholder="Search..."
-              className="w-32 md:w-64 h-10 pl-10 pr-4 text-sm"
+              className="h-10 w-32 pl-10 pr-4 text-sm md:w-64"
             />
-            <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
           </div>
           <div className="flex items-center space-x-4">
             <Link href="/notifications">
-              <Button variant="outline" size="icon" className="w-10 h-10">
+              <Button variant="outline" size="icon" className="h-10 w-10">
                 <Bell className="h-5 w-5" />
               </Button>
             </Link>
             <Link href="/user/user-setting">
-              <div className="w-10 h-10 rounded-full overflow-hidden">
+              <div className="h-10 w-10 overflow-hidden rounded-full">
                 <Image
                   src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/3d-illustration-person-with-sunglasses_23-2149436188%20(1).avif?t=2024-09-25T06%3A08%3A19.358Z"
                   alt="Profile"
@@ -139,13 +139,13 @@ export default function Header() {
         </div>
       </div>
       <div
-        className={`fixed inset-0  transition-opacity duration-100 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 transition-opacity duration-100 ${
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setIsOpen(false)}
       />
       <div
-        className={`fixed top-0 left-0 w-[300px] sm:w-[400px] h-full bg-white shadow-lg transform transition-transform duration-200 ease-in-out ${
+        className={`fixed left-0 top-0 h-full w-[300px] transform bg-white shadow-lg transition-transform duration-200 ease-in-out sm:w-[400px] ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -155,7 +155,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                className="flex items-center rounded-lg p-3 transition-colors duration-200 hover:bg-gray-100"
                 onClick={() => setIsOpen(false)}
               >
                 <link.icon className="mr-4 h-5 w-5" />

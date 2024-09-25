@@ -52,14 +52,14 @@ export default function StudentEventBooking() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="max-w-7xl mx-auto  sm:px-0  py-4 flex items-center">
+      <div className="mx-auto max-w-4xl">
+        <div className="mx-auto flex max-w-7xl items-center py-4 sm:px-0">
           {/* <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
-          <h1 className="text-2xl font-semibold text-gray-900 ml-2">
+          <h1 className="ml-2 text-2xl font-semibold text-gray-900">
             Event Booking
           </h1>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid gap-6 md:grid-cols-2">
           <Card className="overflow-hidden">
             <div className="relative h-48 md:h-64">
               <Image
@@ -75,24 +75,24 @@ export default function StudentEventBooking() {
             <CardContent className="space-y-4">
               <div>
                 <h2 className="text-2xl font-bold">{eventData.name}</h2>
-                <p className="text-gray-600 mt-2">{eventData.description}</p>
+                <p className="mt-2 text-gray-600">{eventData.description}</p>
               </div>
               <div className="flex items-center">
-                <CalendarIcon className="w-5 h-5 mr-2 text-gray-500" />
+                <CalendarIcon className="mr-2 h-5 w-5 text-gray-500" />
                 <span>{format(eventData.date, "MMMM d, yyyy")}</span>
               </div>
               <div className="flex items-center">
-                <Clock className="w-5 h-5 mr-2 text-gray-500" />
+                <Clock className="mr-2 h-5 w-5 text-gray-500" />
                 <span>
                   {eventData.startTime} - {eventData.endTime}
                 </span>
               </div>
               <div className="flex items-center">
-                <MapPin className="w-5 h-5 mr-2 text-gray-500" />
+                <MapPin className="mr-2 h-5 w-5 text-gray-500" />
                 <span>{eventData.location}</span>
               </div>
               <div className="flex items-center">
-                <Users className="w-5 h-5 mr-2 text-gray-500" />
+                <Users className="mr-2 h-5 w-5 text-gray-500" />
                 <span>
                   {eventData.currentAttendees} / {eventData.maxAttendees}{" "}
                   attendees
@@ -120,7 +120,7 @@ export default function StudentEventBooking() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                   >
                     Full Name
                   </label>
@@ -137,7 +137,7 @@ export default function StudentEventBooking() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                   >
                     Email
                   </label>
@@ -155,7 +155,7 @@ export default function StudentEventBooking() {
                 <div>
                   <label
                     htmlFor="studentId"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                   >
                     Student ID
                   </label>
@@ -172,7 +172,7 @@ export default function StudentEventBooking() {
                 <div>
                   <label
                     htmlFor="dietaryRequirements"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                   >
                     Dietary Requirements (Optional)
                   </label>

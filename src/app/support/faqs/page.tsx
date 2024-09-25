@@ -123,15 +123,15 @@ export default function StudentSupportFAQs() {
   };
 
   return (
-    <div className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-8 text-foreground">
+    <div className="min-h-screen bg-background px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl">
+        <h1 className="mb-8 text-center text-4xl font-bold text-foreground">
           Student Support FAQs
         </h1>
 
         <div className="mb-8">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
             <Input
               type="text"
               placeholder="Search FAQs..."
@@ -186,9 +186,9 @@ export default function StudentSupportFAQs() {
                 <li key={index}>
                   <a
                     href={doc.url}
-                    className="text-primary hover:underline flex items-center"
+                    className="flex items-center text-primary hover:underline"
                   >
-                    <HelpCircle className="h-4 w-4 mr-2" />
+                    <HelpCircle className="mr-2 h-4 w-4" />
                     {doc.title}
                   </a>
                 </li>
@@ -200,7 +200,7 @@ export default function StudentSupportFAQs() {
 
       {/* Chatbot Icon */}
       <Button
-        className="fixed bottom-4 right-4 rounded-full w-12 h-12 p-0 shadow-lg"
+        className="fixed bottom-4 right-4 h-12 w-12 rounded-full p-0 shadow-lg"
         onClick={() => setIsChatOpen(true)}
       >
         <MessageCircle className="h-6 w-6" />
@@ -208,8 +208,8 @@ export default function StudentSupportFAQs() {
 
       {/* Chat Interface */}
       {isChatOpen && (
-        <div className="fixed bottom-4 right-4 w-80 h-96 bg-background rounded-lg shadow-xl flex flex-col">
-          <div className="p-4 bg-primary text-primary-foreground rounded-t-lg flex justify-between items-center">
+        <div className="fixed bottom-4 right-4 flex h-96 w-80 flex-col rounded-lg bg-background shadow-xl">
+          <div className="flex items-center justify-between rounded-t-lg bg-primary p-4 text-primary-foreground">
             <h2 className="font-bold">Chat with AI Support</h2>
             <Button
               variant="ghost"
@@ -219,21 +219,21 @@ export default function StudentSupportFAQs() {
               <X className="h-4 w-4" />
             </Button>
           </div>
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div className="flex-1 space-y-4 overflow-y-auto p-4">
             {messages.map((message, index) => (
               <div
                 key={index}
                 className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[70%] p-2 rounded-lg ${message.sender === "user" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"}`}
+                  className={`max-w-[70%] rounded-lg p-2 ${message.sender === "user" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"}`}
                 >
                   {message.text}
                 </div>
               </div>
             ))}
           </div>
-          <div className="p-4 border-t border-border">
+          <div className="border-t border-border p-4">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -246,7 +246,7 @@ export default function StudentSupportFAQs() {
                 placeholder="Type your message..."
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
-                className="flex-1 mr-2"
+                className="mr-2 flex-1"
               />
               <Button type="submit" size="icon">
                 <Send className="h-4 w-4" />

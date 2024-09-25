@@ -280,7 +280,7 @@ export default function GroupTaskManagement() {
 
   return (
     <div className="container mx-auto p-4">
-      <header className="flex justify-between items-center mb-6">
+      <header className="mb-6 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Project X Task Management</h1>
         <Dialog open={isAddingGroup} onOpenChange={setIsAddingGroup}>
           <DialogTrigger asChild>
@@ -328,9 +328,9 @@ export default function GroupTaskManagement() {
                       <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        className="bg-muted p-4 rounded-lg w-80 flex-shrink-0 flex flex-col h-full"
+                        className="flex h-full w-80 flex-shrink-0 flex-col rounded-lg bg-muted p-4"
                       >
-                        <div className="flex justify-between items-center mb-4">
+                        <div className="mb-4 flex items-center justify-between">
                           <h2 className="text-xl font-semibold">
                             {section.title}
                           </h2>
@@ -342,7 +342,7 @@ export default function GroupTaskManagement() {
                             <X className="h-4 w-4" />
                           </Button>
                         </div>
-                        <ScrollArea className="flex-grow mb-4">
+                        <ScrollArea className="mb-4 flex-grow">
                           <div className="space-y-4">
                             {section.tasks.map((task, index) => (
                               <Draggable
@@ -355,9 +355,9 @@ export default function GroupTaskManagement() {
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
-                                    className="bg-background p-4 rounded-md shadow-sm  bg-white"
+                                    className="rounded-md bg-background bg-white p-4 shadow-sm"
                                   >
-                                    <div className="flex items-center justify-between mb-2">
+                                    <div className="mb-2 flex items-center justify-between">
                                       <div className="flex items-center space-x-2">
                                         <Checkbox
                                           checked={task.completed}
@@ -415,10 +415,10 @@ export default function GroupTaskManagement() {
                                         height={128}
                                         src={task.image}
                                         alt={task.title}
-                                        className="w-full h-32 object-cover rounded-md mb-2"
+                                        className="mb-2 h-32 w-full rounded-md object-cover"
                                       />
                                     )}
-                                    <div className="flex flex-wrap gap-2 mb-2">
+                                    <div className="mb-2 flex flex-wrap gap-2">
                                       {task.tags.map((tag, index) => (
                                         <Badge key={index} variant="secondary">
                                           {tag}
@@ -444,7 +444,7 @@ export default function GroupTaskManagement() {
                                     </div>
                                     <Button
                                       variant="ghost"
-                                      className="w-full mt-2"
+                                      className="mt-2 w-full"
                                       onClick={() => setSelectedTask(task)}
                                     >
                                       View Details
@@ -649,14 +649,14 @@ export default function GroupTaskManagement() {
               </SelectContent>
             </Select>
           </div>
-          <div className="space-y-8  max-w-3xl">
+          <div className="max-w-3xl space-y-8">
             {completedTasks.map((task, index) => (
               <div key={task.id} className="relative">
                 {index !== completedTasks.length - 1 && (
-                  <div className="absolute left-6 top-10 bottom-0 w-0.5 bg-gray-200" />
+                  <div className="absolute bottom-0 left-6 top-10 w-0.5 bg-gray-200" />
                 )}
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 mt-1">
+                  <div className="mt-1 flex-shrink-0">
                     <div className="relative">
                       <Avatar className="h-12 w-12 border-4 border-background">
                         <AvatarImage
@@ -669,8 +669,8 @@ export default function GroupTaskManagement() {
                       </span>
                     </div>
                   </div>
-                  <div className="flex-grow bg-card rounded-lg shadow-md p-6 transition-all hover:shadow-lg w-1/2">
-                    <div className="flex items-start justify-between mb-2">
+                  <div className="w-1/2 flex-grow rounded-lg bg-card p-6 shadow-md transition-all hover:shadow-lg">
+                    <div className="mb-2 flex items-start justify-between">
                       <h3 className="text-xl font-semibold">{task.title}</h3>
                       <Badge variant="secondary" className="text-xs">
                         {task.completedDate}
@@ -682,13 +682,13 @@ export default function GroupTaskManagement() {
                         height={128}
                         src={task.image}
                         alt={task.title}
-                        className="w-full h-32 object-cover rounded-md mb-4"
+                        className="mb-4 h-32 w-full rounded-md object-cover"
                       />
                     )}
-                    <p className="text-muted-foreground mb-4">
+                    <p className="mb-4 text-muted-foreground">
                       {task.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="mb-4 flex flex-wrap gap-2">
                       {task.tags.map((tag, index) => (
                         <Badge key={index} variant="outline">
                           {tag}
@@ -729,7 +729,7 @@ export default function GroupTaskManagement() {
                 height={128}
                 src={selectedTask.image}
                 alt={selectedTask.title}
-                className="w-full h-48 object-cover rounded-md"
+                className="h-48 w-full rounded-md object-cover"
               />
             )}
             <div>
@@ -767,11 +767,11 @@ export default function GroupTaskManagement() {
               <p className="flex items-center">
                 {selectedTask?.fileType === "document" ? (
                   <>
-                    <FileText className="h-4 w-4 mr-2" /> Document
+                    <FileText className="mr-2 h-4 w-4" /> Document
                   </>
                 ) : (
                   <>
-                    <ImageIcon className="h-4 w-4 mr-2" /> Image
+                    <ImageIcon className="mr-2 h-4 w-4" /> Image
                   </>
                 )}
               </p>

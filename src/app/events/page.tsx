@@ -41,15 +41,15 @@ export default function Component() {
   const router = useRouter();
   return (
     <div className="flex min-h-screen bg-gray-100">
-      <main className="flex-1 p-4 md:p-6 space-y-6">
+      <main className="flex-1 space-y-6 p-4 md:p-6">
         <section>
-          <div className="flex justify-between items-center mb-4">
+          <div className="mb-4 flex items-center justify-between">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute top-4 left-4 lg:hidden"
+                  className="absolute left-4 top-4 lg:hidden"
                 >
                   <Menu className="h-6 w-6" />
                 </Button>
@@ -92,7 +92,7 @@ export default function Component() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <h2 className="text-2xl font-bold ml-9 sm:ml-0">Featured Events</h2>
+            <h2 className="ml-9 text-2xl font-bold sm:ml-0">Featured Events</h2>
             <div className="flex items-center space-x-2">
               <Button onClick={() => router.push(`/events/create`)}>
                 <Plus className="mr-2 h-4 w-4" /> New Event
@@ -107,7 +107,7 @@ export default function Component() {
               {/* <CirclePlus onClick={() => router.push('/events/create')} /> */}
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3].map((i) => (
               <Card key={i}>
                 <CardContent
@@ -121,16 +121,16 @@ export default function Component() {
                     alt={`Featured Event ${i}`}
                     width={540}
                     height={540}
-                    className="w-full object-cover rounded-t-lg max-h-[400px] object-top"
+                    className="max-h-[400px] w-full rounded-t-lg object-cover object-top"
                   />
-                  <div className="p-4 space-y-2">
+                  <div className="space-y-2 p-4">
                     <p className="text-sm text-muted-foreground">
                       Student Union
                     </p>
                     <h3 className="font-semibold">
                       Annual University Fair: Explore Your Future
                     </h3>
-                    <div className="flex justify-between items-center text-sm text-muted-foreground">
+                    <div className="flex items-center justify-between text-sm text-muted-foreground">
                       <span>Tomorrow, 10 AM - 4 PM</span>
                       <Button onClick={() => router.push("/events/booking")}>
                         Booking
@@ -144,7 +144,7 @@ export default function Component() {
         </section>
 
         <section>
-          <div className="flex justify-between items-center mb-4">
+          <div className="mb-4 flex items-center justify-between">
             <h2 className="text-2xl font-bold">Upcoming Events</h2>
             <Button variant="outline">See all</Button>
           </div>
@@ -167,12 +167,12 @@ export default function Component() {
             </ScrollArea>
             {["academic", "sports", "cultural", "career"].map((category) => (
               <TabsContent key={category} value={category}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   {[1, 2].map((i) => (
                     <Card key={i}>
                       <CardContent
                         onClick={() => router.push("/events/booking")}
-                        className="p-4 flex items-center space-x-4"
+                        className="flex items-center space-x-4 p-4"
                       >
                         <div className="flex-grow">
                           <p className="text-sm text-muted-foreground">
@@ -181,10 +181,10 @@ export default function Component() {
                           <h3 className="font-semibold">
                             {getCategoryEvent(category)}
                           </h3>
-                          <div className="flex justify-between items-center text-sm text-muted-foreground">
+                          <div className="flex items-center justify-between text-sm text-muted-foreground">
                             <span>{getCategoryDate(category)}</span>
                             <Button variant="ghost" size="icon">
-                              <MoreHorizontal className="w-5 h-5" />
+                              <MoreHorizontal className="h-5 w-5" />
                             </Button>
                           </div>
                         </div>

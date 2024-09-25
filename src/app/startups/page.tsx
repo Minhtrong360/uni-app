@@ -192,11 +192,11 @@ export default function Component() {
                 height={200}
                 src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`}
                 alt="Paper thumbnail"
-                className="w-full h-40 object-cover"
+                className="h-40 w-full object-cover"
               />
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
-                  <span className="text-lg truncate">{paper.title}</span>
+                  <span className="truncate text-lg">{paper.title}</span>
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button variant="ghost" size="icon">
@@ -237,7 +237,7 @@ export default function Component() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="mb-4 flex flex-wrap gap-2">
                   {paper.keywords.map((keyword, index) => (
                     <Badge key={index} variant="secondary">
                       {keyword}
@@ -306,14 +306,14 @@ export default function Component() {
                 height={200}
                 src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`}
                 alt="Thesis thumbnail"
-                className="w-full h-40 object-cover"
+                className="h-40 w-full object-cover"
               />
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <span className="text-lg truncate cursor-help">
+                        <span className="cursor-help truncate text-lg">
                           {thesis.title}
                         </span>
                       </TooltipTrigger>
@@ -364,7 +364,7 @@ export default function Component() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="mb-4 flex flex-wrap gap-2">
                   {thesis.keywords.map((keyword, index) => (
                     <Badge key={index} variant="secondary">
                       {keyword}
@@ -442,11 +442,11 @@ export default function Component() {
                 height={200}
                 src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`}
                 alt="Startup thumbnail"
-                className="w-full h-40 object-cover"
+                className="h-40 w-full object-cover"
               />
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
-                  <span className="text-lg truncate">{startup.name}</span>
+                  <span className="truncate text-lg">{startup.name}</span>
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button variant="ghost" size="icon">
@@ -491,7 +491,7 @@ export default function Component() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="mb-4 flex flex-wrap gap-2">
                   {startup.tags.map((tag, index) => (
                     <Badge key={index} variant="secondary">
                       {tag}
@@ -556,12 +556,12 @@ export default function Component() {
   };
 
   return (
-    <div className="container mx-auto p-4 sm:p-6 space-y-6">
-      <h1 className="text-2xl sm:text-3xl font-bold">
+    <div className="container mx-auto space-y-6 p-4 sm:p-6">
+      <h1 className="text-2xl font-bold sm:text-3xl">
         University Academic Hub
       </h1>
 
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+      <div className="flex flex-col items-start justify-between space-y-4 sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0">
         <div className="relative w-full sm:w-64">
           <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input placeholder="Search..." className="pl-8" />

@@ -117,7 +117,7 @@ export default function SchoolSupportDashboard() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <main className="container mx-auto px-4 py-8">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
+        <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <Card className="bg-white dark:bg-gray-800">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
@@ -175,7 +175,7 @@ export default function SchoolSupportDashboard() {
             </CardContent>
           </Card>
         </div>
-        <Card className="bg-white dark:bg-gray-800 mb-8">
+        <Card className="mb-8 bg-white dark:bg-gray-800">
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle>Support Request Management</CardTitle>
@@ -188,8 +188,8 @@ export default function SchoolSupportDashboard() {
             </Button>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0 mb-6">
-              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2 w-full md:w-auto">
+            <div className="mb-6 flex flex-col items-start justify-between space-y-4 md:flex-row md:items-center md:space-y-0">
+              <div className="flex w-full flex-col space-y-4 sm:flex-row sm:space-x-2 sm:space-y-0 md:w-auto">
                 <Input
                   className="max-w-sm"
                   placeholder="Search support requests..."
@@ -289,7 +289,7 @@ export default function SchoolSupportDashboard() {
                 {supportRequests.map((request) => (
                   <Card
                     key={request.id}
-                    className="bg-white dark:bg-gray-800 overflow-hidden"
+                    className="overflow-hidden bg-white dark:bg-gray-800"
                   >
                     <div className="relative h-48 w-full">
                       <Image
@@ -307,7 +307,7 @@ export default function SchoolSupportDashboard() {
                       </div>
                     </div>
                     <CardContent className="pt-4">
-                      <div className="flex justify-between items-center mb-2">
+                      <div className="mb-2 flex items-center justify-between">
                         <Badge>{request.category}</Badge>
                         <Badge
                           variant={
@@ -321,13 +321,13 @@ export default function SchoolSupportDashboard() {
                           {request.status}
                         </Badge>
                       </div>
-                      <div className="text-sm text-muted-foreground mb-2">
+                      <div className="mb-2 text-sm text-muted-foreground">
                         Priority: {request.priority}
                       </div>
-                      <div className="text-sm text-muted-foreground mb-2">
+                      <div className="mb-2 text-sm text-muted-foreground">
                         Date: {request.date}
                       </div>
-                      <p className="text-sm line-clamp-2">
+                      <p className="line-clamp-2 text-sm">
                         {request.description}
                       </p>
                     </CardContent>

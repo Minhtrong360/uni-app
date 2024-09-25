@@ -201,7 +201,7 @@ export default function Component() {
     switch (selectedProjectType) {
       case "Academic Papers":
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="title">Paper Title</Label>
               <Input id="title" placeholder="Enter paper title" />
@@ -248,7 +248,7 @@ export default function Component() {
         );
       case "Graduation Theses":
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="title">Thesis Title</Label>
               <Input id="title" placeholder="Enter thesis title" />
@@ -298,7 +298,7 @@ export default function Component() {
         );
       case "Startup Activities":
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="startup-name">Startup Name</Label>
               <Input id="startup-name" placeholder="Enter startup name" />
@@ -394,10 +394,10 @@ export default function Component() {
   );
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <main className="flex-grow bg-gray-100 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projectTypes.map((type) => (
               <Card key={type.name}>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -509,9 +509,9 @@ export default function Component() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="mb-4 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+              <div className="mb-4 flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
                 <div className="relative flex-grow">
-                  <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <Search className="absolute left-2 top-1/2 -translate-y-1/2 transform text-gray-400" />
                   <Input
                     type="text"
                     placeholder="Search projects..."
@@ -619,7 +619,7 @@ export default function Component() {
                   </TableBody>
                 </Table>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {filteredProjects.map((project) => (
                     <Card key={project.id}>
                       <CardHeader>
@@ -628,12 +628,12 @@ export default function Component() {
                           alt={project.title}
                           width={200}
                           height={100}
-                          className="w-full h-auto object-cover rounded-t-lg"
+                          className="h-auto w-full rounded-t-lg object-cover"
                         />
                       </CardHeader>
                       <CardContent>
-                        <h3 className="font-semibold mb-2">{project.title}</h3>
-                        <div className="flex justify-between items-center mb-2">
+                        <h3 className="mb-2 font-semibold">{project.title}</h3>
+                        <div className="mb-2 flex items-center justify-between">
                           <Badge
                             variant={
                               project.status === "Completed"
@@ -648,17 +648,17 @@ export default function Component() {
                             className="h-2 w-24"
                           />
                         </div>
-                        <p className="text-sm text-gray-500 flex items-center mb-1">
+                        <p className="mb-1 flex items-center text-sm text-gray-500">
                           <User className="mr-2 h-4 w-4" /> {project.author}
                         </p>
-                        <p className="text-sm text-gray-500 flex items-center mb-1">
+                        <p className="mb-1 flex items-center text-sm text-gray-500">
                           <Calendar className="mr-2 h-4 w-4" /> {project.date}
                         </p>
-                        <p className="text-sm text-gray-500 flex items-center mb-1">
+                        <p className="mb-1 flex items-center text-sm text-gray-500">
                           <Clock className="mr-2 h-4 w-4" /> Last updated:{" "}
                           {project.lastUpdated}
                         </p>
-                        <div className="flex flex-wrap gap-1 mt-2">
+                        <div className="mt-2 flex flex-wrap gap-1">
                           {project.tags.map((tag, index) => (
                             <Badge
                               key={index}
@@ -671,21 +671,21 @@ export default function Component() {
                           ))}
                         </div>
                         <details className="mt-2">
-                          <summary className="text-sm font-medium cursor-pointer">
+                          <summary className="cursor-pointer text-sm font-medium">
                             Abstract
                           </summary>
-                          <p className="text-sm text-gray-500 mt-1">
+                          <p className="mt-1 text-sm text-gray-500">
                             {project.abstract}
                           </p>
                         </details>
                         {"estimatedCompletion" in project && (
-                          <p className="text-sm text-gray-500 flex items-center mt-2">
+                          <p className="mt-2 flex items-center text-sm text-gray-500">
                             <FileText className="mr-2 h-4 w-4" /> Est.
                             Completion: {project.estimatedCompletion}
                           </p>
                         )}
                         {"estimatedLaunch" in project && (
-                          <p className="text-sm text-gray-500 flex items-center mt-2">
+                          <p className="mt-2 flex items-center text-sm text-gray-500">
                             <Rocket className="mr-2 h-4 w-4" /> Est. Launch:{" "}
                             {project.estimatedLaunch}
                           </p>

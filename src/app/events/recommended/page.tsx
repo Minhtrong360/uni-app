@@ -79,7 +79,7 @@ export default function Component() {
   //   }
 
   return (
-    <Card className="w-full max-w-4xl mx-auto">
+    <Card className="mx-auto w-full max-w-4xl">
       <CardHeader>
         <CardTitle>Recommended Events</CardTitle>
         <CardDescription>
@@ -91,7 +91,7 @@ export default function Component() {
           {recommendedEvents.map((event) => (
             <Card key={event.id} className="mb-4">
               <CardHeader>
-                <div className="flex justify-between items-start">
+                <div className="flex items-start justify-between">
                   <div>
                     <CardTitle>{event.title}</CardTitle>
                     <CardDescription>{event.description}</CardDescription>

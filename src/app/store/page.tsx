@@ -63,15 +63,15 @@ export default function Stores() {
   ];
 
   return (
-    <div className="flex flex-col h-screen">
-      <nav className="bg-gray-100 p-4 flex justify-between">
+    <div className="flex h-screen flex-col">
+      <nav className="flex justify-between bg-gray-100 p-4">
         <div className="container mx-auto">
           <ul className="flex space-x-4 overflow-x-auto pb-2">
             {["All", "Fast Food", "Healthy", "Pizza", "Asian", "Desserts"].map(
               (category, index) => (
                 <li
                   key={index}
-                  className="cursor-pointer hover:bg-gray-200 px-4 py-2 rounded whitespace-nowrap"
+                  className="cursor-pointer whitespace-nowrap rounded px-4 py-2 hover:bg-gray-200"
                 >
                   {category}
                 </li>
@@ -79,21 +79,21 @@ export default function Stores() {
             )}
           </ul>
         </div>
-        <div className=" items-center gap-2 flex">
+        <div className="flex items-center gap-2">
           <Button
             onClick={() => router.push("/store/addproduct")}
-            className="flex items-center bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-300"
+            className="flex items-center rounded-md bg-black px-4 py-2 text-white transition duration-300 hover:bg-gray-800"
           >
-            <Plus className="w-5 h-5 mr-2" />
+            <Plus className="mr-2 h-5 w-5" />
             Add
           </Button>
           <History
-            className="w-6 h-6 cursor-pointer"
+            className="h-6 w-6 cursor-pointer"
             onClick={() => router.push("/store/history")}
           />
           <div className="lg:hidden">
             <ShoppingCart
-              className="w-6 h-6 cursor-pointer"
+              className="h-6 w-6 cursor-pointer"
               onClick={() => setIsCartOpen(true)}
             />
           </div>
@@ -101,16 +101,16 @@ export default function Stores() {
       </nav>
 
       <main className="flex-grow overflow-hidden">
-        <div className="container mx-auto p-4 h-full flex flex-col lg:flex-row">
-          <div className="w-full lg:w-2/3 overflow-y-auto px-0 lg:px-4">
-            <h2 className="text-2xl font-semibold mb-4">
+        <div className="container mx-auto flex h-full flex-col p-4 lg:flex-row">
+          <div className="w-full overflow-y-auto px-0 lg:w-2/3 lg:px-4">
+            <h2 className="mb-4 text-2xl font-semibold">
               Featured Restaurants
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {restaurants.map((restaurant, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
+                  className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md"
                 >
                   <Image
                     src={`${restaurant.image}?height=200&width=400`}
@@ -119,8 +119,8 @@ export default function Stores() {
                     height={200}
                     className="w-full object-cover"
                   />
-                  <div className="p-4 flex-grow">
-                    <div className="flex justify-between items-start mb-2">
+                  <div className="flex-grow p-4">
+                    <div className="mb-2 flex items-start justify-between">
                       <h3 className="text-xl font-semibold">
                         {restaurant.name}
                       </h3>
@@ -128,16 +128,16 @@ export default function Stores() {
                         {restaurant.price}
                       </span>
                     </div>
-                    <p className="text-gray-500 mb-2">
+                    <p className="mb-2 text-gray-500">
                       {restaurant.description}
                     </p>
-                    <div className="flex items-center text-sm mb-2">
-                      <Clock className="w-4 h-4 mr-1 text-gray-500" />
-                      <span className="text-gray-500 mr-2">
+                    <div className="mb-2 flex items-center text-sm">
+                      <Clock className="mr-1 h-4 w-4 text-gray-500" />
+                      <span className="mr-2 text-gray-500">
                         {restaurant.time}
                       </span>
-                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                      <span className="text-yellow-500 ml-1">
+                      <Star className="h-4 w-4 fill-current text-yellow-500" />
+                      <span className="ml-1 text-yellow-500">
                         {restaurant.rating}
                       </span>
                     </div>
@@ -145,13 +145,13 @@ export default function Stores() {
                       {restaurant.categories.map((category, catIndex) => (
                         <span
                           key={catIndex}
-                          className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs"
+                          className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600"
                         >
                           {category}
                         </span>
                       ))}
                       {index === 0 && (
-                        <span className="px-2 py-1 bg-green-100 text-green-600 rounded-full text-xs">
+                        <span className="rounded-full bg-green-100 px-2 py-1 text-xs text-green-600">
                           Near you
                         </span>
                       )}
@@ -163,18 +163,18 @@ export default function Stores() {
           </div>
 
           <div
-            className={`w-full lg:w-1/3 mt-4 lg:mt-0 lg:pl-4 overflow-y-auto fixed inset-y-0 right-0 transform ${isCartOpen ? "translate-x-0" : "translate-x-full"} lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out bg-white lg:bg-transparent z-50`}
+            className={`fixed inset-y-0 right-0 mt-4 w-full transform overflow-y-auto lg:mt-0 lg:w-1/3 lg:pl-4 ${isCartOpen ? "translate-x-0" : "translate-x-full"} z-50 bg-white transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:bg-transparent`}
           >
             <div className="p-4 lg:p-0">
-              <div className="flex justify-between items-center lg:hidden mb-4">
+              <div className="mb-4 flex items-center justify-between lg:hidden">
                 <h2 className="text-xl font-semibold">Your Order</h2>
                 <X
-                  className="w-6 h-6 cursor-pointer"
+                  className="h-6 w-6 cursor-pointer"
                   onClick={() => setIsCartOpen(false)}
                 />
               </div>
-              <div className="bg-white rounded-lg shadow-md p-4 border">
-                <div className="space-y-4 mb-6">
+              <div className="rounded-lg border bg-white p-4 shadow-md">
+                <div className="mb-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <Image
@@ -182,7 +182,7 @@ export default function Stores() {
                         alt="Food item"
                         width={50}
                         height={50}
-                        className="rounded-md mr-3"
+                        className="mr-3 rounded-md"
                       />
                       <div>
                         <h3 className="font-semibold">Chicken Burger</h3>
@@ -198,7 +198,7 @@ export default function Stores() {
                         alt="Food item"
                         width={50}
                         height={50}
-                        className="rounded-md mr-3"
+                        className="mr-3 rounded-md"
                       />
                       <div>
                         <h3 className="font-semibold">French Fries</h3>
@@ -208,33 +208,33 @@ export default function Stores() {
                     <span className="font-semibold">$3.99</span>
                   </div>
                 </div>
-                <div className="border-t border-gray-200 pt-4 mb-6">
-                  <div className="flex justify-between mb-2">
+                <div className="mb-6 border-t border-gray-200 pt-4">
+                  <div className="mb-2 flex justify-between">
                     <span className="text-gray-600">Subtotal</span>
                     <span className="font-semibold">$12.98</span>
                   </div>
-                  <div className="flex justify-between mb-2">
+                  <div className="mb-2 flex justify-between">
                     <span className="text-gray-600">Delivery Fee</span>
                     <span className="font-semibold">$2.00</span>
                   </div>
-                  <div className="flex justify-between font-semibold text-lg">
+                  <div className="flex justify-between text-lg font-semibold">
                     <span>Total</span>
                     <span>$14.98</span>
                   </div>
                 </div>
                 <Button
                   onClick={() => router.push("/store/checkout")}
-                  className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition duration-300"
+                  className="w-full rounded-lg bg-black py-3 font-semibold text-white transition duration-300 hover:bg-gray-800"
                 >
                   Place Order
                 </Button>
                 <div className="mt-6 space-y-4">
                   <div className="flex items-center text-gray-600">
-                    <Clock className="w-5 h-5 mr-2" />
+                    <Clock className="mr-2 h-5 w-5" />
                     <span>Delivery Time: 30-45 minutes</span>
                   </div>
                   <div className="flex items-center text-gray-600">
-                    <MapPin className="w-5 h-5 mr-2" />
+                    <MapPin className="mr-2 h-5 w-5" />
                     <span>Delivery Address: 123 Main St, City</span>
                   </div>
                 </div>

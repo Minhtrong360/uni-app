@@ -23,7 +23,7 @@ import {
 
 export function StudentSupportForm() {
   return (
-    <Card className="w-full max-w-3xl mx-auto">
+    <Card className="mx-auto w-full max-w-3xl">
       <CardHeader>
         <CardTitle>Advanced Student Support Request</CardTitle>
         <CardDescription>
@@ -32,7 +32,7 @@ export function StudentSupportForm() {
       </CardHeader>
       <CardContent>
         <form className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="full-name">Full Name</Label>
               <Input id="full-name" placeholder="Enter your full name" />
@@ -46,7 +46,7 @@ export function StudentSupportForm() {
             <Label htmlFor="student-id">Student ID</Label>
             <Input id="student-id" placeholder="Enter your student ID" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="request-type">Request Type</Label>
               <Select>
@@ -85,13 +85,13 @@ export function StudentSupportForm() {
           </div>
           <div className="space-y-2">
             <Label>Attach Image</Label>
-            <div className="flex items-center justify-center w-full">
+            <div className="flex w-full items-center justify-center">
               <Label
                 htmlFor="dropzone-file"
-                className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-secondary hover:bg-secondary/80 transition-colors"
+                className="flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-secondary transition-colors hover:bg-secondary/80"
               >
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <UploadIcon className="w-8 h-8 mb-4 text-muted-foreground" />
+                <div className="flex flex-col items-center justify-center pb-6 pt-5">
+                  <UploadIcon className="mb-4 h-8 w-8 text-muted-foreground" />
                   <p className="mb-2 text-sm text-muted-foreground">
                     <span className="font-semibold">Click to upload</span> or
                     drag and drop

@@ -22,53 +22,53 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className=" mx-auto bg-background relative -mt-[64px]">
+    <div className="relative mx-auto -mt-[64px] bg-background">
       <div
-        className="relative mb-8 py-20 px-6 bg-cover bg-center text-white"
+        className="relative mb-8 bg-cover bg-center px-6 py-20 text-white"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D')",
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="container mx-auto relative z-10 flex justify-between items-center">
+        <div className="container relative z-10 mx-auto flex items-center justify-between">
           <h1 className="text-4xl font-bold">Welcome back, Alex!</h1>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 p-6">
-        <div className="lg:col-span-3 space-y-6">
-          <section className="bg-secondary p-6 rounded-lg">
-            <h2 className="text-2xl font-semibold mb-4">Your Engagement</h2>
-            <Progress value={65} className="h-2 mb-2" />
+      <div className="grid grid-cols-1 gap-6 p-6 lg:grid-cols-4">
+        <div className="space-y-6 lg:col-span-3">
+          <section className="rounded-lg bg-secondary p-6">
+            <h2 className="mb-4 text-2xl font-semibold">Your Engagement</h2>
+            <Progress value={65} className="mb-2 h-2" />
             <p className="text-sm text-muted-foreground">
               65% of services utilized this semester
             </p>
           </section>
 
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-secondary p-6 rounded-lg overflow-hidden">
+          <section className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="overflow-hidden rounded-lg bg-secondary p-6">
               <Image
                 src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D"
                 alt="Student studying"
                 width={400}
                 height={300}
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="mb-4 h-48 w-full rounded-lg object-cover"
               />
-              <h3 className="text-xl font-semibold mb-2">Study Resources</h3>
+              <h3 className="mb-2 text-xl font-semibold">Study Resources</h3>
               <p className="text-sm text-muted-foreground">
                 Access online libraries and study materials
               </p>
             </div>
-            <div className="bg-secondary p-6 rounded-lg overflow-hidden">
+            <div className="overflow-hidden rounded-lg bg-secondary p-6">
               <Image
                 src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2FtcHVzfGVufDB8fDB8fHww"
                 alt="Campus life"
                 width={400}
                 height={300}
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="mb-4 h-48 w-full rounded-lg object-cover"
               />
-              <h3 className="text-xl font-semibold mb-2">Campus Life</h3>
+              <h3 className="mb-2 text-xl font-semibold">Campus Life</h3>
               <p className="text-sm text-muted-foreground">
                 Explore events and activities on campus
               </p>
@@ -76,15 +76,15 @@ export default function Home() {
           </section>
 
           <section>
-            <div className="flex justify-between items-center mb-4">
+            <div className="mb-4 flex items-center justify-between">
               <h2 className="text-2xl font-semibold">Student Services</h2>
               <Button variant="link">See all</Button>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <Link href="/support/dashboard">
-                <div className="bg-secondary p-6 rounded-lg">
-                  <HeartHandshake className="w-10 h-10 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">
+                <div className="rounded-lg bg-secondary p-6">
+                  <HeartHandshake className="mb-4 h-10 w-10" />
+                  <h3 className="mb-2 text-xl font-semibold">
                     Student Support Center
                   </h3>
                   <p className="text-sm text-muted-foreground">
@@ -93,27 +93,27 @@ export default function Home() {
                 </div>
               </Link>
               <Link href="/events">
-                <div className="bg-secondary p-6 rounded-lg">
-                  <CalendarDays className="w-10 h-10 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Student Events</h3>
+                <div className="rounded-lg bg-secondary p-6">
+                  <CalendarDays className="mb-4 h-10 w-10" />
+                  <h3 className="mb-2 text-xl font-semibold">Student Events</h3>
                   <p className="text-sm text-muted-foreground">
                     3 upcoming this week
                   </p>
                 </div>
               </Link>
               <Link href="/store">
-                <div className="bg-secondary p-6 rounded-lg">
-                  <ShoppingBag className="w-10 h-10 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Student Shops</h3>
+                <div className="rounded-lg bg-secondary p-6">
+                  <ShoppingBag className="mb-4 h-10 w-10" />
+                  <h3 className="mb-2 text-xl font-semibold">Student Shops</h3>
                   <p className="text-sm text-muted-foreground">
                     New merch available
                   </p>
                 </div>
               </Link>
               <Link href="/academic">
-                <div className="bg-secondary p-6 rounded-lg">
-                  <Rocket className="w-10 h-10 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">
+                <div className="rounded-lg bg-secondary p-6">
+                  <Rocket className="mb-4 h-10 w-10" />
+                  <h3 className="mb-2 text-xl font-semibold">
                     Startups Contest
                   </h3>
                   <p className="text-sm text-muted-foreground">
@@ -123,9 +123,9 @@ export default function Home() {
               </Link>
 
               <Link href="/task">
-                <div className="bg-secondary p-6 rounded-lg">
-                  <Book className="w-10 h-10 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">
+                <div className="rounded-lg bg-secondary p-6">
+                  <Book className="mb-4 h-10 w-10" />
+                  <h3 className="mb-2 text-xl font-semibold">
                     Project Management
                   </h3>
                   <p className="text-sm text-muted-foreground">
@@ -134,9 +134,9 @@ export default function Home() {
                 </div>
               </Link>
               <Link href="/startups/application">
-                <div className="bg-secondary p-6 rounded-lg">
-                  <Telescope className="w-10 h-10 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">
+                <div className="rounded-lg bg-secondary p-6">
+                  <Telescope className="mb-4 h-10 w-10" />
+                  <h3 className="mb-2 text-xl font-semibold">
                     Startup Application
                   </h3>
                   <p className="text-sm text-muted-foreground">
@@ -168,15 +168,15 @@ export default function Home() {
         </div>
 
         <div className="space-y-6">
-          <section className="bg-secondary p-6 rounded-lg">
-            <h2 className="text-2xl font-semibold mb-4">Upcoming Event</h2>
+          <section className="rounded-lg bg-secondary p-6">
+            <h2 className="mb-4 text-2xl font-semibold">Upcoming Event</h2>
             <div className="flex items-center space-x-4">
               <Image
                 src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/home/AdobeStock_473119551-vert-scaled.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ob21lL0Fkb2JlU3RvY2tfNDczMTE5NTUxLXZlcnQtc2NhbGVkLmpwZyIsImlhdCI6MTcyNzIzNjYxOSwiZXhwIjoxNzU4NzcyNjE5fQ.t4Oek9DO9O5lsu8lFXiLjfb30-_XAyNmJ90q03uVLKE&t=2024-09-25T03%3A56%3A59.082Z"
                 alt="Event illustration"
                 width={80}
                 height={80}
-                className="rounded-lg max-h-[80px] object-cover"
+                className="max-h-[80px] rounded-lg object-cover"
               />
               <div>
                 <h3 className="font-semibold">Career Fair</h3>
@@ -185,14 +185,14 @@ export default function Home() {
             </div>
             <Button
               onClick={() => router.push(`/events`)}
-              className="w-full mt-4"
+              className="mt-4 w-full"
             >
               View all events
             </Button>
           </section>
 
-          <section className="bg-secondary p-6 rounded-lg">
-            <h2 className="text-2xl font-semibold mb-4">Quick Links</h2>
+          <section className="rounded-lg bg-secondary p-6">
+            <h2 className="mb-4 text-2xl font-semibold">Quick Links</h2>
             <nav className="space-y-2">
               <Link href="/admin/dashboard">
                 <Button variant="ghost" className="w-full justify-start">

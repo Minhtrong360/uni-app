@@ -30,23 +30,23 @@ const steps = [
 
 export default function Component() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
-      <div className="w-full max-w-4xl bg-card rounded-xl shadow-lg p-8">
-        <h1 className="text-3xl font-bold text-foreground text-center mb-8">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
+      <div className="w-full max-w-4xl rounded-xl bg-card p-8 shadow-lg">
+        <h1 className="mb-8 text-center text-3xl font-bold text-foreground">
           Student Issue Resolution Journey
         </h1>
         <div className="flex flex-wrap justify-center">
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              className="flex flex-col items-center m-2 cursor-pointer"
+              className="m-2 flex cursor-pointer flex-col items-center"
               whileHover={{ scale: 1.1 }}
             >
-              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-blue-500 relative">
-                <span className="text-white font-bold">{index + 1}</span>
-                <step.icon className="w-6 h-6 text-white absolute opacity-25" />
+              <div className="relative flex h-12 w-12 items-center justify-center rounded-full bg-blue-500">
+                <span className="font-bold text-white">{index + 1}</span>
+                <step.icon className="absolute h-6 w-6 text-white opacity-25" />
               </div>
-              <p className="mt-2 text-center text-xs font-medium text-muted-foreground max-w-[100px]">
+              <p className="mt-2 max-w-[100px] text-center text-xs font-medium text-muted-foreground">
                 {step.text}
               </p>
             </motion.div>

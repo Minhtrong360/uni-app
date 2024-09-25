@@ -176,10 +176,10 @@ export default function Component() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-6">
-        <div className="max-w-7xl sm:px-0  py-4 flex items-center">
+      <div className="mb-6 flex items-center justify-between">
+        <div className="flex max-w-7xl items-center py-4 sm:px-0">
           {/* <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
-          <h1 className="text-3xl font-semibold text-gray-900 ml-2">Venue</h1>
+          <h1 className="ml-2 text-3xl font-semibold text-gray-900">Venue</h1>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
@@ -312,7 +312,7 @@ export default function Component() {
         </Dialog>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -371,8 +371,8 @@ export default function Component() {
         </Card>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
-        <div className="flex-1 w-full md:w-auto">
+      <div className="mb-6 flex flex-col items-start justify-between space-y-4 md:flex-row md:items-center md:space-x-4 md:space-y-0">
+        <div className="w-full flex-1 md:w-auto">
           <Input
             placeholder="Search events or organizers..."
             value={searchTerm}
@@ -456,7 +456,7 @@ export default function Component() {
                   <TableCell>{booking.capacity}</TableCell>
                   <TableCell>
                     <span
-                      className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                      className={`rounded-full px-2 py-1 text-xs font-semibold ${
                         booking.status === "Confirmed"
                           ? "bg-green-100 text-green-800"
                           : booking.status === "Pending"

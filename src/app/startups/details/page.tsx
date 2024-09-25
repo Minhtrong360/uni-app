@@ -7,10 +7,10 @@ import { Badge } from "@/components/ui/badge";
 
 export default function Component() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white font-bold">
+          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-600 font-bold text-white">
             EP
           </div>
           <div>
@@ -24,7 +24,7 @@ export default function Component() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <div className="md:col-span-2">
           <p className="mb-4">
             EcoPlant is an innovative student project from Vietnam focusing on
@@ -35,9 +35,9 @@ export default function Component() {
             alt="EcoPlant team photo"
             width={800}
             height={400}
-            className="rounded-lg mb-4 w-full h-auto"
+            className="mb-4 h-auto w-full rounded-lg"
           />
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="mb-4 flex flex-wrap gap-2">
             <Badge variant="secondary">University Project</Badge>
             <Badge variant="secondary">Hanoi, Vietnam</Badge>
             <Badge variant="secondary">Started 2023</Badge>
@@ -55,7 +55,7 @@ export default function Component() {
             <TabsContent value="overview">
               <Card>
                 <CardContent className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">About EcoPlant</h2>
+                  <h2 className="mb-2 text-xl font-semibold">About EcoPlant</h2>
                   <p>
                     EcoPlant is a student-led initiative aimed at promoting
                     sustainable urban gardening in Vietnam. Our project combines
@@ -68,8 +68,8 @@ export default function Component() {
             <TabsContent value="features">
               <Card>
                 <CardContent className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">Key Features</h2>
-                  <ul className="list-disc list-inside">
+                  <h2 className="mb-2 text-xl font-semibold">Key Features</h2>
+                  <ul className="list-inside list-disc">
                     <li>Smart soil sensors for optimal plant care</li>
                     <li>Mobile app for remote monitoring and control</li>
                     <li>AI-powered plant health diagnostics</li>
@@ -81,7 +81,7 @@ export default function Component() {
             <TabsContent value="team">
               <Card>
                 <CardContent className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">Our Team</h2>
+                  <h2 className="mb-2 text-xl font-semibold">Our Team</h2>
                   <p>
                     Our diverse team of five passionate students brings together
                     expertise in computer science, environmental studies, and
@@ -99,7 +99,7 @@ export default function Component() {
           <Input type="search" placeholder="Search..." className="mb-4" />
           <Card className="mb-4">
             <CardContent className="p-4">
-              <h2 className="font-semibold mb-2">Categories</h2>
+              <h2 className="mb-2 font-semibold">Categories</h2>
               <div className="flex flex-wrap gap-2">
                 <Badge>Sustainability</Badge>
                 <Badge>Urban Agriculture</Badge>
@@ -111,7 +111,7 @@ export default function Component() {
           </Card>
           <Card className="mb-4">
             <CardContent className="p-4">
-              <h2 className="font-semibold mb-2">Recent Updates:</h2>
+              <h2 className="mb-2 font-semibold">Recent Updates:</h2>
               <ul className="space-y-2">
                 <li>EcoPlant wins university innovation award</li>
                 <li>Beta testing phase launched</li>
@@ -121,7 +121,7 @@ export default function Component() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h2 className="font-semibold mb-2">Get Involved</h2>
+              <h2 className="mb-2 font-semibold">Get Involved</h2>
               <p className="mb-2">
                 Join our mission for sustainable urban gardening.
               </p>

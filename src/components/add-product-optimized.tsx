@@ -132,8 +132,8 @@ export function AddProductOptimized() {
   };
 
   return (
-    <div className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
-      <Card className="max-w-4xl mx-auto">
+    <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
+      <Card className="mx-auto max-w-4xl">
         <CardHeader>
           <CardTitle className="text-2xl sm:text-3xl">
             Add New Product
@@ -146,13 +146,13 @@ export function AddProductOptimized() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent>
             <div className="mb-6">
-              <div className="h-2 bg-gray-200 rounded-full">
+              <div className="h-2 rounded-full bg-gray-200">
                 <div
-                  className="h-2 bg-primary rounded-full transition-all duration-500 ease-in-out"
+                  className="h-2 rounded-full bg-primary transition-all duration-500 ease-in-out"
                   style={{ width: `${calculateProgress()}%` }}
                 ></div>
               </div>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="mt-2 text-sm text-gray-500">
                 Form Completion: {Math.round(calculateProgress())}%
               </p>
             </div>
@@ -165,12 +165,12 @@ export function AddProductOptimized() {
                 <TabsTrigger value="basic">Basic Info</TabsTrigger>
                 <TabsTrigger value="details">Details & Pricing</TabsTrigger>
               </TabsList>
-              <TabsContent value="basic" className="space-y-4 mt-4">
+              <TabsContent value="basic" className="mt-4 space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Product Name</Label>
                   <Input id="name" {...register("name")} className="w-full" />
                   {errors.name && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-sm text-red-500">
                       {errors.name.message}
                     </p>
                   )}
@@ -180,10 +180,10 @@ export function AddProductOptimized() {
                   <Textarea
                     id="description"
                     {...register("description")}
-                    className="w-full min-h-[100px]"
+                    className="min-h-[100px] w-full"
                   />
                   {errors.description && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-sm text-red-500">
                       {errors.description.message}
                     </p>
                   )}
@@ -214,7 +214,7 @@ export function AddProductOptimized() {
                     )}
                   />
                   {errors.category && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-sm text-red-500">
                       {errors.category.message}
                     </p>
                   )}
@@ -251,8 +251,8 @@ export function AddProductOptimized() {
                   />
                 </div>
               </TabsContent>
-              <TabsContent value="details" className="space-y-4 mt-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <TabsContent value="details" className="mt-4 space-y-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="brand">Brand (Optional)</Label>
                     <Input
@@ -279,18 +279,18 @@ export function AddProductOptimized() {
                     className="w-full"
                   />
                   {errors.year && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-sm text-red-500">
                       {errors.year.message}
                     </p>
                   )}
                 </div>
                 <div className="space-y-2">
                   <Label>Tags</Label>
-                  <div className="flex flex-wrap gap-2 mb-2">
+                  <div className="mb-2 flex flex-wrap gap-2">
                     {tags.map((tag) => (
                       <span
                         key={tag}
-                        className="bg-primary text-primary-foreground px-2 py-1 rounded-full text-sm flex items-center"
+                        className="flex items-center rounded-full bg-primary px-2 py-1 text-sm text-primary-foreground"
                       >
                         {tag}
                         <button
@@ -319,7 +319,7 @@ export function AddProductOptimized() {
                   <Label>Images</Label>
                   <div
                     {...getRootProps()}
-                    className="border-2 border-dashed rounded-lg p-4 text-center cursor-pointer hover:bg-gray-50 transition duration-300"
+                    className="cursor-pointer rounded-lg border-2 border-dashed p-4 text-center transition duration-300 hover:bg-gray-50"
                   >
                     <input {...getInputProps()} />
                     {isDragActive ? (
@@ -335,7 +335,7 @@ export function AddProductOptimized() {
                       </div>
                     )}
                   </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-4">
+                  <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                     {images.map((file, index) => (
                       <div key={index} className="relative">
                         <Image
@@ -343,12 +343,12 @@ export function AddProductOptimized() {
                           height={96}
                           src={URL.createObjectURL(file)}
                           alt={`preview ${index}`}
-                          className="w-full h-24 object-cover rounded-lg"
+                          className="h-24 w-full rounded-lg object-cover"
                         />
                         <button
                           type="button"
                           onClick={() => removeImage(index)}
-                          className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                          className="absolute right-0 top-0 rounded-full bg-red-500 p-1 text-white"
                         >
                           <X size={14} />
                         </button>
@@ -356,7 +356,7 @@ export function AddProductOptimized() {
                     ))}
                   </div>
                   {errors.images && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-sm text-red-500">
                       {errors.images.message}
                     </p>
                   )}
@@ -371,7 +371,7 @@ export function AddProductOptimized() {
                     className="w-full"
                   />
                   {errors.price && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-sm text-red-500">
                       {errors.price.message}
                     </p>
                   )}

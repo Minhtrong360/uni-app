@@ -13,10 +13,10 @@ import { Badge } from "@/components/ui/badge";
 
 export default function Component() {
   return (
-    <div className="p-4 space-y-4 max-w-4xl mx-auto">
-      <div className="max-w-7xl mx-auto   py-4 flex items-center">
+    <div className="mx-auto max-w-4xl space-y-4 p-4">
+      <div className="mx-auto flex max-w-7xl items-center py-4">
         {/* <ChevronLeft onClick={() => router.push('/store')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
-        <h1 className="text-2xl font-semibold text-gray-900 ml-2">
+        <h1 className="ml-2 text-2xl font-semibold text-gray-900">
           Admin Notifications
         </h1>
       </div>

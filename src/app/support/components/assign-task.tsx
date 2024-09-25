@@ -24,7 +24,7 @@ import Image from "next/image";
 
 export default function AssignTask() {
   return (
-    <Card className="w-full max-w-3xl mx-auto">
+    <Card className="mx-auto w-full max-w-3xl">
       <CardHeader>
         <CardTitle>Assign Task to PIC</CardTitle>
         <CardDescription>
@@ -47,7 +47,7 @@ export default function AssignTask() {
             </Select>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="ticket-id">Ticket ID</Label>
               <Input id="ticket-id" value="TKT-2023-0042" readOnly />
@@ -63,7 +63,7 @@ export default function AssignTask() {
             <Input id="category" value="Technical Support" readOnly />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="status">Status</Label>
               <Select defaultValue="in-progress">
@@ -102,7 +102,7 @@ export default function AssignTask() {
           </div>
           <div className="space-y-2">
             <Label>Attached Image</Label>
-            <div className="flex items-center justify-center w-full">
+            <div className="flex w-full items-center justify-center">
               <Button className="w-full py-8" variant="outline">
                 <UploadIcon className="mr-2 h-4 w-4" />
                 Upload Image
@@ -118,7 +118,7 @@ export default function AssignTask() {
                     height={40}
                     src="/placeholder.svg?height=40&width=40"
                     alt="Attached image thumbnail"
-                    className="w-10 h-10 rounded"
+                    className="h-10 w-10 rounded"
                   />
                   <span className="text-sm font-medium">
                     error_screenshot.png

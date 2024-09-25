@@ -174,7 +174,7 @@ export function DetailedVenueBooking() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-6">
+      <div className="mb-6 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Venue Booking Management</h1>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
@@ -301,7 +301,7 @@ export function DetailedVenueBooking() {
         </Dialog>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -360,8 +360,8 @@ export function DetailedVenueBooking() {
         </Card>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
-        <div className="flex-1 w-full md:w-auto">
+      <div className="mb-6 flex flex-col items-start justify-between space-y-4 md:flex-row md:items-center md:space-x-4 md:space-y-0">
+        <div className="w-full flex-1 md:w-auto">
           <Input
             placeholder="Search events or organizers..."
             value={searchTerm}
@@ -444,7 +444,7 @@ export function DetailedVenueBooking() {
                   <TableCell>{booking.capacity}</TableCell>
                   <TableCell>
                     <span
-                      className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                      className={`rounded-full px-2 py-1 text-xs font-semibold ${
                         booking.status === "Confirmed"
                           ? "bg-green-100 text-green-800"
                           : booking.status === "Pending"

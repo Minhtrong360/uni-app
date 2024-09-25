@@ -231,14 +231,14 @@ export default function StartupContestForm() {
   };
 
   return (
-    <Card className="w-full max-w-4xl mx-auto">
+    <Card className="mx-auto w-full max-w-4xl">
       <CardHeader>
         <CardTitle>Startup Contest Submission Form</CardTitle>
         <CardDescription>
           Please fill out the form below to submit your startup for the
           university contest.
         </CardDescription>
-        <Progress value={(phase / 4) * 100} className="w-full mt-4" />
+        <Progress value={(phase / 4) * 100} className="mt-4 w-full" />
       </CardHeader>
       <CardContent>
         <Form {...form}>

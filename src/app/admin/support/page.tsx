@@ -99,8 +99,8 @@ export default function SchoolSupportDashboard() {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Student Support Dashboard</h1>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <h1 className="mb-6 text-3xl font-bold">Student Support Dashboard</h1>
+      <div className="mb-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -166,7 +166,7 @@ export default function SchoolSupportDashboard() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex justify-between items-center mb-4">
+          <div className="mb-4 flex items-center justify-between">
             <div className="flex space-x-2">
               <Input
                 className="max-w-sm"
@@ -251,7 +251,7 @@ export default function SchoolSupportDashboard() {
                     <CardDescription>{request.issue}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex justify-between items-center mb-2">
+                    <div className="mb-2 flex items-center justify-between">
                       <Badge>{request.category}</Badge>
                       <Badge
                         variant={
@@ -265,13 +265,13 @@ export default function SchoolSupportDashboard() {
                         {request.status}
                       </Badge>
                     </div>
-                    <div className="text-sm text-muted-foreground mb-2">
+                    <div className="mb-2 text-sm text-muted-foreground">
                       Priority: {request.priority}
                     </div>
-                    <div className="text-sm text-muted-foreground mb-2">
+                    <div className="mb-2 text-sm text-muted-foreground">
                       Date: {request.date}
                     </div>
-                    <p className="text-sm mb-4">{request.description}</p>
+                    <p className="mb-4 text-sm">{request.description}</p>
                     <Button className="w-full">View Details</Button>
                   </CardContent>
                 </Card>

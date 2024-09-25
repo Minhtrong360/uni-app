@@ -15,62 +15,62 @@ export default function RegisterComponent() {
       <form className="space-y-6">
         <div className="relative">
           <User
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400"
             size={20}
           />
           <Input
-            className="pl-10 pr-4 py-3 w-full border-gray-300 text-sm"
+            className="w-full border-gray-300 py-3 pl-10 pr-4 text-sm"
             placeholder="Enter your full name"
             type="text"
           />
         </div>
         <div className="relative">
           <Mail
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400"
             size={20}
           />
           <Input
-            className="pl-10 pr-4 py-3 w-full border-gray-300 text-sm"
+            className="w-full border-gray-300 py-3 pl-10 pr-4 text-sm"
             placeholder="Enter your email address"
             type="email"
           />
         </div>
         <div className="relative">
           <Lock
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400"
             size={20}
           />
           <Input
-            className="pl-10 pr-10 py-3 w-full border-gray-300 text-sm"
+            className="w-full border-gray-300 py-3 pl-10 pr-10 text-sm"
             placeholder="Enter your password"
             type="password"
           />
           <Eye
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
+            className="absolute right-3 top-1/2 -translate-y-1/2 transform cursor-pointer text-gray-400"
             size={20}
           />
         </div>
         <div className="relative">
           <Lock
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400"
             size={20}
           />
           <Input
-            className="pl-10 pr-10 py-3 w-full border-gray-300 text-sm"
+            className="w-full border-gray-300 py-3 pl-10 pr-10 text-sm"
             placeholder="Confirm your password"
             type="password"
           />
           <Eye
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
+            className="absolute right-3 top-1/2 -translate-y-1/2 transform cursor-pointer text-gray-400"
             size={20}
           />
         </div>
-        <Button className="w-full  text-white py-3">Sign Up</Button>
+        <Button className="w-full py-3 text-white">Sign Up</Button>
       </form>
       <div className="flex items-center justify-center space-x-4">
-        <div className="h-px bg-gray-300 w-full" />
+        <div className="h-px w-full bg-gray-300" />
         <span className="text-sm text-gray-500">or</span>
-        <div className="h-px bg-gray-300 w-full" />
+        <div className="h-px w-full bg-gray-300" />
       </div>
       <div className="flex justify-center space-x-4">
         <Button variant="outline" className="rounded-full p-2">

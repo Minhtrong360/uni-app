@@ -126,8 +126,8 @@ export default function AddProductOptimizedPage() {
   };
 
   return (
-    <div className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
-      <Card className="max-w-4xl mx-auto">
+    <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
+      <Card className="mx-auto max-w-4xl">
         <CardHeader>
           <CardTitle className="text-2xl sm:text-3xl">
             Add New Product
@@ -140,13 +140,13 @@ export default function AddProductOptimizedPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent>
             <div className="mb-6">
-              <div className="h-2 bg-secondary rounded-full">
+              <div className="h-2 rounded-full bg-secondary">
                 <div
-                  className="h-2 bg-primary rounded-full transition-all duration-500 ease-in-out"
+                  className="h-2 rounded-full bg-primary transition-all duration-500 ease-in-out"
                   style={{ width: `${calculateProgress()}%` }}
                 ></div>
               </div>
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="mt-2 text-sm text-muted-foreground">
                 Form Completion: {Math.round(calculateProgress())}%
               </p>
             </div>
@@ -159,12 +159,12 @@ export default function AddProductOptimizedPage() {
                 <TabsTrigger value="basic">Basic Info</TabsTrigger>
                 <TabsTrigger value="details">Details & Pricing</TabsTrigger>
               </TabsList>
-              <TabsContent value="basic" className="space-y-4 mt-4">
+              <TabsContent value="basic" className="mt-4 space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Product Name</Label>
                   <Input id="name" {...register("name")} className="w-full" />
                   {errors.name && (
-                    <p className="text-destructive text-sm">
+                    <p className="text-sm text-destructive">
                       {errors.name.message}
                     </p>
                   )}
@@ -174,10 +174,10 @@ export default function AddProductOptimizedPage() {
                   <Textarea
                     id="description"
                     {...register("description")}
-                    className="w-full min-h-[100px]"
+                    className="min-h-[100px] w-full"
                   />
                   {errors.description && (
-                    <p className="text-destructive text-sm">
+                    <p className="text-sm text-destructive">
                       {errors.description.message}
                     </p>
                   )}
@@ -208,7 +208,7 @@ export default function AddProductOptimizedPage() {
                     )}
                   />
                   {errors.category && (
-                    <p className="text-destructive text-sm">
+                    <p className="text-sm text-destructive">
                       {errors.category.message}
                     </p>
                   )}
@@ -245,8 +245,8 @@ export default function AddProductOptimizedPage() {
                   />
                 </div>
               </TabsContent>
-              <TabsContent value="details" className="space-y-4 mt-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <TabsContent value="details" className="mt-4 space-y-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="brand">Brand (Optional)</Label>
                     <Input
@@ -273,18 +273,18 @@ export default function AddProductOptimizedPage() {
                     className="w-full"
                   />
                   {errors.year && (
-                    <p className="text-destructive text-sm">
+                    <p className="text-sm text-destructive">
                       {errors.year.message}
                     </p>
                   )}
                 </div>
                 <div className="space-y-2">
                   <Label>Tags</Label>
-                  <div className="flex flex-wrap gap-2 mb-2">
+                  <div className="mb-2 flex flex-wrap gap-2">
                     {tags.map((tag) => (
                       <span
                         key={tag}
-                        className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-sm flex items-center"
+                        className="flex items-center rounded-full bg-secondary px-2 py-1 text-sm text-secondary-foreground"
                       >
                         {tag}
                         <button
@@ -311,13 +311,13 @@ export default function AddProductOptimizedPage() {
                 </div>
                 <div className="space-y-2">
                   <Label>Images</Label>
-                  <div className="flex items-center justify-center w-full">
+                  <div className="flex w-full items-center justify-center">
                     <Label
                       htmlFor="image-upload"
-                      className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer bg-secondary hover:bg-secondary/80 transition-colors duration-300"
+                      className="flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-secondary transition-colors duration-300 hover:bg-secondary/80"
                     >
-                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                        <Camera className="w-8 h-8 mb-4 text-muted-foreground" />
+                      <div className="flex flex-col items-center justify-center pb-6 pt-5">
+                        <Camera className="mb-4 h-8 w-8 text-muted-foreground" />
                         <p className="mb-2 text-sm text-muted-foreground">
                           <span className="font-semibold">Click to upload</span>{" "}
                           or drag and drop
@@ -336,7 +336,7 @@ export default function AddProductOptimizedPage() {
                       />
                     </Label>
                   </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-4">
+                  <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                     {images.map((file, index) => (
                       <div key={index} className="relative">
                         <Image
@@ -344,12 +344,12 @@ export default function AddProductOptimizedPage() {
                           height={200}
                           src={URL.createObjectURL(file)}
                           alt={`preview ${index}`}
-                          className="w-full h-24 object-cover rounded-lg"
+                          className="h-24 w-full rounded-lg object-cover"
                         />
                         <button
                           type="button"
                           onClick={() => removeImage(index)}
-                          className="absolute top-0 right-0 bg-destructive text-destructive-foreground rounded-full p-1"
+                          className="absolute right-0 top-0 rounded-full bg-destructive p-1 text-destructive-foreground"
                         >
                           <X size={14} />
                         </button>
@@ -357,7 +357,7 @@ export default function AddProductOptimizedPage() {
                     ))}
                   </div>
                   {errors.images && (
-                    <p className="text-destructive text-sm">
+                    <p className="text-sm text-destructive">
                       {errors.images.message}
                     </p>
                   )}
@@ -372,7 +372,7 @@ export default function AddProductOptimizedPage() {
                     className="w-full"
                   />
                   {errors.price && (
-                    <p className="text-destructive text-sm">
+                    <p className="text-sm text-destructive">
                       {errors.price.message}
                     </p>
                   )}

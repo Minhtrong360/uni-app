@@ -15,7 +15,7 @@ export default function ForgotPasswordComponent({
         <h2 className="text-2xl font-semibold text-gray-900">
           Forgot Password
         </h2>
-        <p className="text-sm text-gray-500 text-center">
+        <p className="text-center text-sm text-gray-500">
           Enter your email address and we will send you a link to reset your
           password
         </p>
@@ -23,16 +23,16 @@ export default function ForgotPasswordComponent({
       <form className="space-y-6">
         <div className="relative">
           <Mail
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400"
             size={20}
           />
           <Input
-            className="pl-10 pr-4 py-3 w-full border-gray-300 text-sm"
+            className="w-full border-gray-300 py-3 pl-10 pr-4 text-sm"
             placeholder="Enter your email address"
             type="email"
           />
         </div>
-        <Button className="w-full  text-white py-3">Send Reset Link</Button>
+        <Button className="w-full py-3 text-white">Send Reset Link</Button>
       </form>
       <div className="text-center">
         <button onClick={onBack} className="text hover:underline">

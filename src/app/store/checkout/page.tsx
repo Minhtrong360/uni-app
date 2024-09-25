@@ -47,26 +47,26 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="flex min-h-screen flex-col bg-gray-100">
       <header className="">
-        <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
-          <h1 className="text-2xl font-semibold text-gray-900 ml-2">
+        <div className="mx-auto flex items-center px-4 py-4 sm:px-6 lg:px-8">
+          <h1 className="ml-2 text-2xl font-semibold text-gray-900">
             Checkout
           </h1>
         </div>
       </header>
-      <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <main className="container mx-auto flex-grow px-4 py-8 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="text-lg font-semibold mb-4">Payment Details</h2>
-            <div className="bg-white shadow-sm rounded-lg p-6">
+            <h2 className="mb-4 text-lg font-semibold">Payment Details</h2>
+            <div className="rounded-lg bg-white p-6 shadow-sm">
               <div className="mb-4">
-                <h3 className="text-sm font-medium text-gray-700 mb-2">
+                <h3 className="mb-2 text-sm font-medium text-gray-700">
                   Payment Method
                 </h3>
                 <div className="flex space-x-4">
                   <button
-                    className={`flex items-center justify-center px-4 py-2 border rounded-md ${
+                    className={`flex items-center justify-center rounded-md border px-4 py-2 ${
                       paymentMethod === "credit"
                         ? "border-blue-500 bg-blue-50"
                         : "border-gray-300"
@@ -77,7 +77,7 @@ export default function Checkout() {
                     <span>Credit Card</span>
                   </button>
                   <button
-                    className={`flex items-center justify-center px-4 py-2 border rounded-md ${
+                    className={`flex items-center justify-center rounded-md border px-4 py-2 ${
                       paymentMethod === "paypal"
                         ? "border-blue-500 bg-blue-50"
                         : "border-gray-300"
@@ -88,7 +88,7 @@ export default function Checkout() {
                     <span>PayPal</span>
                   </button>
                   <button
-                    className={`flex items-center justify-center px-4 py-2 border rounded-md ${
+                    className={`flex items-center justify-center rounded-md border px-4 py-2 ${
                       paymentMethod === "apple"
                         ? "border-blue-500 bg-blue-50"
                         : "border-gray-300"
@@ -105,7 +105,7 @@ export default function Checkout() {
                   <div className="mb-4">
                     <label
                       htmlFor="cardNumber"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="mb-1 block text-sm font-medium text-gray-700"
                     >
                       Card Number
                     </label>
@@ -113,7 +113,7 @@ export default function Checkout() {
                       <input
                         type="text"
                         id="cardNumber"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="1234 5678 9012 3456"
                         value={cardNumber}
                         onChange={(e) =>
@@ -124,11 +124,11 @@ export default function Checkout() {
                       <CreditCard className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="mb-4 grid grid-cols-2 gap-4">
                     <div>
                       <label
                         htmlFor="expiryDate"
-                        className="block text-sm font-medium text-gray-700 mb-1"
+                        className="mb-1 block text-sm font-medium text-gray-700"
                       >
                         Expiry Date
                       </label>
@@ -136,7 +136,7 @@ export default function Checkout() {
                         <input
                           type="text"
                           id="expiryDate"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="MM/YY"
                           value={expiryDate}
                           onChange={(e) =>
@@ -150,7 +150,7 @@ export default function Checkout() {
                     <div>
                       <label
                         htmlFor="cvv"
-                        className="block text-sm font-medium text-gray-700 mb-1"
+                        className="mb-1 block text-sm font-medium text-gray-700"
                       >
                         CVV
                       </label>
@@ -158,7 +158,7 @@ export default function Checkout() {
                         <input
                           type="text"
                           id="cvv"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="123"
                           value={cvv}
                           onChange={(e) =>
@@ -175,8 +175,8 @@ export default function Checkout() {
                 </form>
               )}
               {paymentMethod === "paypal" && (
-                <div className="text-center py-4">
-                  <p className="text-gray-600 mb-4">
+                <div className="py-4 text-center">
+                  <p className="mb-4 text-gray-600">
                     You will be redirected to PayPal to complete your
                     payment.git
                   </p>
@@ -190,8 +190,8 @@ export default function Checkout() {
                 </div>
               )}
               {paymentMethod === "apple" && (
-                <div className="text-center py-4">
-                  <p className="text-gray-600 mb-4">
+                <div className="py-4 text-center">
+                  <p className="mb-4 text-gray-600">
                     Complete your payment with Apple Pay.
                   </p>
                   <Image
@@ -206,35 +206,35 @@ export default function Checkout() {
               <Button
                 onClick={() => router.push("/store/history")}
                 type="submit"
-                className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors mt-4"
+                className="mt-4 w-full rounded-md bg-black px-4 py-2 text-white transition-colors hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 Pay $14.98
               </Button>
             </div>
-            <div className="mt-6 bg-white shadow-sm rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4">
+            <div className="mt-6 rounded-lg bg-white p-6 shadow-sm">
+              <h3 className="mb-4 text-lg font-semibold">
                 Delivery Information
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <Truck className="h-5 w-5 text-gray-400 mr-2" />
+                  <Truck className="mr-2 h-5 w-5 text-gray-400" />
                   <span>Standard Delivery</span>
                 </div>
                 <div className="flex items-center">
-                  <Clock className="h-5 w-5 text-gray-400 mr-2" />
+                  <Clock className="mr-2 h-5 w-5 text-gray-400" />
                   <span>Estimated delivery time: 30-45 minutes</span>
                 </div>
                 <div className="flex items-center">
-                  <MapPin className="h-5 w-5 text-gray-400 mr-2" />
+                  <MapPin className="mr-2 h-5 w-5 text-gray-400" />
                   <span>Delivery Address: 123 Main St, Anytown, ST 12345</span>
                 </div>
               </div>
             </div>
           </div>
           <div>
-            <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
-            <div className="bg-white shadow-sm rounded-lg p-6">
-              <div className="space-y-4 mb-6">
+            <h2 className="mb-4 text-lg font-semibold">Order Summary</h2>
+            <div className="rounded-lg bg-white p-6 shadow-sm">
+              <div className="mb-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Image
@@ -242,7 +242,7 @@ export default function Checkout() {
                       alt="Chicken Burger"
                       width={64}
                       height={64}
-                      className="rounded-md mr-4"
+                      className="mr-4 rounded-md"
                     />
                     <div>
                       <h3 className="font-semibold">Chicken Burger</h3>
@@ -258,7 +258,7 @@ export default function Checkout() {
                       alt="French Fries"
                       width={64}
                       height={64}
-                      className="rounded-md mr-4"
+                      className="mr-4 rounded-md"
                     />
                     <div>
                       <h3 className="font-semibold">French Fries</h3>
@@ -268,7 +268,7 @@ export default function Checkout() {
                   <span className="font-semibold">$3.99</span>
                 </div>
               </div>
-              <div className="border-t border-gray-200 pt-4 space-y-2">
+              <div className="space-y-2 border-t border-gray-200 pt-4">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Subtotal</span>
                   <span className="font-semibold">$12.98</span>
@@ -277,21 +277,21 @@ export default function Checkout() {
                   <span className="text-gray-600">Delivery Fee</span>
                   <span className="font-semibold">$2.00</span>
                 </div>
-                <div className="flex justify-between font-semibold text-lg">
+                <div className="flex justify-between text-lg font-semibold">
                   <span>Total</span>
                   <span>$14.98</span>
                 </div>
               </div>
             </div>
-            <div className="mt-6 bg-white shadow-sm rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4">Order Details</h3>
+            <div className="mt-6 rounded-lg bg-white p-6 shadow-sm">
+              <h3 className="mb-4 text-lg font-semibold">Order Details</h3>
               <div className="space-y-4">
                 <div className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                  <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
                   <span>Your order is eligible for free delivery</span>
                 </div>
                 <div className="flex items-center text-sm text-gray-600">
-                  <AlertCircle className="h-5 w-5 text-yellow-500 mr-2" />
+                  <AlertCircle className="mr-2 h-5 w-5 text-yellow-500" />
                   <span>Please make sure your address is correct</span>
                 </div>
               </div>
@@ -299,8 +299,8 @@ export default function Checkout() {
           </div>
         </div>
       </main>
-      <footer className="bg-white border-t border-gray-200 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+      <footer className="border-t border-gray-200 bg-white py-4">
+        <div className="mx-auto max-w-7xl px-4 text-center text-sm text-gray-500 sm:px-6 lg:px-8">
           &copy; 2024 Beekrowd. All rights reserved.
         </div>
       </footer>
