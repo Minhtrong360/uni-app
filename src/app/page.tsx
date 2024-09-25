@@ -10,7 +10,6 @@ import {
   CalendarDays,
   ShoppingBag,
   Rocket,
-  Bell,
   Book,
   Users,
   HelpCircle,
@@ -21,31 +20,23 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-  return (
-    <div className="container mx-auto p-6 bg-background">
-      <header className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Welcome back, Alex!</h1>
-        <div className="flex items-center space-x-4">
-          <Button
-            onClick={() => router.push("/notifications")}
-            variant="outline"
-            size="icon"
-          >
-            <Bell className="h-4 w-4" />
-          </Button>
-          <Link href="/user/user-setting">
-            <Image
-              src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/home/3d-illustration-person-with-sunglasses_23-2149436188.avif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ob21lLzNkLWlsbHVzdHJhdGlvbi1wZXJzb24td2l0aC1zdW5nbGFzc2VzXzIzLTIxNDk0MzYxODguYXZpZiIsImlhdCI6MTcyNzIzNjM3OSwiZXhwIjoxNzU4NzcyMzc5fQ.QTNyhP1dkzWDZ6TFFYVvVRc4sKy5J7t5xBHN2j6qtdg&t=2024-09-25T03%3A52%3A58.974Z"
-              alt="Profile"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-          </Link>
-        </div>
-      </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+  return (
+    <div className=" mx-auto bg-background relative -mt-[64px]">
+      <div
+        className="relative mb-8 py-20 px-6 bg-cover bg-center text-white"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D')",
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="container mx-auto relative z-10 flex justify-between items-center">
+          <h1 className="text-4xl font-bold">Welcome back, Alex!</h1>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 p-6">
         <div className="lg:col-span-3 space-y-6">
           <section className="bg-secondary p-6 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Your Engagement</h2>
@@ -53,6 +44,35 @@ export default function Home() {
             <p className="text-sm text-muted-foreground">
               65% of services utilized this semester
             </p>
+          </section>
+
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-secondary p-6 rounded-lg overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D"
+                alt="Student studying"
+                width={400}
+                height={300}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">Study Resources</h3>
+              <p className="text-sm text-muted-foreground">
+                Access online libraries and study materials
+              </p>
+            </div>
+            <div className="bg-secondary p-6 rounded-lg overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2FtcHVzfGVufDB8fDB8fHww"
+                alt="Campus life"
+                width={400}
+                height={300}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">Campus Life</h3>
+              <p className="text-sm text-muted-foreground">
+                Explore events and activities on campus
+              </p>
+            </div>
           </section>
 
           <section>
