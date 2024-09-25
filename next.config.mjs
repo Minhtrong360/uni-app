@@ -10,6 +10,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "thumbs.dreamstime.com",
       },
+      {
+        protocol: "https",
+        hostname: "dheunoflmddynuaxiksw.supabase.co",
+      },
+      {
+        protocol: "https",
+        hostname: "www.juicer.io",
+      },
     ],
   },
 };

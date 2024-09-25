@@ -59,6 +59,8 @@ export default function SchoolSupportDashboard() {
       date: "2023-06-01",
       description:
         "Alice is struggling with her Algebra II homework and needs additional support.",
+      image:
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_1.jpg",
     },
     {
       id: 2,
@@ -70,6 +72,8 @@ export default function SchoolSupportDashboard() {
       date: "2023-06-02",
       description:
         "Bob has reported ongoing conflicts with a classmate during lunch periods.",
+      image:
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_2.jpg",
     },
     {
       id: 3,
@@ -81,6 +85,8 @@ export default function SchoolSupportDashboard() {
       date: "2023-06-03",
       description:
         "Charlie has missed several soccer practices and needs to discuss team commitment.",
+      image:
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_3.jpg",
     },
     {
       id: 4,
@@ -92,6 +98,8 @@ export default function SchoolSupportDashboard() {
       date: "2023-06-04",
       description:
         "Diana is having difficulty structuring her essays for English class and requires writing support.",
+      image:
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_4.jpg",
     },
     {
       id: 5,
@@ -103,6 +111,8 @@ export default function SchoolSupportDashboard() {
       date: "2023-06-05",
       description:
         "Ethan is experiencing high levels of anxiety due to upcoming final exams.",
+      image:
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_5.jpg",
     },
   ];
 
@@ -307,7 +317,7 @@ export default function SchoolSupportDashboard() {
                   >
                     <div className="relative h-48 w-full">
                       <Image
-                        src={`https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=192&width=384`}
+                        src={`${request.image}`}
                         alt={`Support request for ${request.student}`}
                         layout="fill"
                         objectFit="cover"

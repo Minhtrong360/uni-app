@@ -1,97 +1,5 @@
 // https://v0.dev/chat/hXFtQhvdTHQ
 "use client";
-// import Image from "next/image"
-// import Link from "next/link"
-// import { Progress } from "@/components/ui/progress"
-// import { Button } from "@/components/ui/button"
-// import { HeartHandshake, CalendarDays, ShoppingBag, Rocket } from "lucide-react"
-// import { useRouter } from 'next/navigation'
-
-// export default function Home() {
-//   const router = useRouter()
-//   return (
-//     <div className="max-w-md mx-auto bg-background p-6 rounded-xl shadow border">
-//       <div className="flex justify-between items-center mb-6">
-//         <div className="text-2xl font-semibold">6:59</div>
-//         <div className="flex space-x-1">
-//           <div className="w-4 h-4 bg-foreground rounded-full"></div>
-//           <div className="w-4 h-4 bg-foreground rounded-full"></div>
-//           <div className="w-4 h-4 bg-foreground rounded-full"></div>
-//         </div>
-//       </div>
-
-//       <div className="flex justify-between items-center mb-4">
-//         <h1 className="text-2xl font-bold">Welcome back, Alex!</h1>
-//         <Link href="/user/user-setting">
-//         <Image
-//           src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg"
-//           alt="Profile"
-//           width={40}
-//           height={40}
-//           className="rounded-full"
-//         />
-//         </Link>
-//       </div>
-
-//       <div className="mb-6">
-//         <p className="text-sm text-muted-foreground mb-2">Your engagement this semester</p>
-//         <Progress value={65} className="h-2" />
-//         <p className="text-sm text-muted-foreground mt-1">65% of services utilized</p>
-//       </div>
-
-//       <div className="bg-secondary p-4 rounded-lg mb-6 flex justify-between items-center">
-//         <div>
-//           <h3 className="font-semibold">Upcoming Event</h3>
-//           <p className="text-sm text-muted-foreground">Career Fair in 3 days</p>
-//         </div>
-//         <Image
-//           src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg"
-//           alt="Event illustration"
-//           width={80}
-//           height={80}
-//         />
-//       </div>
-
-//       <Button onClick={() => router.push('/events')}  className="mb-6 w-full">View all events</Button>
-
-//       <div className="flex justify-between items-center mb-4">
-//         <h2 className="text-xl font-semibold">Student Services</h2>
-//         <Button variant="link">See all</Button>
-//       </div>
-
-//       <div className="grid grid-cols-2 gap-4">
-//         <Link href="/support/dashboard">
-//           <div className="bg-secondary p-4 rounded-lg cursor-pointer">
-//             <HeartHandshake className="w-8 h-8 mb-2" />
-//             <h3 className="font-semibold">Student SC</h3>
-//             <p className="text-xs text-muted-foreground">Open: 9 AM - 5 PM</p>
-//           </div>
-//         </Link>
-//         <Link href="/events">
-//         <div className="bg-secondary p-4 rounded-lg">
-//           <CalendarDays className="w-8 h-8 mb-2" />
-//           <h3 className="font-semibold">Student Events</h3>
-//           <p className="text-xs text-muted-foreground">3 upcoming this week</p>
-//         </div>
-//         </Link>
-//         <Link href="/store">
-//         <div className="bg-secondary p-4 rounded-lg">
-//           <ShoppingBag className="w-8 h-8 mb-2" />
-//           <h3 className="font-semibold">Student Shops</h3>
-//           <p className="text-xs text-muted-foreground">New merch available</p>
-//         </div>
-//         </Link>
-//         <Link href="/academic">
-//         <div className="bg-secondary p-4 rounded-lg">
-//           <Rocket className="w-8 h-8 mb-2" />
-//           <h3 className="font-semibold">Startups Contest</h3>
-//           <p className="text-xs text-muted-foreground">Submissions due in 2 weeks</p>
-//         </div>
-//         </Link>
-//       </div>
-//     </div>
-//   )
-// }
 
 import Link from "next/link";
 import Image from "next/image";
@@ -127,7 +35,7 @@ export default function Home() {
           </Button>
           <Link href="/user/user-setting">
             <Image
-              src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg"
+              src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/home/3d-illustration-person-with-sunglasses_23-2149436188.avif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ob21lLzNkLWlsbHVzdHJhdGlvbi1wZXJzb24td2l0aC1zdW5nbGFzc2VzXzIzLTIxNDk0MzYxODguYXZpZiIsImlhdCI6MTcyNzIzNjM3OSwiZXhwIjoxNzU4NzcyMzc5fQ.QTNyhP1dkzWDZ6TFFYVvVRc4sKy5J7t5xBHN2j6qtdg&t=2024-09-25T03%3A52%3A58.974Z"
               alt="Profile"
               width={40}
               height={40}
@@ -244,11 +152,11 @@ export default function Home() {
             <h2 className="text-2xl font-semibold mb-4">Upcoming Event</h2>
             <div className="flex items-center space-x-4">
               <Image
-                src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg"
+                src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/home/AdobeStock_473119551-vert-scaled.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ob21lL0Fkb2JlU3RvY2tfNDczMTE5NTUxLXZlcnQtc2NhbGVkLmpwZyIsImlhdCI6MTcyNzIzNjYxOSwiZXhwIjoxNzU4NzcyNjE5fQ.t4Oek9DO9O5lsu8lFXiLjfb30-_XAyNmJ90q03uVLKE&t=2024-09-25T03%3A56%3A59.082Z"
                 alt="Event illustration"
                 width={80}
                 height={80}
-                className="rounded-lg"
+                className="rounded-lg max-h-[80px] object-cover"
               />
               <div>
                 <h3 className="font-semibold">Career Fair</h3>

@@ -41,6 +41,8 @@ export default function Stores() {
       rating: "4.8",
       price: "$15",
       categories: ["Chicken", "Fast Food"],
+      image:
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865010369321_6e39c68276ab32af452ac7dab339ca98.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTAxMDM2OTMyMV82ZTM5YzY4Mjc2YWIzMmFmNDUyYWM3ZGFiMzM5Y2E5OC5qcGciLCJpYXQiOjE3MjcyMzQ5NzgsImV4cCI6MTc1ODc3MDk3OH0.jwOwYDNHfBxIpMC1nXtQ44-03IacmLHjdv0VADQLY3Y&t=2024-09-25T03%3A29%3A38.091Z",
     },
     {
       name: "Bamsu Restaurant",
@@ -49,6 +51,8 @@ export default function Stores() {
       rating: "4.1",
       price: "$12",
       categories: ["Salad", "Sandwich"],
+      image:
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054859372_c14afc6aabe5cfc15e6569d1f728a09d.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg1OTM3Ml9jMTRhZmM2YWFiZTVjZmMxNWU2NTY5ZDFmNzI4YTA5ZC5qcGciLCJpYXQiOjE3MjcyMzU3NjEsImV4cCI6MTc1ODc3MTc2MX0.0Qtvby5KbZ3YSU_DTqpwuH9UeSoa_vVbE31A7UbobcY&t=2024-09-25T03%3A42%3A40.346Z",
     },
     {
       name: "Neighbor Milk",
@@ -57,6 +61,8 @@ export default function Stores() {
       rating: "4.1",
       price: "$8",
       categories: ["Drinks", "Smoothies"],
+      image:
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865010377332_67de09c49a656cf7934f806d3a1f0944.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTAxMDM3NzMzMl82N2RlMDljNDlhNjU2Y2Y3OTM0ZjgwNmQzYTFmMDk0NC5qcGciLCJpYXQiOjE3MjcyMzU0ODgsImV4cCI6MTc1ODc3MTQ4OH0.vj0nJ3xYthww83gFDJ22-G-qALDdgvCSifC5QsQg0Dk&t=2024-09-25T03%3A38%3A07.625Z",
     },
     {
       name: "Pizza Palace",
@@ -65,6 +71,8 @@ export default function Stores() {
       rating: "4.5",
       price: "$18",
       categories: ["Pizza", "Italian"],
+      image:
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054842124_c884f5bfba90e1b2689d5975c8415b2f.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg0MjEyNF9jODg0ZjViZmJhOTBlMWIyNjg5ZDU5NzVjODQxNWIyZi5qcGciLCJpYXQiOjE3MjcyMzU3MDMsImV4cCI6MTc1ODc3MTcwM30.tffeeAenwLFMelppXbVnoc3F0ELqNzKqcvLGnpeeHFc&t=2024-09-25T03%3A41%3A42.624Z",
     },
   ];
 
@@ -168,7 +176,7 @@ export default function Stores() {
                   className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
                 >
                   <Image
-                    src={`https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=200&width=400`}
+                    src={`${restaurant.image}?height=200&width=400`}
                     alt={restaurant.name}
                     width={400}
                     height={200}
@@ -233,7 +241,7 @@ export default function Stores() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <Image
-                        src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=50&width=50"
+                        src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054842124_c884f5bfba90e1b2689d5975c8415b2f.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg0MjEyNF9jODg0ZjViZmJhOTBlMWIyNjg5ZDU5NzVjODQxNWIyZi5qcGciLCJpYXQiOjE3MjcyMzU3MDMsImV4cCI6MTc1ODc3MTcwM30.tffeeAenwLFMelppXbVnoc3F0ELqNzKqcvLGnpeeHFc&t=2024-09-25T03%3A41%3A42.624Z?height=50&width=50"
                         alt="Food item"
                         width={50}
                         height={50}
@@ -249,7 +257,7 @@ export default function Stores() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <Image
-                        src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=50&width=50"
+                        src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054859372_c14afc6aabe5cfc15e6569d1f728a09d.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg1OTM3Ml9jMTRhZmM2YWFiZTVjZmMxNWU2NTY5ZDFmNzI4YTA5ZC5qcGciLCJpYXQiOjE3MjcyMzU3NjEsImV4cCI6MTc1ODc3MTc2MX0.0Qtvby5KbZ3YSU_DTqpwuH9UeSoa_vVbE31A7UbobcY&t=2024-09-25T03%3A42%3A40.346Z"
                         alt="Food item"
                         width={50}
                         height={50}
