@@ -230,12 +230,12 @@ export default function Home() {
                   <CalendarPlus2 className="mr-2 h-4 w-4" /> Create event
                 </Button>
               </Link>
-              <Link href="/startups">
+              <Link href="/academic">
                 <Button
                   variant="ghost"
                   className="w-full items-center justify-start"
                 >
-                  <Rocket className="mr-2 h-4 w-4" /> Startups
+                  <Rocket className="mr-2 h-4 w-4" /> Academic
                 </Button>
               </Link>
               <Link href="/support/faqs">

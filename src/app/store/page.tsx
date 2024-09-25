@@ -106,7 +106,7 @@ export default function Stores() {
             <h2 className="mb-4 text-2xl font-semibold">
               Featured Restaurants
             </h2>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               {restaurants.map((restaurant, index) => (
                 <div
                   key={index}

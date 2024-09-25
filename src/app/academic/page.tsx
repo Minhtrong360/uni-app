@@ -92,7 +92,8 @@ export default function Component() {
         title: "AI in Education",
         author: "Dr. Smith",
         date: "2023-09-15",
-        image: "/placeholder_image.jpg",
+        image:
+          "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup1.jpg?t=2024-09-25T09%3A27%3A41.667Z",
         status: "In Progress",
         progress: 75,
         tags: ["AI", "Education"],
@@ -107,7 +108,8 @@ export default function Component() {
         title: "Machine Learning in Healthcare",
         author: "Dr. Johnson",
         date: "2023-09-12",
-        image: "/placeholder_image.jpg",
+        image:
+          "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup2.jpg?t=2024-09-25T09%3A27%3A41.667Z",
         status: "Completed",
         progress: 100,
         tags: ["Machine Learning", "Healthcare"],
@@ -124,7 +126,8 @@ export default function Component() {
         title: "Sustainable Energy Solutions",
         author: "Jane Doe",
         date: "2023-09-14",
-        image: "/placeholder_image.jpg",
+        image:
+          "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup3.jpg?t=2024-09-25T09%3A27%3A41.667Z",
         status: "In Progress",
         progress: 60,
         tags: ["Sustainability", "Energy"],
@@ -139,7 +142,8 @@ export default function Component() {
         title: "Urban Planning Strategies",
         author: "Mike Johnson",
         date: "2023-09-11",
-        image: "/placeholder_image.jpg",
+        image:
+          "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup4.jpg?t=2024-09-25T09%3A27%3A41.667Z",
         status: "In Review",
         progress: 95,
         tags: ["Urban Planning"],
@@ -156,7 +160,8 @@ export default function Component() {
         title: "EduTech Platform",
         author: "John Brown",
         date: "2023-09-13",
-        image: "/placeholder_image.jpg",
+        image:
+          "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup5.png?t=2024-09-25T09%3A27%3A41.667Z",
         status: "Seed Funding",
         progress: 30,
         tags: ["EdTech", "SaaS"],
@@ -171,7 +176,8 @@ export default function Component() {
         title: "Green Energy Startup",
         author: "Sarah Wilson",
         date: "2023-09-10",
-        image: "/placeholder_image.jpg",
+        image:
+          "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup6.jpg?t=2024-09-25T09%3A27%3A41.667Z",
         status: "Prototype",
         progress: 50,
         tags: ["Green Energy", "Sustainability"],
@@ -619,18 +625,16 @@ export default function Component() {
                   </TableBody>
                 </Table>
               ) : (
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
                   {filteredProjects.map((project) => (
                     <Card key={project.id}>
-                      <CardHeader>
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          width={200}
-                          height={100}
-                          className="h-auto w-full rounded-t-lg object-cover"
-                        />
-                      </CardHeader>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={1440}
+                        height={960}
+                        className="mb-2 h-[250px] w-full rounded-t-lg object-cover"
+                      />
                       <CardContent>
                         <h3 className="mb-2 font-semibold">{project.title}</h3>
                         <div className="mb-2 flex items-center justify-between">
