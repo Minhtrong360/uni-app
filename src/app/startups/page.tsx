@@ -20,19 +20,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import {
   Table,
   TableBody,
@@ -42,21 +35,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
-  BookOpen,
   FileText,
-  Rocket,
   Search,
   Filter,
   Download,
   ExternalLink,
-  ThumbsUp,
-  MessageSquare,
   Info,
   LayoutGrid,
   LayoutList,
 } from "lucide-react";
 import Image from "next/image";
-
 const fakePapers = [
   {
     id: 1,
@@ -68,6 +56,8 @@ const fakePapers = [
     published: "2023-06-15",
     citations: 42,
     doi: "10.1234/qc.2023.01.001",
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup1.jpg", // Added image
   },
   {
     id: 2,
@@ -79,6 +69,8 @@ const fakePapers = [
     published: "2023-05-22",
     citations: 38,
     doi: "10.5678/ai.2023.05.002",
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup2.jpg", // Added image
   },
   {
     id: 3,
@@ -90,6 +82,8 @@ const fakePapers = [
     published: "2023-07-03",
     citations: 29,
     doi: "10.9101/nano.2023.07.003",
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup3.jpg", // Added image
   },
 ];
 
@@ -106,6 +100,8 @@ const fakeTheses = [
     department: "Computer Science",
     progress: 75,
     completion: "2024-05",
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup4.jpg", // Added image
   },
   {
     id: 2,
@@ -119,6 +115,8 @@ const fakeTheses = [
     department: "Environmental Studies",
     progress: 60,
     completion: "2024-08",
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup5.png", // Added image
   },
   {
     id: 3,
@@ -132,6 +130,8 @@ const fakeTheses = [
     department: "Psychology",
     progress: 90,
     completion: "2023-12",
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup6.jpg", // Added image
   },
 ];
 
@@ -148,6 +148,8 @@ const fakeStartups = [
     fundingStage: "Seed",
     mentor: "Sarah Lee, CEO of GreenFuture Inc.",
     supporters: 128,
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup1.jpg", // Added image
   },
   {
     id: 2,
@@ -161,6 +163,8 @@ const fakeStartups = [
     fundingStage: "Series A",
     mentor: "Dr. Mark Thompson, Former CTO of MedTech Corp",
     supporters: 256,
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup6.jpg", // Added image
   },
   {
     id: 3,
@@ -174,386 +178,226 @@ const fakeStartups = [
     fundingStage: "Pre-seed",
     mentor: "Prof. Rachel Adams, Education Innovation Expert",
     supporters: 75,
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/startups/startup4.jpg", // Added image
   },
 ];
 
+// Type definitions for the data structure
+type ItemType = {
+  id: number;
+  title?: string;
+  name?: string;
+  author?: string;
+  student?: string;
+  founder?: string;
+  abstract?: string;
+  keywords?: string[];
+  tags?: string[];
+  image: string;
+  published?: string;
+  citations?: number;
+  doi?: string;
+  supervisor?: string;
+  department?: string;
+  progress?: number;
+  completion?: string;
+  description?: string;
+  founded?: string;
+  teamSize?: number;
+  fundingStage?: string;
+  mentor?: string;
+  supporters?: number;
+};
+
+// Reusable Card component
+const ItemCard = ({
+  item,
+  imageSrc,
+  extraContent,
+  avatarFallback,
+  onView,
+  onAction,
+}: {
+  item: ItemType;
+  imageSrc: string;
+  extraContent: JSX.Element;
+  avatarFallback: string;
+  onView?: () => void;
+  onAction?: () => void;
+}) => (
+  <Card className="flex flex-col">
+    <Image
+      width={1000}
+      height={600}
+      src={imageSrc}
+      alt="Thumbnail"
+      className="h-64 w-full object-cover"
+    />
+    <CardHeader>
+      <CardTitle className="flex items-center justify-between">
+        <span className="truncate text-lg">{item.title || item.name}</span>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <Info className="h-4 w-4" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-80">
+            <div className="space-y-2">{extraContent}</div>
+          </PopoverContent>
+        </Popover>
+      </CardTitle>
+      <CardDescription>
+        <div className="flex items-center space-x-2">
+          <Avatar className="h-6 w-6">
+            <AvatarImage
+              src={`https://i.pravatar.cc/150?u=${item.id}`}
+              alt="Avatar"
+            />
+            <AvatarFallback>{avatarFallback}</AvatarFallback>
+          </Avatar>
+          <span>{item.author || item.founder || item.student}</span>
+        </div>
+      </CardDescription>
+    </CardHeader>
+    <CardContent className="flex-grow">
+      <div className="mb-4 flex flex-wrap gap-2">
+        {(item.keywords || item.tags)?.map((keyword, index) => (
+          <Badge key={index} variant="secondary">
+            {keyword}
+          </Badge>
+        ))}
+      </div>
+    </CardContent>
+    <CardFooter className="flex justify-between">
+      <Button variant="outline" onClick={onView}>
+        <FileText className="mr-2 h-4 w-4" />
+        {onView ? "View Details" : "Read Abstract"}
+      </Button>
+      {onAction && (
+        <Button variant="ghost" size="icon" onClick={onAction}>
+          <ExternalLink className="h-4 w-4" />
+        </Button>
+      )}
+    </CardFooter>
+  </Card>
+);
+
+// Reusable Table component
+const ItemTable = ({
+  items,
+  columns,
+  actions,
+}: {
+  items: ItemType[];
+  columns: string[];
+  actions: { icon: JSX.Element; onClick?: () => void }[];
+}) => (
+  <Table>
+    <TableHeader>
+      <TableRow>
+        {columns.map((col, index) => (
+          <TableHead key={index}>{col}</TableHead>
+        ))}
+        <TableHead>Actions</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map((item) => (
+        <TableRow key={item.id}>
+          {columns.map((col, index) => (
+            <TableCell key={index}>
+              {(item as ItemType)[col.toLowerCase() as keyof ItemType]}
+            </TableCell>
+          ))}
+          <TableCell>
+            {actions.map((action, index) => (
+              <Button
+                key={index}
+                variant="ghost"
+                size="icon"
+                onClick={action.onClick}
+              >
+                {action.icon}
+              </Button>
+            ))}
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+// Rendering views for Papers, Theses, and Startups
+const renderItemView = (
+  items: ItemType[],
+  viewMode: string,
+  columns: string[],
+  extraContent: (item: ItemType) => JSX.Element,
+  avatarFallback: (item: ItemType) => string,
+  onView?: () => void,
+  onAction?: () => void,
+) => {
+  return viewMode === "card" ? (
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((item) => (
+        <ItemCard
+          key={item.id}
+          item={item}
+          imageSrc={item.image}
+          extraContent={extraContent(item)}
+          avatarFallback={avatarFallback(item)}
+          onView={onView}
+          onAction={onAction}
+        />
+      ))}
+    </div>
+  ) : (
+    <ItemTable
+      items={items}
+      columns={columns}
+      actions={[
+        { icon: <FileText className="h-4 w-4" />, onClick: onView },
+        { icon: <ExternalLink className="h-4 w-4" />, onClick: onAction },
+      ]}
+    />
+  );
+};
+
 export default function Component() {
-  const [activeTab, setActiveTab] = useState("papers");
-  const [viewMode, setViewMode] = useState("card");
+  const [activeTab, setActiveTab] = useState<string>("papers");
+  const [viewMode, setViewMode] = useState<string>("card");
 
-  const renderPapersView = () => {
-    if (viewMode === "card") {
-      return (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {fakePapers.map((paper) => (
-            <Card key={paper.id} className="flex flex-col">
-              <Image
-                width={400}
-                height={200}
-                src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`}
-                alt="Paper thumbnail"
-                className="h-40 w-full object-cover"
-              />
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span className="truncate text-lg">{paper.title}</span>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="ghost" size="icon">
-                        <Info className="h-4 w-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-80">
-                      <div className="space-y-2">
-                        <p className="text-sm font-medium">Abstract</p>
-                        <p className="text-sm">{paper.abstract}</p>
-                        <p className="text-sm font-medium">
-                          Published: {paper.published}
-                        </p>
-                        <p className="text-sm font-medium">
-                          Citations: {paper.citations}
-                        </p>
-                        <p className="text-sm font-medium">DOI: {paper.doi}</p>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                </CardTitle>
-                <CardDescription>
-                  <div className="flex items-center space-x-2">
-                    <Avatar className="h-6 w-6">
-                      <AvatarImage
-                        src={`https://i.pravatar.cc/150?u=${paper.id}`}
-                        alt="Author"
-                      />
-                      <AvatarFallback>
-                        {paper.author
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <span>{paper.author}</span>
-                  </div>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="mb-4 flex flex-wrap gap-2">
-                  {paper.keywords.map((keyword, index) => (
-                    <Badge key={index} variant="secondary">
-                      {keyword}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline">
-                  <FileText className="mr-2 h-4 w-4" />
-                  View Paper
-                </Button>
-                <Button variant="ghost" size="icon">
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      );
-    } else {
-      return (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>Author</TableHead>
-              <TableHead>Keywords</TableHead>
-              <TableHead>Published</TableHead>
-              <TableHead>Citations</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {fakePapers.map((paper) => (
-              <TableRow key={paper.id}>
-                <TableCell>{paper.title}</TableCell>
-                <TableCell>{paper.author}</TableCell>
-                <TableCell>{paper.keywords.join(", ")}</TableCell>
-                <TableCell>{paper.published}</TableCell>
-                <TableCell>{paper.citations}</TableCell>
-                <TableCell>
-                  <Button variant="ghost" size="icon">
-                    <FileText className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="icon">
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      );
-    }
-  };
+  const extraContentPapers = (item: ItemType) => (
+    <>
+      <p className="text-sm font-medium">Abstract</p>
+      <p className="text-sm">{item.abstract}</p>
+      <p className="text-sm font-medium">Published: {item.published}</p>
+      <p className="text-sm font-medium">Citations: {item.citations}</p>
+      <p className="text-sm font-medium">DOI: {item.doi}</p>
+    </>
+  );
 
-  const renderThesesView = () => {
-    if (viewMode === "card") {
-      return (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {fakeTheses.map((thesis) => (
-            <Card key={thesis.id} className="flex flex-col">
-              <Image
-                width={400}
-                height={200}
-                src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`}
-                alt="Thesis thumbnail"
-                className="h-40 w-full object-cover"
-              />
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <span className="cursor-help truncate text-lg">
-                          {thesis.title}
-                        </span>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p className="max-w-xs">{thesis.title}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="ghost" size="icon">
-                        <Info className="h-4 w-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-80">
-                      <div className="space-y-2">
-                        <p className="text-sm font-medium">Abstract</p>
-                        <p className="text-sm">{thesis.abstract}</p>
-                        <p className="text-sm font-medium">
-                          Supervisor: {thesis.supervisor}
-                        </p>
-                        <p className="text-sm font-medium">
-                          Department: {thesis.department}
-                        </p>
-                        <p className="text-sm font-medium">
-                          Expected Completion: {thesis.completion}
-                        </p>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                </CardTitle>
-                <CardDescription>
-                  <div className="flex items-center space-x-2">
-                    <Avatar className="h-6 w-6">
-                      <AvatarImage
-                        src={`https://i.pravatar.cc/150?u=${thesis.id + 10}`}
-                        alt="Student"
-                      />
-                      <AvatarFallback>
-                        {thesis.student
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <span>{thesis.student}</span>
-                  </div>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="mb-4 flex flex-wrap gap-2">
-                  {thesis.keywords.map((keyword, index) => (
-                    <Badge key={index} variant="secondary">
-                      {keyword}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>Progress</span>
-                    <span>{thesis.progress}%</span>
-                  </div>
-                  <Progress value={thesis.progress} className="w-full" />
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Read Abstract
-                </Button>
-                <Button variant="ghost" size="icon">
-                  <MessageSquare className="h-4 w-4" />
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      );
-    } else {
-      return (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>Student</TableHead>
-              <TableHead>Keywords</TableHead>
-              <TableHead>Supervisor</TableHead>
-              <TableHead>Progress</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {fakeTheses.map((thesis) => (
-              <TableRow key={thesis.id}>
-                <TableCell>{thesis.title}</TableCell>
-                <TableCell>{thesis.student}</TableCell>
-                <TableCell>{thesis.keywords.join(", ")}</TableCell>
-                <TableCell>{thesis.supervisor}</TableCell>
-                <TableCell>
-                  <Progress value={thesis.progress} className="w-full" />
-                </TableCell>
-                <TableCell>
-                  <Button variant="ghost" size="icon">
-                    <BookOpen className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="icon">
-                    <MessageSquare className="h-4 w-4" />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      );
-    }
-  };
+  const extraContentTheses = (item: ItemType) => (
+    <>
+      <p className="text-sm font-medium">Abstract</p>
+      <p className="text-sm">{item.abstract}</p>
+      <p className="text-sm font-medium">Supervisor: {item.supervisor}</p>
+      <p className="text-sm font-medium">Department: {item.department}</p>
+      <p className="text-sm font-medium">Completion: {item.completion}</p>
+    </>
+  );
 
-  const renderStartupsView = () => {
-    if (viewMode === "card") {
-      return (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {fakeStartups.map((startup) => (
-            <Card key={startup.id} className="flex flex-col">
-              <Image
-                width={400}
-                height={200}
-                src={`https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=200&width=400`}
-                alt="Startup thumbnail"
-                className="h-40 w-full object-cover"
-              />
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span className="truncate text-lg">{startup.name}</span>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="ghost" size="icon">
-                        <Info className="h-4 w-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-80">
-                      <div className="space-y-2">
-                        <p className="text-sm">{startup.description}</p>
-                        <p className="text-sm font-medium">
-                          Founded: {startup.founded}
-                        </p>
-                        <p className="text-sm font-medium">
-                          Team Size: {startup.teamSize}
-                        </p>
-                        <p className="text-sm font-medium">
-                          Funding Stage: {startup.fundingStage}
-                        </p>
-                        <p className="text-sm font-medium">
-                          Mentor: {startup.mentor}
-                        </p>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                </CardTitle>
-                <CardDescription>
-                  <div className="flex items-center space-x-2">
-                    <Avatar className="h-6 w-6">
-                      <AvatarImage
-                        src={`https://i.pravatar.cc/150?u=${startup.id + 20}`}
-                        alt="Founder"
-                      />
-                      <AvatarFallback>
-                        {startup.founder
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <span>{startup.founder}</span>
-                  </div>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="mb-4 flex flex-wrap gap-2">
-                  {startup.tags.map((tag, index) => (
-                    <Badge key={index} variant="secondary">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex items-center space-x-2 text-sm">
-                  <ThumbsUp className="h-4 w-4" />
-                  <span>{startup.supporters} Supporters</span>
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline">
-                  <Rocket className="mr-2 h-4 w-4" />
-                  View Pitch Deck
-                </Button>
-                <Button variant="ghost" size="icon">
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      );
-    } else {
-      return (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Founder</TableHead>
-              <TableHead>Tags</TableHead>
-              <TableHead>Founded</TableHead>
-              <TableHead>Funding Stage</TableHead>
-              <TableHead>Supporters</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {fakeStartups.map((startup) => (
-              <TableRow key={startup.id}>
-                <TableCell>{startup.name}</TableCell>
-                <TableCell>{startup.founder}</TableCell>
-                <TableCell>{startup.tags.join(", ")}</TableCell>
-                <TableCell>{startup.founded}</TableCell>
-                <TableCell>{startup.fundingStage}</TableCell>
-                <TableCell>{startup.supporters}</TableCell>
-                <TableCell>
-                  <Button variant="ghost" size="icon">
-                    <Rocket className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="icon">
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      );
-    }
-  };
+  const extraContentStartups = (item: ItemType) => (
+    <>
+      <p className="text-sm">{item.description}</p>
+      <p className="text-sm font-medium">Founded: {item.founded}</p>
+      <p className="text-sm font-medium">Team Size: {item.teamSize}</p>
+      <p className="text-sm font-medium">Funding Stage: {item.fundingStage}</p>
+      <p className="text-sm font-medium">Mentor: {item.mentor}</p>
+    </>
+  );
 
   return (
     <div className="container mx-auto space-y-6 p-4 sm:p-6">
@@ -601,17 +445,54 @@ export default function Component() {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="mx-auto mb-8 grid w-fit grid-cols-3">
           <TabsTrigger value="papers">Academic Papers</TabsTrigger>
           <TabsTrigger value="theses">Graduation Theses</TabsTrigger>
           <TabsTrigger value="startups">Student Startups</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="papers">{renderPapersView()}</TabsContent>
+        <TabsContent value="papers">
+          {renderItemView(
+            fakePapers,
+            viewMode,
+            ["Title", "Author", "Keywords", "Published", "Citations"],
+            extraContentPapers,
+            (item) => item.author![0],
+            () => console.log("View Paper"),
+            () => console.log("External Link"),
+          )}
+        </TabsContent>
 
-        <TabsContent value="theses">{renderThesesView()}</TabsContent>
+        <TabsContent value="theses">
+          {renderItemView(
+            fakeTheses,
+            viewMode,
+            ["Title", "Student", "Keywords", "Supervisor", "Progress"],
+            extraContentTheses,
+            (item) => item.student![0],
+            () => console.log("Read Abstract"),
+            () => console.log("Message"),
+          )}
+        </TabsContent>
 
-        <TabsContent value="startups">{renderStartupsView()}</TabsContent>
+        <TabsContent value="startups">
+          {renderItemView(
+            fakeStartups,
+            viewMode,
+            [
+              "Name",
+              "Founder",
+              "Tags",
+              "Founded",
+              "Funding Stage",
+              "Supporters",
+            ],
+            extraContentStartups,
+            (item) => item.founder![0],
+            () => console.log("View Pitch Deck"),
+            () => console.log("External Link"),
+          )}
+        </TabsContent>
       </Tabs>
     </div>
   );

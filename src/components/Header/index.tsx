@@ -11,6 +11,7 @@ import {
   Store,
   ChevronRight,
   Compass,
+  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +25,12 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,14 +72,10 @@ export default function Header() {
     };
   }, [isOpen]);
 
-  if (pathName === "/") return <></>;
+  if (pathName === "/") return null;
 
   return (
-    <header
-      className={
-        "fixed left-0 right-0 top-0 z-50 border-b bg-white px-2 shadow-sm"
-      }
-    >
+    <header className="fixed left-0 right-0 top-0 z-50 border-b bg-white px-2 shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Button
@@ -85,28 +88,53 @@ export default function Header() {
             <Compass className="h-5 w-5" />
           </Button>
           {typeof window !== "undefined" && (
-            <Breadcrumb className="ml-2">
-              <BreadcrumbList>
-                {breadcrumbs.map((crumb, index) => (
-                  <BreadcrumbItem key={crumb.href}>
-                    <BreadcrumbLink href={crumb.href}>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-8 px-2 text-sm"
+            <>
+              {/* Desktop Breadcrumb */}
+              <Breadcrumb className="ml-2 hidden md:block">
+                <BreadcrumbList>
+                  {breadcrumbs.map((crumb, index) => (
+                    <BreadcrumbItem key={crumb.href}>
+                      <BreadcrumbLink href={crumb.href}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-8 px-2 text-sm"
+                        >
+                          {crumb.label}
+                        </Button>
+                      </BreadcrumbLink>
+                      {index < breadcrumbs.length - 1 && (
+                        <BreadcrumbSeparator>
+                          <ChevronRight className="h-4 w-4 text-gray-400" />
+                        </BreadcrumbSeparator>
+                      )}
+                    </BreadcrumbItem>
+                  ))}
+                </BreadcrumbList>
+              </Breadcrumb>
+
+              {/* Mobile Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild className="md:hidden">
+                  <Button variant="outline" className="ml-2">
+                    {breadcrumbs[breadcrumbs.length - 1].label}
+                    <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start">
+                  {breadcrumbs.map((crumb) => (
+                    <DropdownMenuItem key={crumb.href}>
+                      <Link
+                        href={crumb.href}
+                        className="flex w-full items-center"
                       >
                         {crumb.label}
-                      </Button>
-                    </BreadcrumbLink>
-                    {index < breadcrumbs.length - 1 && (
-                      <BreadcrumbSeparator>
-                        <ChevronRight className="h-4 w-4 text-gray-400" />
-                      </BreadcrumbSeparator>
-                    )}
-                  </BreadcrumbItem>
-                ))}
-              </BreadcrumbList>
-            </Breadcrumb>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </>
           )}
         </div>
         <div className="flex items-center space-x-4">

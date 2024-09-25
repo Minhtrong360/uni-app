@@ -11,10 +11,11 @@ import {
   ShoppingBag,
   Rocket,
   Book,
-  Users,
   HelpCircle,
   Telescope,
   CircleGauge,
+  TicketCheck,
+  CalendarPlus2,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -31,8 +32,10 @@ export default function Home() {
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="container relative z-10 mx-auto flex items-center justify-between">
-          <h1 className="text-4xl font-bold">Welcome back, Alex!</h1>
+        <div className="container relative z-10 mx-auto flex items-end justify-between">
+          <h1 className="text-center text-4xl font-bold">
+            Welcome back, Takegawa!
+          </h1>
         </div>
       </div>
 
@@ -195,29 +198,54 @@ export default function Home() {
             <h2 className="mb-4 text-2xl font-semibold">Quick Links</h2>
             <nav className="space-y-2">
               <Link href="/admin/dashboard">
-                <Button variant="ghost" className="w-full justify-start">
+                <Button
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
                   <CircleGauge className="mr-2 h-4 w-4" /> Admin Dashboard
                 </Button>
               </Link>
-              <Button variant="ghost" className="w-full justify-start">
-                <ShoppingBag className="mr-2 h-4 w-4" /> Campus Store
-              </Button>
-              <Button variant="ghost" className="w-full justify-start">
-                <HeartHandshake className="mr-2 h-4 w-4" /> Counseling Services
-              </Button>
-              <Button variant="ghost" className="w-full justify-start">
-                <Rocket className="mr-2 h-4 w-4" /> Career Center
-              </Button>
-              <Button variant="ghost" className="w-full justify-start">
-                <Users className="mr-2 h-4 w-4" /> Student Organizations
-              </Button>
-              <Button
-                onClick={() => router.push(`/support/faqs`)}
-                variant="ghost"
-                className="w-full justify-start"
-              >
-                <HelpCircle className="mr-2 h-4 w-4" /> FAQs
-              </Button>
+              <Link href="/store">
+                <Button
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <ShoppingBag className="mr-2 h-4 w-4" /> Campus Store
+                </Button>
+              </Link>
+              <Link href="/events/bookvenue">
+                <Button
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <TicketCheck className="mr-2 h-4 w-4" /> Book Venue
+                </Button>
+              </Link>
+              <Link href="/events/create">
+                <Button
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <CalendarPlus2 className="mr-2 h-4 w-4" /> Create event
+                </Button>
+              </Link>
+              <Link href="/startups">
+                <Button
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <Rocket className="mr-2 h-4 w-4" /> Startups
+                </Button>
+              </Link>
+              <Link href="/support/faqs">
+                <Button
+                  onClick={() => router.push(`/support/faqs`)}
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <HelpCircle className="mr-2 h-4 w-4" /> FAQs
+                </Button>
+              </Link>
             </nav>
           </section>
         </div>
