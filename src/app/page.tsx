@@ -1,97 +1,5 @@
 // https://v0.dev/chat/hXFtQhvdTHQ
 "use client";
-// import Image from "next/image"
-// import Link from "next/link"
-// import { Progress } from "@/components/ui/progress"
-// import { Button } from "@/components/ui/button"
-// import { HeartHandshake, CalendarDays, ShoppingBag, Rocket } from "lucide-react"
-// import { useRouter } from 'next/navigation'
-
-// export default function Home() {
-//   const router = useRouter()
-//   return (
-//     <div className="max-w-md mx-auto bg-background p-6 rounded-xl shadow border">
-//       <div className="flex justify-between items-center mb-6">
-//         <div className="text-2xl font-semibold">6:59</div>
-//         <div className="flex space-x-1">
-//           <div className="w-4 h-4 bg-foreground rounded-full"></div>
-//           <div className="w-4 h-4 bg-foreground rounded-full"></div>
-//           <div className="w-4 h-4 bg-foreground rounded-full"></div>
-//         </div>
-//       </div>
-
-//       <div className="flex justify-between items-center mb-4">
-//         <h1 className="text-2xl font-bold">Welcome back, Alex!</h1>
-//         <Link href="/user/user-setting">
-//         <Image
-//           src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg"
-//           alt="Profile"
-//           width={40}
-//           height={40}
-//           className="rounded-full"
-//         />
-//         </Link>
-//       </div>
-
-//       <div className="mb-6">
-//         <p className="text-sm text-muted-foreground mb-2">Your engagement this semester</p>
-//         <Progress value={65} className="h-2" />
-//         <p className="text-sm text-muted-foreground mt-1">65% of services utilized</p>
-//       </div>
-
-//       <div className="bg-secondary p-4 rounded-lg mb-6 flex justify-between items-center">
-//         <div>
-//           <h3 className="font-semibold">Upcoming Event</h3>
-//           <p className="text-sm text-muted-foreground">Career Fair in 3 days</p>
-//         </div>
-//         <Image
-//           src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg"
-//           alt="Event illustration"
-//           width={80}
-//           height={80}
-//         />
-//       </div>
-
-//       <Button onClick={() => router.push('/events')}  className="mb-6 w-full">View all events</Button>
-
-//       <div className="flex justify-between items-center mb-4">
-//         <h2 className="text-xl font-semibold">Student Services</h2>
-//         <Button variant="link">See all</Button>
-//       </div>
-
-//       <div className="grid grid-cols-2 gap-4">
-//         <Link href="/support/dashboard">
-//           <div className="bg-secondary p-4 rounded-lg cursor-pointer">
-//             <HeartHandshake className="w-8 h-8 mb-2" />
-//             <h3 className="font-semibold">Student SC</h3>
-//             <p className="text-xs text-muted-foreground">Open: 9 AM - 5 PM</p>
-//           </div>
-//         </Link>
-//         <Link href="/events">
-//         <div className="bg-secondary p-4 rounded-lg">
-//           <CalendarDays className="w-8 h-8 mb-2" />
-//           <h3 className="font-semibold">Student Events</h3>
-//           <p className="text-xs text-muted-foreground">3 upcoming this week</p>
-//         </div>
-//         </Link>
-//         <Link href="/store">
-//         <div className="bg-secondary p-4 rounded-lg">
-//           <ShoppingBag className="w-8 h-8 mb-2" />
-//           <h3 className="font-semibold">Student Shops</h3>
-//           <p className="text-xs text-muted-foreground">New merch available</p>
-//         </div>
-//         </Link>
-//         <Link href="/academic">
-//         <div className="bg-secondary p-4 rounded-lg">
-//           <Rocket className="w-8 h-8 mb-2" />
-//           <h3 className="font-semibold">Startups Contest</h3>
-//           <p className="text-xs text-muted-foreground">Submissions due in 2 weeks</p>
-//         </div>
-//         </Link>
-//       </div>
-//     </div>
-//   )
-// }
 
 import Link from "next/link";
 import Image from "next/image";
@@ -102,7 +10,6 @@ import {
   CalendarDays,
   ShoppingBag,
   Rocket,
-  Bell,
   Book,
   Users,
   HelpCircle,
@@ -113,31 +20,23 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-  return (
-    <div className="container mx-auto p-6 bg-background">
-      <header className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Welcome back, Alex!</h1>
-        <div className="flex items-center space-x-4">
-          <Button
-            onClick={() => router.push("/notifications")}
-            variant="outline"
-            size="icon"
-          >
-            <Bell className="h-4 w-4" />
-          </Button>
-          <Link href="/user/user-setting">
-            <Image
-              src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg"
-              alt="Profile"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-          </Link>
-        </div>
-      </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+  return (
+    <div className=" mx-auto bg-background relative -mt-[64px]">
+      <div
+        className="relative mb-8 py-20 px-6 bg-cover bg-center text-white"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D')",
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="container mx-auto relative z-10 flex justify-between items-center">
+          <h1 className="text-4xl font-bold">Welcome back, Alex!</h1>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 p-6">
         <div className="lg:col-span-3 space-y-6">
           <section className="bg-secondary p-6 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Your Engagement</h2>
@@ -145,6 +44,35 @@ export default function Home() {
             <p className="text-sm text-muted-foreground">
               65% of services utilized this semester
             </p>
+          </section>
+
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-secondary p-6 rounded-lg overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D"
+                alt="Student studying"
+                width={400}
+                height={300}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">Study Resources</h3>
+              <p className="text-sm text-muted-foreground">
+                Access online libraries and study materials
+              </p>
+            </div>
+            <div className="bg-secondary p-6 rounded-lg overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2FtcHVzfGVufDB8fDB8fHww"
+                alt="Campus life"
+                width={400}
+                height={300}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">Campus Life</h3>
+              <p className="text-sm text-muted-foreground">
+                Explore events and activities on campus
+              </p>
+            </div>
           </section>
 
           <section>
