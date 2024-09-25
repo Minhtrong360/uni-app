@@ -40,12 +40,8 @@ const eventImage = [
 export default function Component() {
   const router = useRouter();
   return (
-    <div className="flex h-screen bg-gray-100">
-      <aside className="hidden lg:block w-64 bg-white shadow-md">
-        <Sidebar />
-      </aside>
-
-      <main className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
+    <div className="flex min-h-screen bg-gray-100">
+      <main className="flex-1 p-4 md:p-6 space-y-6">
         <section>
           <div className="flex justify-between items-center mb-4">
             <DropdownMenu>
@@ -210,54 +206,6 @@ export default function Component() {
         </section>
       </main>
     </div>
-  );
-}
-
-function Sidebar() {
-  const router = useRouter();
-  return (
-    <nav className="mt-6">
-      <Button
-        onClick={() => router.push("/")}
-        variant="ghost"
-        className="w-full justify-start p-4"
-      >
-        <Home className="mr-2 h-4 w-4" />
-        <span>Home</span>
-      </Button>
-      <Button
-        onClick={() => router.push("/store")}
-        variant="ghost"
-        className="w-full justify-start p-4"
-      >
-        <Store className="mr-2 h-4 w-4" />
-        <span>Store</span>
-      </Button>
-      <Button
-        onClick={() => router.push("/events")}
-        variant="ghost"
-        className="w-full justify-start p-4 bg-primary/10 text-primary"
-      >
-        <Calendar className="mr-2 h-4 w-4" />
-        <span>Events</span>
-      </Button>
-      <Button
-        onClick={() => router.push("/support/dashboard")}
-        variant="ghost"
-        className="w-full justify-start p-4"
-      >
-        <HeartHandshake className="mr-2 h-4 w-4" />
-        <span>Student Support</span>
-      </Button>
-      <Button
-        onClick={() => router.push("/academic")}
-        variant="ghost"
-        className="w-full justify-start p-4"
-      >
-        <Rocket className="mr-2 h-4 w-4" />
-        <span>Startup Projects</span>
-      </Button>
-    </nav>
   );
 }
 

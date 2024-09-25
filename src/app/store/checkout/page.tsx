@@ -12,15 +12,12 @@ import {
   AlertCircle,
   CircleDollarSign,
   Apple,
-  ArrowLeft,
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
-
 export default function Checkout() {
-  console.log("Tricks");
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");
@@ -51,24 +48,14 @@ export default function Checkout() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
-          <Button
-            onClick={() => router.push("/store")}
-            size="icon"
-            variant="outline"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="sr-only">Back</span>
-          </Button>
-          {/* <ChevronLeft onClick={() => router.push('/store')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
+      <header className="">
+        <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
           <h1 className="text-2xl font-semibold text-gray-900 ml-2">
             Checkout
           </h1>
         </div>
       </header>
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
             <h2 className="text-lg font-semibold mb-4">Payment Details</h2>
@@ -190,7 +177,8 @@ export default function Checkout() {
               {paymentMethod === "paypal" && (
                 <div className="text-center py-4">
                   <p className="text-gray-600 mb-4">
-                    You will be redirected to PayPal to complete your payment.git
+                    You will be redirected to PayPal to complete your
+                    payment.git
                   </p>
                   <Image
                     src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150"

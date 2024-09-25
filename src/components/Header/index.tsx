@@ -114,7 +114,7 @@ export default function Header() {
             <Input
               type="text"
               placeholder="Search..."
-              className="w-64 h-10 pl-10 pr-4 text-sm"
+              className="w-32 md:w-64 h-10 pl-10 pr-4 text-sm"
             />
             <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
@@ -127,7 +127,7 @@ export default function Header() {
             <Link href="/user/user-setting">
               <div className="w-10 h-10 rounded-full overflow-hidden">
                 <Image
-                  src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg"
+                  src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/3d-illustration-person-with-sunglasses_23-2149436188%20(1).avif?t=2024-09-25T06%3A08%3A19.358Z"
                   alt="Profile"
                   width={40}
                   height={40}

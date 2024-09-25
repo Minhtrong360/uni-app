@@ -8,7 +8,6 @@ import {
   Clock,
   Calendar as CalendarIconSolid,
   AlertTriangle,
-  ArrowLeft,
 } from "lucide-react";
 import {
   Card,
@@ -47,7 +46,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { useRouter } from "next/navigation";
 type Booking = {
   id: number;
   venue: string;
@@ -126,7 +124,6 @@ export default function Component() {
   const [filterVenue, setFilterVenue] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<keyof Booking | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
-  const router = useRouter();
   const filteredBookings = bookings
     .filter(
       (booking) =>
@@ -181,14 +178,6 @@ export default function Component() {
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
         <div className="max-w-7xl sm:px-0  py-4 flex items-center">
-          <Button
-            onClick={() => router.push("/events")}
-            size="icon"
-            variant="outline"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="sr-only">Back</span>
-          </Button>
           {/* <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
           <h1 className="text-3xl font-semibold text-gray-900 ml-2">Venue</h1>
         </div>

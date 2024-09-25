@@ -1,6 +1,6 @@
 "use client";
 // https://v0.dev/chat/MJHHSARTqOd
-import { Bell, Clock, AlertTriangle, ArrowLeft } from "lucide-react";
+import { Bell, Clock, AlertTriangle } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -10,17 +10,11 @@ import {
 } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+
 export default function Component() {
-  const route = useRouter();
   return (
     <div className="p-4 space-y-4 max-w-4xl mx-auto">
       <div className="max-w-7xl mx-auto   py-4 flex items-center">
-        <Button onClick={() => route.push("/")} size="icon" variant="outline">
-          <ArrowLeft className="w-4 h-4" />
-          <span className="sr-only">Back</span>
-        </Button>
         {/* <ChevronLeft onClick={() => router.push('/store')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
         <h1 className="text-2xl font-semibold text-gray-900 ml-2">
           Admin Notifications

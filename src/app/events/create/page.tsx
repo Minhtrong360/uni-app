@@ -18,7 +18,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { CalendarIcon, X, Clock, ArrowLeft } from "lucide-react";
+import { CalendarIcon, X, Clock } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -78,14 +78,6 @@ export default function AdminEventCreation() {
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-7xl mx-auto  sm:px-0  py-4 flex items-center">
-          <Button
-            onClick={() => router.push("/events")}
-            size="icon"
-            variant="outline"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="sr-only">Back</span>
-          </Button>
           {/* <ChevronLeft onClick={() => router.push('/events')} className="h-6 w-6 text-gray-500 mr-4 cursor-pointer" /> */}
           <h1 className="text-2xl font-semibold text-gray-900 ml-2">
             Create University Event

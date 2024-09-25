@@ -121,7 +121,7 @@ const recentTickets = [
   },
   {
     id: "1237",
-    student: "Diana Prince",
+    student: "Dia  Prince",
     issue: "Billing Question",
     status: "Resolved",
     date: "2023-06-04",

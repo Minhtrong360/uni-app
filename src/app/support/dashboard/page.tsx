@@ -35,9 +35,7 @@ import {
   Users,
   LayoutGrid,
   List,
-  Bell,
   Plus,
-  ArrowLeft,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
@@ -118,28 +116,6 @@ export default function SchoolSupportDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <header className="bg-white dark:bg-gray-800 shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          {/* <Link href="/">
-        <ChevronLeft className="w-6 h-6 text-gray-600" />
-        </Link> */}
-          <Button
-            onClick={() => router.push("/")}
-            size="icon"
-            variant="outline"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="sr-only">Back</span>
-          </Button>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white ml-2">
-            SSD
-          </h1>
-          <Button variant="ghost" size="icon">
-            <Bell className="h-5 w-5" />
-            <span className="sr-only">Notifications</span>
-          </Button>
-        </div>
-      </header>
       <main className="container mx-auto px-4 py-8">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
           <Card className="bg-white dark:bg-gray-800">

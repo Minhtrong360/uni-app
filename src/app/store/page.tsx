@@ -7,28 +7,14 @@ import {
   ShoppingCart,
   Clock,
   MapPin,
-  Search,
-  Menu,
   X,
-  Home,
-  Calendar,
-  HeartHandshake,
-  Rocket,
-  Store,
   History,
   Plus,
 } from "lucide-react";
 import { useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input";
 
 export default function Stores() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -78,75 +64,7 @@ export default function Stores() {
 
   return (
     <div className="flex flex-col h-screen">
-      <header className="bg-white shadow-md p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center">
-            {/* <Menu className="w-6 h-6 mr-4 cursor-pointer" /> */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Menu">
-                  <Menu className="w-6 h-6" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
-                <DropdownMenuItem onClick={() => router.push("/")}>
-                  <Home className="mr-2 h-4 w-4" />
-                  <span>Home</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => router.push("/store")}>
-                  <Store className="mr-2 h-4 w-4" />
-                  <span>Store</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => router.push("/events")}>
-                  <Calendar className="mr-2 h-4 w-4" />
-                  <span>Events</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => router.push("/support/dashboard")}
-                >
-                  <HeartHandshake className="mr-2 h-4 w-4" />
-                  <span>Student Support</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => router.push("/academic")}>
-                  <Rocket className="mr-2 h-4 w-4" />
-                  <span>Startup Projects</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <h1 className="text-2xl font-bold">Store</h1>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="relative hidden sm:block">
-              <Input
-                type="text"
-                placeholder="Search..."
-                className="pl-10 pr-4 py-2  border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
-              />
-              <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            </div>
-            {/* <Filter className="w-6 h-6 cursor-pointer" /> */}
-            <Button
-              onClick={() => router.push("/store/addproduct")}
-              className="flex items-center bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-300"
-            >
-              <Plus className="w-5 h-5 mr-2" />
-              Add
-            </Button>
-            <History
-              className="w-6 h-6 cursor-pointer"
-              onClick={() => router.push("/store/history")}
-            />
-            <div className="lg:hidden">
-              <ShoppingCart
-                className="w-6 h-6 cursor-pointer"
-                onClick={() => setIsCartOpen(true)}
-              />
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <nav className="bg-gray-100 p-4">
+      <nav className="bg-gray-100 p-4 flex justify-between">
         <div className="container mx-auto">
           <ul className="flex space-x-4 overflow-x-auto pb-2">
             {["All", "Fast Food", "Healthy", "Pizza", "Asian", "Desserts"].map(
@@ -160,6 +78,25 @@ export default function Stores() {
               ),
             )}
           </ul>
+        </div>
+        <div className=" items-center gap-2 flex">
+          <Button
+            onClick={() => router.push("/store/addproduct")}
+            className="flex items-center bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-300"
+          >
+            <Plus className="w-5 h-5 mr-2" />
+            Add
+          </Button>
+          <History
+            className="w-6 h-6 cursor-pointer"
+            onClick={() => router.push("/store/history")}
+          />
+          <div className="lg:hidden">
+            <ShoppingCart
+              className="w-6 h-6 cursor-pointer"
+              onClick={() => setIsCartOpen(true)}
+            />
+          </div>
         </div>
       </nav>
 

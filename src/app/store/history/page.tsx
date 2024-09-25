@@ -1,6 +1,6 @@
 // https://v0.dev/chat/2g-W7bCeDmV
 "use client";
-import { ArrowLeft, Search } from "lucide-react";
+import { Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,30 +26,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useRouter } from "next/navigation";
 
 export default function OrderHistory() {
-  const router = useRouter();
   return (
     <div className="flex flex-col min-h-screen">
-      {/* <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6">
-        <nav className="flex-1">
-          <Link className="flex items-center gap-2 text-lg font-semibold" href="#">
-            <Package className="w-6 h-6" />
-            <span className="sr-only">Student Store</span>
-          </Link>
-        </nav>
-      </header> */}
       <main className="flex-1 p-4 md:p-6">
         <div className="flex items-center gap-4">
-          <Button
-            onClick={() => router.push("/store")}
-            size="icon"
-            variant="outline"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="sr-only">Back</span>
-          </Button>
           <h1 className="text-lg font-semibold md:text-2xl">Order History</h1>
         </div>
         <div className="mt-4 space-y-4">
