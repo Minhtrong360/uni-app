@@ -49,11 +49,11 @@ export default function Home() {
           <section className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="overflow-hidden rounded-lg bg-secondary p-6">
               <Image
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D"
+                src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/premium/prem9.jpg"
                 alt="Student studying"
                 width={400}
                 height={300}
-                className="mb-4 h-48 w-full rounded-lg object-cover"
+                className="mb-4 h-72 w-full rounded-lg object-cover object-top"
               />
               <h3 className="mb-2 text-xl font-semibold">Study Resources</h3>
               <p className="text-sm text-muted-foreground">
@@ -62,11 +62,11 @@ export default function Home() {
             </div>
             <div className="overflow-hidden rounded-lg bg-secondary p-6">
               <Image
-                src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2FtcHVzfGVufDB8fDB8fHww"
+                src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/premium/prem5.jpg"
                 alt="Campus life"
                 width={400}
                 height={300}
-                className="mb-4 h-48 w-full rounded-lg object-cover"
+                className="mb-4 h-72 w-full rounded-lg object-cover object-top"
               />
               <h3 className="mb-2 text-xl font-semibold">Campus Life</h3>
               <p className="text-sm text-muted-foreground">

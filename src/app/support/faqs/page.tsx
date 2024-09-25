@@ -208,7 +208,7 @@ export default function StudentSupportFAQs() {
 
       {/* Chat Interface */}
       {isChatOpen && (
-        <div className="fixed bottom-4 right-4 flex h-96 w-80 flex-col rounded-lg bg-background shadow-xl">
+        <div className="fixed bottom-4 right-4 z-50 flex h-96 w-80 flex-col rounded-lg bg-background bg-white shadow-xl">
           <div className="flex items-center justify-between rounded-t-lg bg-primary p-4 text-primary-foreground">
             <h2 className="font-bold">Chat with AI Support</h2>
             <Button

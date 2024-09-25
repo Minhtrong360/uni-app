@@ -102,11 +102,11 @@ export default function Stores() {
 
       <main className="flex-grow overflow-hidden">
         <div className="container mx-auto flex h-full flex-col p-4 lg:flex-row">
-          <div className="w-full overflow-y-auto px-0 lg:w-2/3 lg:px-4">
+          <div className="w-full overflow-y-auto px-0 lg:w-3/4 lg:px-4">
             <h2 className="mb-4 text-2xl font-semibold">
               Featured Restaurants
             </h2>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-4">
               {restaurants.map((restaurant, index) => (
                 <div
                   key={index}
@@ -163,7 +163,7 @@ export default function Stores() {
           </div>
 
           <div
-            className={`fixed inset-y-0 right-0 mt-4 w-full transform overflow-y-auto lg:mt-0 lg:w-1/3 lg:pl-4 ${isCartOpen ? "translate-x-0" : "translate-x-full"} z-50 bg-white transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:bg-transparent`}
+            className={`fixed inset-y-0 right-0 mt-4 w-full transform overflow-y-auto lg:mt-0 lg:w-1/4 lg:pl-4 ${isCartOpen ? "translate-x-0" : "translate-x-full"} z-50 bg-white transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:bg-transparent`}
           >
             <div className="p-4 lg:p-0">
               <div className="mb-4 flex items-center justify-between lg:hidden">

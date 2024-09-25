@@ -285,26 +285,19 @@ export default function SchoolSupportDashboard() {
                 </Table>
               </div>
             ) : (
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-12 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
                 {supportRequests.map((request) => (
                   <Card
                     key={request.id}
                     className="overflow-hidden bg-white dark:bg-gray-800"
                   >
-                    <div className="relative h-48 w-full">
+                    <div className="relative h-60 w-full">
                       <Image
                         src={`${request.image}`}
                         alt={`Support request for ${request.student}`}
                         layout="fill"
                         objectFit="cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-lg font-semibold text-white">
-                          {request.student}
-                        </h3>
-                        <p className="text-sm text-gray-200">{request.issue}</p>
-                      </div>
                     </div>
                     <CardContent className="pt-4">
                       <div className="mb-2 flex items-center justify-between">
@@ -320,6 +313,12 @@ export default function SchoolSupportDashboard() {
                         >
                           {request.status}
                         </Badge>
+                      </div>
+                      <div className="mb-2 text-sm text-muted-foreground">
+                        <h3 className="text-lg font-semibold">
+                          {request.student}
+                        </h3>
+                        <p className="text-sm">{request.issue}</p>
                       </div>
                       <div className="mb-2 text-sm text-muted-foreground">
                         Priority: {request.priority}
