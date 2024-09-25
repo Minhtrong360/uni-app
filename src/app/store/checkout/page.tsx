@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 
 
 export default function Checkout() {
-  console.log("Trick");
+  console.log("Tricks");
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");
