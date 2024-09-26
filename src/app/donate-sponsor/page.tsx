@@ -1,3 +1,4 @@
+////
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -20,12 +21,21 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
   SearchIcon,
   FilterIcon,
   HeartIcon,
   GraduationCapIcon,
 } from "lucide-react";
-import Image from "next/image";
 
 interface Case {
   id: number;
@@ -89,7 +99,7 @@ const cases: Case[] = [
   },
 ];
 
-export default function OptimizedDonationPage() {
+export default function DonationPageWithForm() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("all");
 
@@ -162,12 +172,10 @@ function CaseGrid({ cases }: { cases: Case[] }) {
           className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg"
         >
           <CardHeader className="p-0">
-            <Image
-              width={1000}
-              height={600}
+            <img
               src={c.image}
               alt={c.title}
-              className="h-48 w-full object-cover object-top"
+              className="h-48 w-full object-cover"
             />
           </CardHeader>
           <CardContent className="flex-grow p-6">
@@ -201,10 +209,62 @@ function CaseGrid({ cases }: { cases: Case[] }) {
               <span>Raised: ${c.raised.toLocaleString()}</span>
               <span>Goal: ${c.goal.toLocaleString()}</span>
             </div>
-            <Button className="w-full">Donate Now</Button>
+            <DonationDialog caseTitle={c.title} />
           </CardFooter>
         </Card>
       ))}
     </div>
+  );
+}
+
+function DonationDialog({ caseTitle }: { caseTitle: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    // Handle form submission logic here
+    setIsOpen(false);
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <Button className="w-full">Donate Now</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Donate to {caseTitle}</DialogTitle>
+          <DialogDescription>
+            Please provide your information so we can contact you about your
+            donation.
+          </DialogDescription>
+        </DialogHeader>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Full Name</Label>
+            <Input id="name" required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" type="email" required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="phone">Phone Number</Label>
+            <Input id="phone" type="tel" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="amount">Donation Amount ($)</Label>
+            <Input id="amount" type="number" min="1" step="1" required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="message">Message (Optional)</Label>
+            <Textarea id="message" />
+          </div>
+          <Button type="submit" className="w-full">
+            Submit Donation
+          </Button>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 }
