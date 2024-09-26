@@ -1,5 +1,6 @@
-// https://v0.dev/chat/MQCaVDbD4dV
+// // https://v0.dev/chat/MQCaVDbD4dV
 
+/////
 "use client";
 import Image from "next/image";
 import {
@@ -21,81 +22,78 @@ export default function Stores() {
   const router = useRouter();
   const restaurants = [
     {
-      name: "Hana Chicken",
-      description: "Fried Chicken",
+      name: "Backpack",
+      description: "Uni backpack",
       time: "15 mins",
       rating: "4.8",
       price: "$15",
-      categories: ["Chicken", "Fast Food"],
+      categories: ["Stationary", "Backpacks"],
       image:
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865010369321_6e39c68276ab32af452ac7dab339ca98.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTAxMDM2OTMyMV82ZTM5YzY4Mjc2YWIzMmFmNDUyYWM3ZGFiMzM5Y2E5OC5qcGciLCJpYXQiOjE3MjcyMzQ5NzgsImV4cCI6MTc1ODc3MDk3OH0.jwOwYDNHfBxIpMC1nXtQ44-03IacmLHjdv0VADQLY3Y&t=2024-09-25T03%3A29%3A38.091Z",
     },
     {
-      name: "Bamsu Restaurant",
-      description: "Chicken, Salad, Sandwich & Hotdogs",
+      name: "Uni Teddy Bear",
+      description: "Uni Teddy Bear",
       time: "20 mins",
       rating: "4.1",
       price: "$12",
-      categories: ["Salad", "Sandwich"],
+      categories: ["Accessories", "Teddies"],
       image:
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054859372_c14afc6aabe5cfc15e6569d1f728a09d.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg1OTM3Ml9jMTRhZmM2YWFiZTVjZmMxNWU2NTY5ZDFmNzI4YTA5ZC5qcGciLCJpYXQiOjE3MjcyMzU3NjEsImV4cCI6MTc1ODc3MTc2MX0.0Qtvby5KbZ3YSU_DTqpwuH9UeSoa_vVbE31A7UbobcY&t=2024-09-25T03%3A42%3A40.346Z",
     },
     {
-      name: "Neighbor Milk",
-      description: "Dairy Drinks & Smoothies",
+      name: "Hat",
+      description: "Uni Hat",
       time: "35 mins",
       rating: "4.1",
       price: "$8",
-      categories: ["Drinks", "Smoothies"],
+      categories: ["Accessories", "Hats"],
       image:
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865010377332_67de09c49a656cf7934f806d3a1f0944.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTAxMDM3NzMzMl82N2RlMDljNDlhNjU2Y2Y3OTM0ZjgwNmQzYTFmMDk0NC5qcGciLCJpYXQiOjE3MjcyMzU0ODgsImV4cCI6MTc1ODc3MTQ4OH0.vj0nJ3xYthww83gFDJ22-G-qALDdgvCSifC5QsQg0Dk&t=2024-09-25T03%3A38%3A07.625Z",
     },
     {
-      name: "Pizza Palace",
-      description: "Authentic Italian Pizza",
+      name: "Canvas Bag",
+      description: "Uni Canvas Bag",
       time: "25 mins",
       rating: "4.5",
       price: "$18",
-      categories: ["Pizza", "Italian"],
+      categories: ["Accessories", "Bags"],
       image:
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054842124_c884f5bfba90e1b2689d5975c8415b2f.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg0MjEyNF9jODg0ZjViZmJhOTBlMWIyNjg5ZDU5NzVjODQxNWIyZi5qcGciLCJpYXQiOjE3MjcyMzU3MDMsImV4cCI6MTc1ODc3MTcwM30.tffeeAenwLFMelppXbVnoc3F0ELqNzKqcvLGnpeeHFc&t=2024-09-25T03%3A41%3A42.624Z",
     },
+  ];
+
+  const categories = [
+    "All",
+    "Fast Food",
+    "Healthy",
+    "Pizza",
+    "Asian",
+    "Desserts",
   ];
 
   return (
     <div className="flex h-screen flex-col">
       <nav className="flex justify-between bg-gray-100 p-4">
         <div className="container mx-auto">
-          <ul className="flex space-x-4 overflow-x-auto pb-2">
-            {["All", "Fast Food", "Healthy", "Pizza", "Asian", "Desserts"].map(
-              (category, index) => (
-                <li
-                  key={index}
-                  className="cursor-pointer whitespace-nowrap rounded px-4 py-2 hover:bg-gray-200"
-                >
-                  {category}
-                </li>
-              ),
-            )}
-          </ul>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button
-            onClick={() => router.push("/store/addproduct")}
-            className="flex items-center rounded-md bg-black px-4 py-2 text-white transition duration-300 hover:bg-gray-800"
-          >
-            <Plus className="mr-2 h-5 w-5" />
-            Add
-          </Button>
-          <History
-            className="h-6 w-6 cursor-pointer"
-            onClick={() => router.push("/store/history")}
-          />
-          <div className="lg:hidden">
-            <ShoppingCart
+          <div className="flex items-center justify-end gap-2">
+            <Button
+              onClick={() => router.push("/store/addproduct")}
+              className="flex items-center rounded-md bg-black px-4 py-2 text-white transition duration-300 hover:bg-gray-800"
+            >
+              <Plus className="mr-2 h-5 w-5" />
+              Add
+            </Button>
+            <History
               className="h-6 w-6 cursor-pointer"
-              onClick={() => setIsCartOpen(true)}
+              onClick={() => router.push("/store/history")}
             />
+            <div className="lg:hidden">
+              <ShoppingCart
+                className="h-6 w-6 cursor-pointer"
+                onClick={() => setIsCartOpen(true)}
+              />
+            </div>
           </div>
         </div>
       </nav>
@@ -106,11 +104,22 @@ export default function Stores() {
             <h2 className="mb-4 text-2xl font-semibold">
               Featured Restaurants
             </h2>
+
+            {/* Categories Checkbox */}
+            <div className="mb-4 flex flex-wrap gap-4">
+              {categories.map((category, index) => (
+                <label key={index} className="flex items-center">
+                  <input type="checkbox" className="mr-2" />
+                  {category}
+                </label>
+              ))}
+            </div>
+
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               {restaurants.map((restaurant, index) => (
                 <div
                   key={index}
-                  className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md"
+                  className="flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
                 >
                   <Image
                     src={`${restaurant.image}?height=200&width=400`}
@@ -178,14 +187,14 @@ export default function Stores() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <Image
-                        src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054842124_c884f5bfba90e1b2689d5975c8415b2f.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg0MjEyNF9jODg0ZjViZmJhOTBlMWIyNjg5ZDU5NzVjODQxNWIyZi5qcGciLCJpYXQiOjE3MjcyMzU3MDMsImV4cCI6MTc1ODc3MTcwM30.tffeeAenwLFMelppXbVnoc3F0ELqNzKqcvLGnpeeHFc&t=2024-09-25T03%3A41%3A42.624Z?height=50&width=50"
+                        src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054842124_c884f5bfba90e1b2689d5975c8415b2f.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg0MjEyNF9jODg0ZjViZmJhOTBlMWIyNjg5ZDU5NzVjODQxNWIyZi5qcGciLCJpYXQiOjE3MjcyMzU3MDMsImV4cCI6MTc1ODc3MTcwM30.tffeeAenwLFMelppXbVnoc3F0ELqNzKqcvLGnpeeHFc&t=2024-09-25T03%3A41%3A42.624Z"
                         alt="Food item"
                         width={50}
                         height={50}
                         className="mr-3 rounded-md"
                       />
                       <div>
-                        <h3 className="font-semibold">Chicken Burger</h3>
+                        <h3 className="font-semibold">Canvas Bag</h3>
                         <p className="text-sm text-gray-500">x1</p>
                       </div>
                     </div>
@@ -201,7 +210,7 @@ export default function Stores() {
                         className="mr-3 rounded-md"
                       />
                       <div>
-                        <h3 className="font-semibold">French Fries</h3>
+                        <h3 className="font-semibold">Uni Teddy Bear</h3>
                         <p className="text-sm text-gray-500">x1</p>
                       </div>
                     </div>

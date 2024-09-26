@@ -274,13 +274,13 @@ export default function Checkout() {
                   <div className="flex items-center">
                     <Image
                       src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/store/z5865010369321_6e39c68276ab32af452ac7dab339ca98.jpg"
-                      alt="Chicken Burger"
+                      alt="Canvas Bag"
                       width={3000}
                       height={4500}
                       className="mr-4 max-h-[64px] max-w-[64px] rounded-md object-cover"
                     />
                     <div>
-                      <h3 className="font-semibold">Chicken Burger</h3>
+                      <h3 className="font-semibold">Uni Backpack</h3>
                       <p className="text-sm text-gray-500">Quantity: 1</p>
                     </div>
                   </div>
@@ -290,13 +290,13 @@ export default function Checkout() {
                   <div className="flex items-center">
                     <Image
                       src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/store/z5865010377332_67de09c49a656cf7934f806d3a1f0944.jpg"
-                      alt="French Fries"
+                      alt="Uni Teddy Bear"
                       width={3000}
                       height={4500}
                       className="mr-4 max-h-[64px] max-w-[64px] rounded-md object-cover"
                     />
                     <div>
-                      <h3 className="font-semibold">French Fries</h3>
+                      <h3 className="font-semibold">Uni Hat</h3>
                       <p className="text-sm text-gray-500">Quantity: 1</p>
                     </div>
                   </div>

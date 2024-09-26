@@ -16,6 +16,9 @@ import {
   CircleGauge,
   TicketCheck,
   CalendarPlus2,
+  DollarSign,
+  BriefcaseBusiness,
+  HelpCircleIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -150,6 +153,38 @@ export default function Home() {
                   </p>
                 </div>
               </Link>
+              <Link href="/donate-sponsor">
+                <div className="rounded-lg bg-secondary p-6">
+                  <DollarSign size={24} className="mb-4 h-10 w-10" />
+                  <h3 className="text-xl font-semibold">Donate & Sponsor</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Support our initiatives
+                  </p>
+                </div>
+              </Link>
+
+              <Link href="/">
+                <div className="rounded-lg bg-secondary p-6">
+                  <BriefcaseBusiness size={24} className="mb-4 h-10 w-10" />
+                  <h3 className="text-xl font-semibold">Job Connect</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Support our initiatives
+                  </p>
+                </div>
+              </Link>
+
+              <Link href="/">
+                <div className="rounded-lg bg-secondary p-6">
+                  <HelpCircleIcon size={24} className="mb-4 h-10 w-10" />
+                  <h3 className="text-xl font-semibold">
+                    Community Help & Share
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Support our initiatives
+                  </p>
+                </div>
+              </Link>
+
               {/* <div className="bg-secondary p-6 rounded-lg">
 								<Dumbbell className="w-10 h-10 mb-4" />
 								<h3 className="text-xl font-semibold mb-2">Fitness Center</h3>
