@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { StarIcon } from "lucide-react";
+import { message } from "antd";
 
 const aspects = [
   { name: "Content Quality", id: "content" },
@@ -32,7 +33,9 @@ const aspects = [
 export default function Feedback() {
   const [ratings, setRatings] = useState<Record<string, number>>({});
   const [submitted, setSubmitted] = useState(false);
-
+  const handleClick = () => {
+    message.success("Feedback has been submit successfully!");
+  };
   const handleRating = (aspect: string, rating: number) => {
     setRatings((prev) => ({ ...prev, [aspect]: rating }));
   };
@@ -168,7 +171,7 @@ export default function Feedback() {
               </SelectContent>
             </Select>
           </div>
-          <Button type="submit" className="w-full">
+          <Button onClick={handleClick} type="submit" className="w-full">
             Submit
           </Button>
         </form>

@@ -24,7 +24,7 @@ import { useRouter } from "next/navigation";
 function PendingTasks() {
   return (
     <Card className="w-full shadow-lg">
-      <CardHeader className="bg-white text-black">
+      <CardHeader className="rounded-xl bg-white text-black">
         <CardTitle className="text-xl sm:text-2xl">Pending Tasks</CardTitle>
         <CardDescription className="text-gray-600">
           Your upcoming tasks and their status
@@ -111,7 +111,7 @@ export default function Reply() {
         <div className="flex flex-col gap-4 pb-4 sm:flex-row">
           <div className="flex-1">
             <Card className="w-full shadow-lg">
-              <CardHeader className="bg-white text-black">
+              <CardHeader className="rounded-xl bg-white text-black">
                 <CardTitle className="text-xl sm:text-2xl">
                   Reply to Issue
                 </CardTitle>

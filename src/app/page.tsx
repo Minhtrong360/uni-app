@@ -26,11 +26,13 @@ export default function Home() {
   return (
     <div className="relative mx-auto -mt-[64px] bg-background">
       <div
-        className="relative mb-8 bg-cover bg-center px-6 py-20 text-white"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D')",
-        }}
+        className="relative mb-8 bg-black bg-cover bg-center px-6 py-20 text-white"
+        style={
+          {
+            // backgroundImage:
+            //   "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D')",
+          }
+        }
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="container relative z-10 mx-auto flex items-end justify-between">
@@ -85,7 +87,7 @@ export default function Home() {
               <Button variant="link">See all</Button>
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <Link href="/support/dashboard">
+              <Link href="/support">
                 <div className="rounded-lg bg-secondary p-6">
                   <HeartHandshake className="mb-4 h-10 w-10" />
                   <h3 className="mb-2 text-xl font-semibold">

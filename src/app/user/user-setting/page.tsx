@@ -21,11 +21,11 @@ export default function UserSetting() {
         </div>
         <div className="relative mb-6">
           <Image
-            width={100}
-            height={100}
-            src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=100&width=100"
+            width={3000}
+            height={4500}
+            src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/photo-1494790108377-be9c29b29330.jpg?t=2024-09-26T03%3A25%3A23.636Z"
             alt="Profile"
-            className="mx-auto h-24 w-24 rounded-full"
+            className="mx-auto h-24 w-24 rounded-full object-cover"
           />
           <div className="absolute bottom-0 right-1/3 rounded-full bg-black p-2">
             <PenSquare className="h-4 w-4 text-white" />

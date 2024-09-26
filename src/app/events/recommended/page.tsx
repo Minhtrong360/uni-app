@@ -79,7 +79,7 @@ export default function Component() {
   //   }
 
   return (
-    <Card className="mx-auto w-full max-w-4xl">
+    <Card className="mx-auto w-full max-w-4xl md:mb-4 md:mt-4">
       <CardHeader>
         <CardTitle>Recommended Events</CardTitle>
         <CardDescription>

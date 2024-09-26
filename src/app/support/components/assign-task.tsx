@@ -21,8 +21,12 @@ import {
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Image from "next/image";
+import { message } from "antd";
 
 export default function AssignTask() {
+  const handleClick = () => {
+    message.success("Task has been assigned successfully!");
+  };
   return (
     <Card className="mx-auto w-full max-w-3xl">
       <CardHeader>
@@ -114,11 +118,11 @@ export default function AssignTask() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <Image
-                    width={40}
-                    height={40}
-                    src="/placeholder.svg?height=40&width=40"
+                    width={3000}
+                    height={3000}
+                    src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_3.jpg"
                     alt="Attached image thumbnail"
-                    className="h-10 w-10 rounded"
+                    className="h-10 w-10 rounded object-cover"
                   />
                   <span className="text-sm font-medium">
                     error_screenshot.png
@@ -157,7 +161,7 @@ export default function AssignTask() {
               </div>
             </RadioGroup>
           </div>
-          <Button className="w-full" type="submit">
+          <Button onClick={handleClick} className="w-full" type="submit">
             Assign Task
           </Button>
         </form>

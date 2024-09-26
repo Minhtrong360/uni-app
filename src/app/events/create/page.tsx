@@ -334,9 +334,9 @@ export default function AdminEventCreation() {
             <Card className="overflow-hidden">
               <div className="relative h-48">
                 <Image
-                  height={200}
-                  width={400}
-                  src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=200&width=400"
+                  height={3000}
+                  width={4500}
+                  src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/event/z5865151942366_c7dfbb24e5155a800c488d602bfb787b.jpg"
                   alt="Event preview"
                   className="h-full w-full object-cover"
                 />

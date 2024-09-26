@@ -64,7 +64,7 @@ export default function Checkout() {
                 <h3 className="mb-2 text-sm font-medium text-gray-700">
                   Payment Method
                 </h3>
-                <div className="flex space-x-4">
+                {/* <div className="flex space-x-4">
                   <button
                     className={`flex items-center justify-center rounded-md border px-4 py-2 ${
                       paymentMethod === "credit"
@@ -97,6 +97,42 @@ export default function Checkout() {
                   >
                     <Apple className="mr-2" />
                     <span>Apple Pay</span>
+                  </button>
+                </div> */}
+                <div className="flex space-x-4 overflow-x-auto pb-2">
+                  <button
+                    className={`flex min-w-[120px] items-center justify-center rounded-md border px-4 py-2 ${
+                      paymentMethod === "credit"
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-300"
+                    }`}
+                    onClick={() => setPaymentMethod("credit")}
+                  >
+                    <CreditCard className="mr-2" />
+                    <span>Card</span>
+                  </button>
+                  <button
+                    className={`flex min-w-[120px] items-center justify-center rounded-md border px-4 py-2 ${
+                      paymentMethod === "ideal"
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-300"
+                    }`}
+                    onClick={() => setPaymentMethod("ideal")}
+                  >
+                    <Apple className="mr-2" />
+                    <span>Apple</span>
+                  </button>
+
+                  <button
+                    className={`flex min-w-[120px] items-center justify-center rounded-md border px-4 py-2 ${
+                      paymentMethod === "paypal"
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-300"
+                    }`}
+                    onClick={() => setPaymentMethod("paypal")}
+                  >
+                    <CircleDollarSign className="mr-2" />
+                    <span>PayPal</span>
                   </button>
                 </div>
               </div>
@@ -177,11 +213,10 @@ export default function Checkout() {
               {paymentMethod === "paypal" && (
                 <div className="py-4 text-center">
                   <p className="mb-4 text-gray-600">
-                    You will be redirected to PayPal to complete your
-                    payment.git
+                    You will be redirected to PayPal to complete your payment
                   </p>
                   <Image
-                    src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150"
+                    src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/store/qrcode.png"
                     alt="PayPal"
                     width={150}
                     height={40}
@@ -238,11 +273,11 @@ export default function Checkout() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Image
-                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=64&width=64"
+                      src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/store/z5865010369321_6e39c68276ab32af452ac7dab339ca98.jpg"
                       alt="Chicken Burger"
-                      width={64}
-                      height={64}
-                      className="mr-4 rounded-md"
+                      width={3000}
+                      height={4500}
+                      className="mr-4 max-h-[64px] max-w-[64px] rounded-md object-cover"
                     />
                     <div>
                       <h3 className="font-semibold">Chicken Burger</h3>
@@ -254,11 +289,11 @@ export default function Checkout() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Image
-                      src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=64&width=64"
+                      src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/store/z5865010377332_67de09c49a656cf7934f806d3a1f0944.jpg"
                       alt="French Fries"
-                      width={64}
-                      height={64}
-                      className="mr-4 rounded-md"
+                      width={3000}
+                      height={4500}
+                      className="mr-4 max-h-[64px] max-w-[64px] rounded-md object-cover"
                     />
                     <div>
                       <h3 className="font-semibold">French Fries</h3>

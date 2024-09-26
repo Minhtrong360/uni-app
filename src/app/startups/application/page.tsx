@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
+import { message } from "antd";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ACCEPTED_IMAGE_TYPES = [
@@ -176,7 +177,9 @@ const formSchema = z.object({
 export default function StartupContestForm() {
   const [phase, setPhase] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const handleClick = () => {
+    message.success("Application has been submitted successfully!");
+  };
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -231,7 +234,7 @@ export default function StartupContestForm() {
   };
 
   return (
-    <Card className="mx-auto w-full max-w-4xl">
+    <Card className="mx-auto w-full max-w-4xl md:mb-8 md:mt-4">
       <CardHeader>
         <CardTitle>Startup Contest Submission Form</CardTitle>
         <CardDescription>
@@ -764,7 +767,11 @@ export default function StartupContestForm() {
                   Next
                 </Button>
               ) : (
-                <Button type="submit" disabled={isSubmitting}>
+                <Button
+                  onClick={handleClick}
+                  type="submit"
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? "Submitting..." : "Submit Application"}
                 </Button>
               )}

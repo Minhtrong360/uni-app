@@ -47,6 +47,7 @@ import {
   Search,
 } from "lucide-react";
 import Image from "next/image";
+import { message } from "antd";
 
 export default function Component() {
   const [viewMode, setViewMode] = React.useState<"table" | "card">("card");
@@ -57,7 +58,9 @@ export default function Component() {
   const [selectedProjectTypeFilter, setSelectedProjectTypeFilter] =
     React.useState("All");
   const [selectedTagFilter, setSelectedTagFilter] = React.useState("All");
-
+  const handleClick = () => {
+    message.success("New project has been added successfully!");
+  };
   const projectTypes = [
     {
       name: "Academic Papers",
@@ -493,7 +496,9 @@ export default function Component() {
                           </Select>
                         </div>
                         {renderForm()}
-                        <Button type="submit">Save</Button>
+                        <Button onClick={handleClick} type="submit">
+                          Save
+                        </Button>
                       </form>
                     </ScrollArea>
                   </DialogContent>

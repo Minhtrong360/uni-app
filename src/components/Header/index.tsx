@@ -41,7 +41,7 @@ export default function Header() {
     { href: "/store", icon: Store, label: "Store" },
     { href: "/events", icon: Calendar, label: "Events" },
     {
-      href: "/support/dashboard",
+      href: "/support",
       icon: HeartHandshake,
       label: "Student Support",
     },
@@ -155,10 +155,10 @@ export default function Header() {
             <Link href="/user/user-setting">
               <div className="h-10 w-10 overflow-hidden rounded-full">
                 <Image
-                  src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/3d-illustration-person-with-sunglasses_23-2149436188%20(1).avif?t=2024-09-25T06%3A08%3A19.358Z"
+                  src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/photo-1494790108377-be9c29b29330.jpg?t=2024-09-26T03%3A25%3A23.636Z"
                   alt="Profile"
-                  width={40}
-                  height={40}
+                  width={3000}
+                  height={4500}
                   className="object-cover"
                 />
               </div>

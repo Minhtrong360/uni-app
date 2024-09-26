@@ -47,7 +47,7 @@ export default function StudentEventBooking() {
     currentAttendees: 350,
     tags: ["Career", "Education", "Networking"],
     imageUrl:
-      "https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=300&width=500&text=University+Fair",
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/event/z5865151942366_c7dfbb24e5155a800c488d602bfb787b.jpg",
   };
 
   return (
@@ -63,6 +63,7 @@ export default function StudentEventBooking() {
           <Card className="overflow-hidden">
             <div className="relative h-48 md:h-64">
               <Image
+                className="object-cover"
                 src={eventData.imageUrl}
                 alt={eventData.name}
                 layout="fill"

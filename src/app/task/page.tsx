@@ -81,7 +81,8 @@ export default function GroupTaskManagement() {
           completed: true,
           tags: ["survey", "customer feedback"],
           fileType: "document",
-          image: "/placeholder_image.jpg",
+          image:
+            "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/tasks/audit-graphics.png?t=2024-09-26T04%3A39%3A08.036Z.jpg",
         },
         {
           id: "task2",
@@ -92,7 +93,8 @@ export default function GroupTaskManagement() {
           completed: false,
           tags: ["competition", "analysis"],
           fileType: "document",
-          image: "/placeholder_image.jpg",
+          image:
+            "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/tasks/Screenshot%202024-09-26%20114915.png",
         },
       ],
     },
@@ -110,7 +112,8 @@ export default function GroupTaskManagement() {
           completed: true,
           tags: ["finance", "quarterly report"],
           fileType: "document",
-          image: "/placeholder_image.jpg",
+          image:
+            "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/tasks/Screenshot%202024-09-26%20121036.png",
         },
       ],
     },
@@ -129,7 +132,8 @@ export default function GroupTaskManagement() {
           completed: true,
           tags: ["design", "brochure"],
           fileType: "image",
-          image: "/placeholder_image.jpg",
+          image:
+            "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/tasks/Screenshot%202024-09-26%20121057.png",
         },
       ],
     },
@@ -146,7 +150,8 @@ export default function GroupTaskManagement() {
     completed: false,
     tags: [],
     fileType: "document",
-    image: "/placeholder_image.jpg",
+    image:
+      "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/tasks/audit-graphics.png?t=2024-09-26T04%3A39%3A08.036Z.jpg",
   });
   const [newGroup, setNewGroup] = useState({ title: "" });
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
@@ -177,7 +182,8 @@ export default function GroupTaskManagement() {
         completed: false,
         tags: [],
         fileType: "document",
-        image: "/placeholder_image.jpg",
+        image:
+          "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/tasks/audit-graphics.png?t=2024-09-26T04%3A39%3A08.036Z.jpg",
       });
       setIsAddingTask(false);
       setAddingTaskToSection(null);
@@ -411,8 +417,8 @@ export default function GroupTaskManagement() {
                                     </div>
                                     {task.image && (
                                       <Image
-                                        width={200}
-                                        height={128}
+                                        width={1056}
+                                        height={264}
                                         src={task.image}
                                         alt={task.title}
                                         className="mb-2 h-32 w-full rounded-md object-cover"
@@ -678,8 +684,8 @@ export default function GroupTaskManagement() {
                     </div>
                     {task.image && (
                       <Image
-                        width={200}
-                        height={128}
+                        width={1056}
+                        height={264}
                         src={task.image}
                         alt={task.title}
                         className="mb-4 h-32 w-full rounded-md object-cover"
@@ -725,8 +731,8 @@ export default function GroupTaskManagement() {
           <div className="grid gap-4 py-4">
             {selectedTask?.image && (
               <Image
-                width={200}
-                height={128}
+                width={1056}
+                height={264}
                 src={selectedTask.image}
                 alt={selectedTask.title}
                 className="h-48 w-full rounded-md object-cover"

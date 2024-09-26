@@ -78,7 +78,7 @@ export default function Component() {
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <HeartHandshake
-                    onClick={() => router.push("/support/dashboard")}
+                    onClick={() => router.push("/support")}
                     className="mr-2 h-4 w-4"
                   />
                   <span>Student Support</span>

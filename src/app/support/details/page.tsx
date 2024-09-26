@@ -32,7 +32,7 @@ export default function StudentSupportCenter() {
       <header className="mb-8 flex flex-col items-start justify-between space-y-4 md:flex-row md:items-center md:space-y-0">
         <div className="flex items-center space-x-4">
           <Button
-            onClick={() => router.push("/support/dashboard")}
+            onClick={() => router.push("/support")}
             size="icon"
             variant="outline"
           >
@@ -81,7 +81,7 @@ export default function StudentSupportCenter() {
               <Dialog open={isImageOpen} onOpenChange={setIsImageOpen}>
                 <DialogTrigger asChild>
                   <Image
-                    src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg"
+                    src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_1.jpg"
                     alt="Supportive image"
                     width={600}
                     height={400}
@@ -90,7 +90,7 @@ export default function StudentSupportCenter() {
                 </DialogTrigger>
                 <DialogContent className="max-w-3xl">
                   <Image
-                    src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg"
+                    src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_1.jpg"
                     alt="Supportive image"
                     width={1200}
                     height={800}
