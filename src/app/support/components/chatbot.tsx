@@ -71,7 +71,7 @@ const Chatbot = () => {
           footer: {
             textColor: "#303235",
             text: "Powered by",
-            company: "Beekrowd",
+            company: "BeeKrowd",
             companyLink: "https://beekrowd.com",
           },
         },

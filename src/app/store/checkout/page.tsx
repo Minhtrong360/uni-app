@@ -118,7 +118,7 @@ export default function Checkout() {
                         ? "border-blue-500 bg-blue-50"
                         : "border-gray-300"
                     }`}
-                    onClick={() => setPaymentMethod("ideal")}
+                    onClick={() => setPaymentMethod("apple")}
                   >
                     <Apple className="mr-2" />
                     <span>Apple</span>
@@ -231,7 +231,7 @@ export default function Checkout() {
                     Complete your payment with Apple Pay.
                   </p>
 
-                  <QrCode className="mx-auto" />
+                  <QrCode className="mx-auto h-32 w-32" />
                 </div>
               )}
               <Button
@@ -332,7 +332,7 @@ export default function Checkout() {
       </main>
       <footer className="border-t border-gray-200 bg-white py-4">
         <div className="mx-auto max-w-7xl px-4 text-center text-sm text-gray-500 sm:px-6 lg:px-8">
-          &copy; 2024 Beekrowd. All rights reserved.
+          &copy; 2024 BeeKrowd. All rights reserved.
         </div>
       </footer>
     </div>

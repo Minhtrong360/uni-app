@@ -276,15 +276,7 @@ export default function Home() {
                   <Rocket className="mr-2 h-4 w-4" /> Academic
                 </Button>
               </Link>
-              <Link href="/support/faqs">
-                <Button
-                  onClick={() => router.push(`/support/faqs`)}
-                  variant="ghost"
-                  className="w-full items-center justify-start"
-                >
-                  <HelpCircle className="mr-2 h-4 w-4" /> FAQs
-                </Button>
-              </Link>
+
               <Link href="/forum">
                 <Button
                   onClick={() => router.push(`/forum`)}
@@ -292,6 +284,36 @@ export default function Home() {
                   className="w-full items-center justify-start"
                 >
                   <MessagesSquare className="mr-2 h-4 w-4" /> Forum
+                </Button>
+              </Link>
+
+              <Link href="/job-connect">
+                <Button
+                  onClick={() => router.push(`/job-connect`)}
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <BriefcaseBusiness className="mr-2 h-4 w-4" /> Job Connect
+                </Button>
+              </Link>
+
+              <Link href="/donate-sponsor">
+                <Button
+                  onClick={() => router.push(`/donate-sponsor`)}
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <DollarSign className="mr-2 h-4 w-4" /> Donate & Sponsor
+                </Button>
+              </Link>
+
+              <Link href="/support/faqs">
+                <Button
+                  onClick={() => router.push(`/support/faqs`)}
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <HelpCircle className="mr-2 h-4 w-4" /> FAQs
                 </Button>
               </Link>
             </nav>
