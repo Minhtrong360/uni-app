@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Mail, Lock, Eye } from "lucide-react";
+import { Mail, Lock, Eye, Facebook, Linkedin, QrCode } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -64,28 +64,31 @@ export default function LoginComponent({
       </div>
       <div className="flex justify-center space-x-4">
         <Button variant="outline" className="rounded-full p-2">
-          <Image
+          {/* <Image
             src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=24&width=24"
             alt="Google"
             width={24}
             height={24}
-          />
+          /> */}
+          <Linkedin />
         </Button>
         <Button variant="outline" className="rounded-full p-2">
-          <Image
+          {/* <Image
             src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=24&width=24"
             alt="Facebook"
             width={24}
             height={24}
-          />
+          /> */}
+          <Facebook />
         </Button>
         <Button variant="outline" className="rounded-full p-2">
-          <Image
+          {/* <Image
             src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=24&width=24"
             alt="Apple"
             width={24}
             height={24}
-          />
+          /> */}
+          <QrCode />
         </Button>
       </div>
     </>

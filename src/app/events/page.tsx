@@ -117,9 +117,9 @@ export default function Component() {
                   <Image
                     // src={`https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=200&width=400&text=Event+${i}`}
                     // src={`${eventImage}?height=200&width=400`}
-                    src={`${eventImage[i - 1].image}?height=200&width=400`}
+                    src={`${eventImage[i - 1].image}`}
                     alt={`Featured Event ${i}`}
-                    width={540}
+                    width={640}
                     height={540}
                     className="max-h-[400px] w-full rounded-t-lg object-cover object-top"
                   />

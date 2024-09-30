@@ -23,10 +23,10 @@ import {
   Building,
   Users,
   HelpCircle,
-  MessageCircle,
   X,
   Send,
 } from "lucide-react";
+import Chatbot from "../components/chatbot";
 
 const faqCategories = [
   {
@@ -124,6 +124,7 @@ export default function StudentSupportFAQs() {
 
   return (
     <div className="min-h-screen bg-background px-4 py-12 sm:px-6 lg:px-8">
+      <Chatbot />
       <div className="mx-auto max-w-3xl">
         <h1 className="mb-8 text-center text-4xl font-bold text-foreground">
           Student Support FAQs
@@ -199,12 +200,12 @@ export default function StudentSupportFAQs() {
       </div>
 
       {/* Chatbot Icon */}
-      <Button
+      {/* <Button
         className="fixed bottom-4 right-4 h-12 w-12 rounded-full p-0 shadow-lg"
         onClick={() => setIsChatOpen(true)}
       >
         <MessageCircle className="h-6 w-6" />
-      </Button>
+      </Button> */}
 
       {/* Chat Interface */}
       {isChatOpen && (

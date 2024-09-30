@@ -23,10 +23,12 @@ export default function AuthContainer() {
         <div className="flex flex-col items-center space-y-2">
           <div className="relative h-16 w-16">
             <Image
-              src="https://thumbs.dreamstime.com/b/golden-retriever-puppy-pleading-20447068.jpg?height=64&width=64"
+              src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/auth/Utah_Utes_-_U_logo.svg.png?t=2024-09-30T02%3A37%3A40.664Z"
               alt="Logo"
-              layout="fill"
-              className="rounded-full"
+              // layout="fill"
+              className="max-h-[38px] max-w-[38px] rounded-full object-cover object-center"
+              width={300}
+              height={300}
             />
           </div>
         </div>

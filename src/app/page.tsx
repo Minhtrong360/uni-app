@@ -19,6 +19,7 @@ import {
   DollarSign,
   BriefcaseBusiness,
   HelpCircleIcon,
+  MessagesSquare,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -58,10 +59,10 @@ export default function Home() {
           <section className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="overflow-hidden rounded-lg bg-secondary p-6">
               <Image
-                src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/premium/prem9.jpg"
+                src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/22_USU_No22_UST.jpg"
                 alt="Student studying"
-                width={400}
-                height={300}
+                width={1600}
+                height={900}
                 className="mb-4 h-72 w-full rounded-lg object-cover object-top"
               />
               <h3 className="mb-2 text-xl font-semibold">Study Resources</h3>
@@ -71,10 +72,10 @@ export default function Home() {
             </div>
             <div className="overflow-hidden rounded-lg bg-secondary p-6">
               <Image
-                src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/premium/prem5.jpg"
+                src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/1545822339php3Ddi0O.jpeg?t=2024-09-30T02%3A28%3A00.735Z"
                 alt="Campus life"
-                width={400}
-                height={300}
+                width={600}
+                height={400}
                 className="mb-4 h-72 w-full rounded-lg object-cover object-top"
               />
               <h3 className="mb-2 text-xl font-semibold">Campus Life</h3>
@@ -163,7 +164,7 @@ export default function Home() {
                 </div>
               </Link>
 
-              <Link href="/">
+              <Link href="/job-connect">
                 <div className="rounded-lg bg-secondary p-6">
                   <BriefcaseBusiness size={24} className="mb-4 h-10 w-10" />
                   <h3 className="text-xl font-semibold">Job Connect</h3>
@@ -173,7 +174,7 @@ export default function Home() {
                 </div>
               </Link>
 
-              <Link href="/">
+              <Link href="/forum">
                 <div className="rounded-lg bg-secondary p-6">
                   <HelpCircleIcon size={24} className="mb-4 h-10 w-10" />
                   <h3 className="text-xl font-semibold">
@@ -282,6 +283,15 @@ export default function Home() {
                   className="w-full items-center justify-start"
                 >
                   <HelpCircle className="mr-2 h-4 w-4" /> FAQs
+                </Button>
+              </Link>
+              <Link href="/forum">
+                <Button
+                  onClick={() => router.push(`/forum`)}
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <MessagesSquare className="mr-2 h-4 w-4" /> Forum
                 </Button>
               </Link>
             </nav>

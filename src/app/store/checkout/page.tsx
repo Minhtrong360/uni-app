@@ -12,6 +12,7 @@ import {
   AlertCircle,
   CircleDollarSign,
   Apple,
+  QrCode,
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -229,13 +230,8 @@ export default function Checkout() {
                   <p className="mb-4 text-gray-600">
                     Complete your payment with Apple Pay.
                   </p>
-                  <Image
-                    src="https://thumbs.dreamstime.com/b/group-happy-diverse-college-students-20447068.jpg?height=40&width=150"
-                    alt="Apple Pay"
-                    width={150}
-                    height={40}
-                    className="mx-auto"
-                  />
+
+                  <QrCode className="mx-auto" />
                 </div>
               )}
               <Button
