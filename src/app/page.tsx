@@ -25,7 +25,7 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-  console.log("Trick");
+  console.log("Tricks");
 
   return (
     <div className="relative mx-auto -mt-[64px] bg-background">
