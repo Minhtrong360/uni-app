@@ -36,6 +36,7 @@ import {
   HeartIcon,
   GraduationCapIcon,
 } from "lucide-react";
+import Image from "next/image";
 
 interface Case {
   id: number;
@@ -172,7 +173,7 @@ function CaseGrid({ cases }: { cases: Case[] }) {
           className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg"
         >
           <CardHeader className="p-0">
-            <img
+            <Image
               src={c.image}
               alt={c.title}
               className="h-48 w-full object-cover"

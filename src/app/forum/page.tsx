@@ -94,9 +94,11 @@ export default function Forum() {
               <div className="divide-y">
                 <div className="flex items-center justify-between p-4 hover:bg-accent">
                   <div>
-                    <h4 className="font-medium hover:underline">
-                      Tips for balancing academic and social life?
-                    </h4>
+                    <Link href="/forum/detail">
+                      <h4 className="font-medium hover:underline">
+                        Tips for balancing academic and social life?
+                      </h4>
+                    </Link>
                     <div className="mt-1 flex items-center space-x-2">
                       <Badge variant="secondary">Campus Life</Badge>
                       <span className="text-xs text-muted-foreground">
@@ -115,9 +117,11 @@ export default function Forum() {
                 </div>
                 <div className="flex items-center justify-between p-4 hover:bg-accent">
                   <div>
-                    <h4 className="font-medium hover:underline">
-                      Study group for Advanced Calculus (MATH301)
-                    </h4>
+                    <Link href="/forum/detail">
+                      <h4 className="font-medium hover:underline">
+                        Study group for Advanced Calculus (MATH301)
+                      </h4>
+                    </Link>
                     <div className="mt-1 flex items-center space-x-2">
                       <Badge variant="secondary">Academic Discussions</Badge>
                       <span className="text-xs text-muted-foreground">
@@ -136,9 +140,12 @@ export default function Forum() {
                 </div>
                 <div className="flex items-center justify-between p-4 hover:bg-accent">
                   <div>
-                    <h4 className="font-medium hover:underline">
-                      Upcoming career fair - Companies list and preparation tips
-                    </h4>
+                    <Link href="/forum/detail">
+                      <h4 className="font-medium hover:underline">
+                        Upcoming career fair - Companies list and preparation
+                        tips
+                      </h4>
+                    </Link>
                     <div className="mt-1 flex items-center space-x-2">
                       <Badge variant="secondary">Career Services</Badge>
                       <span className="text-xs text-muted-foreground">
@@ -157,9 +164,11 @@ export default function Forum() {
                 </div>
                 <div className="flex items-center justify-between p-4 hover:bg-accent">
                   <div>
-                    <h4 className="font-medium hover:underline">
-                      Wi-Fi issues in the library - Any solutions?
-                    </h4>
+                    <Link href="/forum/detail">
+                      <h4 className="font-medium hover:underline">
+                        Wi-Fi issues in the library - Any solutions?
+                      </h4>
+                    </Link>
                     <div className="mt-1 flex items-center space-x-2">
                       <Badge variant="secondary">Tech Support</Badge>
                       <span className="text-xs text-muted-foreground">
@@ -178,9 +187,12 @@ export default function Forum() {
                 </div>
                 <div className="flex items-center justify-between p-4 hover:bg-accent">
                   <div>
-                    <h4 className="font-medium hover:underline">
-                      Volunteer opportunities for environmental science students
-                    </h4>
+                    <Link href="/forum/detail">
+                      <h4 className="font-medium hover:underline">
+                        Volunteer opportunities for environmental science
+                        students
+                      </h4>
+                    </Link>
                     <div className="mt-1 flex items-center space-x-2">
                       <Badge variant="secondary">Student Organizations</Badge>
                       <span className="text-xs text-muted-foreground">
