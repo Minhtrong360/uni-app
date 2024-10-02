@@ -1,4 +1,4 @@
-// // https://v0.dev/chat/MQCaVDbD4dV
+// https://v0.dev/chat/MQCaVDbD4dV
 
 /////
 "use client";
@@ -20,44 +20,45 @@ import { useRouter } from "next/navigation";
 export default function Stores() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const router = useRouter();
-  const restaurants = [
+
+  const products = [
     {
-      name: "Backpack",
-      description: "Uni backpack",
-      time: "15 mins",
+      name: "University Backpack",
+      description: "Durable campus backpack",
+      availability: "In stock",
       rating: "4.8",
-      price: "$15",
-      categories: ["Stationary", "Backpacks"],
+      price: "$45",
+      categories: ["Bags", "Essentials"],
       image:
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865010369321_6e39c68276ab32af452ac7dab339ca98.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTAxMDM2OTMyMV82ZTM5YzY4Mjc2YWIzMmFmNDUyYWM3ZGFiMzM5Y2E5OC5qcGciLCJpYXQiOjE3MjcyMzQ5NzgsImV4cCI6MTc1ODc3MDk3OH0.jwOwYDNHfBxIpMC1nXtQ44-03IacmLHjdv0VADQLY3Y&t=2024-09-25T03%3A29%3A38.091Z",
     },
     {
-      name: "Uni Teddy Bear",
-      description: "Uni Teddy Bear",
-      time: "20 mins",
-      rating: "4.1",
-      price: "$12",
-      categories: ["Accessories", "Teddies"],
+      name: "University Mascot Plush",
+      description: "Cuddly university mascot",
+      availability: "Limited stock",
+      rating: "4.9",
+      price: "$25",
+      categories: ["Merchandise", "Gifts"],
       image:
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054859372_c14afc6aabe5cfc15e6569d1f728a09d.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg1OTM3Ml9jMTRhZmM2YWFiZTVjZmMxNWU2NTY5ZDFmNzI4YTA5ZC5qcGciLCJpYXQiOjE3MjcyMzU3NjEsImV4cCI6MTc1ODc3MTc2MX0.0Qtvby5KbZ3YSU_DTqpwuH9UeSoa_vVbE31A7UbobcY&t=2024-09-25T03%3A42%3A40.346Z",
     },
     {
-      name: "Hat",
-      description: "Uni Hat",
-      time: "35 mins",
-      rating: "4.1",
-      price: "$8",
-      categories: ["Accessories", "Hats"],
+      name: "University Baseball Cap",
+      description: "Adjustable university cap",
+      availability: "In stock",
+      rating: "4.7",
+      price: "$22",
+      categories: ["Apparel", "Accessories"],
       image:
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865010377332_67de09c49a656cf7934f806d3a1f0944.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTAxMDM3NzMzMl82N2RlMDljNDlhNjU2Y2Y3OTM0ZjgwNmQzYTFmMDk0NC5qcGciLCJpYXQiOjE3MjcyMzU0ODgsImV4cCI6MTc1ODc3MTQ4OH0.vj0nJ3xYthww83gFDJ22-G-qALDdgvCSifC5QsQg0Dk&t=2024-09-25T03%3A38%3A07.625Z",
     },
     {
-      name: "Canvas Bag",
-      description: "Uni Canvas Bag",
-      time: "25 mins",
-      rating: "4.5",
+      name: "University Tote Bag",
+      description: "Eco-friendly canvas tote",
+      availability: "In stock",
+      rating: "4.6",
       price: "$18",
-      categories: ["Accessories", "Bags"],
+      categories: ["Bags", "Eco-Friendly"],
       image:
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/store/z5865054842124_c884f5bfba90e1b2689d5975c8415b2f.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9zdG9yZS96NTg2NTA1NDg0MjEyNF9jODg0ZjViZmJhOTBlMWIyNjg5ZDU5NzVjODQxNWIyZi5qcGciLCJpYXQiOjE3MjcyMzU3MDMsImV4cCI6MTc1ODc3MTcwM30.tffeeAenwLFMelppXbVnoc3F0ELqNzKqcvLGnpeeHFc&t=2024-09-25T03%3A41%3A42.624Z",
     },
@@ -76,24 +77,28 @@ export default function Stores() {
     <div className="flex h-screen flex-col">
       <nav className="flex justify-between bg-gray-100 p-4">
         <div className="container mx-auto">
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex items-center justify-end gap-4">
             <Button
               onClick={() => router.push("/store/addproduct")}
               className="flex items-center rounded-md bg-black px-4 py-2 text-white transition duration-300 hover:bg-gray-800"
             >
               <Plus className="mr-2 h-5 w-5" />
-              Add
+              Add Product
             </Button>
-            <History
-              className="h-6 w-6 cursor-pointer"
+            <Button
               onClick={() => router.push("/store/history")}
-            />
-            <div className="lg:hidden">
-              <ShoppingCart
-                className="h-6 w-6 cursor-pointer"
-                onClick={() => setIsCartOpen(true)}
-              />
-            </div>
+              className="flex items-center rounded-md bg-gray-200 px-4 py-2 text-gray-800 transition duration-300 hover:bg-gray-300"
+            >
+              <History className="mr-2 h-5 w-5" />
+              History
+            </Button>
+            <Button
+              onClick={() => setIsCartOpen(true)}
+              className="flex items-center rounded-md bg-gray-200 px-4 py-2 text-gray-800 transition duration-300 hover:bg-gray-300"
+            >
+              <ShoppingCart className="mr-2 h-5 w-5" />
+              Cart
+            </Button>
           </div>
         </div>
       </nav>
@@ -101,9 +106,7 @@ export default function Stores() {
       <main className="flex-grow overflow-hidden">
         <div className="container mx-auto flex h-full flex-col p-4 lg:flex-row">
           <div className="w-full overflow-y-auto px-0 lg:w-3/4 lg:px-4">
-            <h2 className="mb-4 text-2xl font-semibold">
-              Featured Restaurants
-            </h2>
+            <h2 className="mb-4 text-2xl font-semibold">Featured products</h2>
 
             {/* Categories Checkbox */}
             <div className="mb-4 flex flex-wrap gap-4">
@@ -116,42 +119,38 @@ export default function Stores() {
             </div>
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-              {restaurants.map((restaurant, index) => (
+              {products.map((products, index) => (
                 <div
                   key={index}
                   className="flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
                 >
                   <Image
-                    src={`${restaurant.image}?height=200&width=400`}
-                    alt={restaurant.name}
+                    src={`${products.image}?height=200&width=400`}
+                    alt={products.name}
                     width={400}
                     height={200}
                     className="w-full object-cover"
                   />
                   <div className="flex-grow p-4">
                     <div className="mb-2 flex items-start justify-between">
-                      <h3 className="text-xl font-semibold">
-                        {restaurant.name}
-                      </h3>
+                      <h3 className="text-xl font-semibold">{products.name}</h3>
                       <span className="text-lg font-semibold text-gray-700">
-                        {restaurant.price}
+                        {products.price}
                       </span>
                     </div>
-                    <p className="mb-2 text-gray-500">
-                      {restaurant.description}
-                    </p>
+                    <p className="mb-2 text-gray-500">{products.description}</p>
                     <div className="mb-2 flex items-center text-sm">
                       <Clock className="mr-1 h-4 w-4 text-gray-500" />
                       <span className="mr-2 text-gray-500">
-                        {restaurant.time}
+                        {products.availability}
                       </span>
                       <Star className="h-4 w-4 fill-current text-yellow-500" />
                       <span className="ml-1 text-yellow-500">
-                        {restaurant.rating}
+                        {products.rating}
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {restaurant.categories.map((category, catIndex) => (
+                      {products.categories.map((category, catIndex) => (
                         <span
                           key={catIndex}
                           className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600"
@@ -194,7 +193,7 @@ export default function Stores() {
                         className="mr-3 rounded-md"
                       />
                       <div>
-                        <h3 className="font-semibold">Canvas Bag</h3>
+                        <h3 className="font-semibold">University Tote Bag</h3>
                         <p className="text-sm text-gray-500">x1</p>
                       </div>
                     </div>
@@ -210,7 +209,9 @@ export default function Stores() {
                         className="mr-3 rounded-md"
                       />
                       <div>
-                        <h3 className="font-semibold">Uni Teddy Bear</h3>
+                        <h3 className="font-semibold">
+                          University Mascot Plush
+                        </h3>
                         <p className="text-sm text-gray-500">x1</p>
                       </div>
                     </div>

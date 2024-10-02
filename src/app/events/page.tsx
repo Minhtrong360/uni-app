@@ -92,7 +92,9 @@ export default function Component() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <h2 className="ml-9 text-2xl font-bold sm:ml-0">Featured Events</h2>
+            <h2 className="text-2xl font-bold sm:ml-0 md:ml-9">
+              Featured Events
+            </h2>
             <div className="flex items-center space-x-2">
               <Button onClick={() => router.push(`/events/create`)}>
                 <Plus className="mr-2 h-4 w-4" /> New Event
@@ -258,7 +260,7 @@ function getImages(category: string) {
   switch (category) {
     case "academic":
       return [
-        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/home/AdobeStock_473119551-vert-scaled.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ob21lL0Fkb2JlU3RvY2tfNDczMTE5NTUxLXZlcnQtc2NhbGVkLmpwZyIsImlhdCI6MTcyNzIzNjYxOSwiZXhwIjoxNzU4NzcyNjE5fQ.t4Oek9DO9O5lsu8lFXiLjfb30-_XAyNmJ90q03uVLKE&t=2024-09-25T03%3A56%3A59.082Z",
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/job-search-600x600.png",
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/event/z5865151927756_5c6578ab3ed356343373be07921c6a7b.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ldmVudC96NTg2NTE1MTkyNzc1Nl81YzY1NzhhYjNlZDM1NjM0MzM3M2JlMDc5MjFjNmE3Yi5qcGciLCJpYXQiOjE3MjcyMzkwODEsImV4cCI6MTc1ODc3NTA4MX0.y6-OeS5Vtv5f_JnaI_RiR3mqPnEBU-jXgyPGjIOi1mA&t=2024-09-25T04%3A38%3A00.909Z",
       ];
     case "sports":
@@ -273,12 +275,12 @@ function getImages(category: string) {
       ];
     case "career":
       return [
-        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/home/AdobeStock_473119551-vert-scaled.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ob21lL0Fkb2JlU3RvY2tfNDczMTE5NTUxLXZlcnQtc2NhbGVkLmpwZyIsImlhdCI6MTcyNzIzNjYxOSwiZXhwIjoxNzU4NzcyNjE5fQ.t4Oek9DO9O5lsu8lFXiLjfb30-_XAyNmJ90q03uVLKE&t=2024-09-25T03%3A56%3A59.082Z",
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/job-search-600x600.png",
         "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/event/z5865151927756_5c6578ab3ed356343373be07921c6a7b.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ldmVudC96NTg2NTE1MTkyNzc1Nl81YzY1NzhhYjNlZDM1NjM0MzM3M2JlMDc5MjFjNmE3Yi5qcGciLCJpYXQiOjE3MjcyMzkwODEsImV4cCI6MTc1ODc3NTA4MX0.y6-OeS5Vtv5f_JnaI_RiR3mqPnEBU-jXgyPGjIOi1mA&t=2024-09-25T04%3A38%3A00.909Z",
       ];
     default:
       return [
-        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/home/AdobeStock_473119551-vert-scaled.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ob21lL0Fkb2JlU3RvY2tfNDczMTE5NTUxLXZlcnQtc2NhbGVkLmpwZyIsImlhdCI6MTcyNzIzNjYxOSwiZXhwIjoxNzU4NzcyNjE5fQ.t4Oek9DO9O5lsu8lFXiLjfb30-_XAyNmJ90q03uVLKE&t=2024-09-25T03%3A56%3A59.082Z",
+        "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/job-search-600x600.png",
         "https://www.juicer.io/api/posts/485231740/images.jpg?external_id=C_ioAKvxWQ4&s=d5996e1c6f96011d8dd43f0d4bfa93c71d42fab6",
       ];
   }

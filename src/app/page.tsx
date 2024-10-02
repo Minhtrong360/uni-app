@@ -20,6 +20,9 @@ import {
   BriefcaseBusiness,
   HelpCircleIcon,
   MessagesSquare,
+  Coffee,
+  BookOpen,
+  User,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -29,31 +32,42 @@ export default function Home() {
 
   return (
     <div className="relative mx-auto -mt-[64px] bg-background">
-      <div
-        className="relative mb-8 bg-black bg-cover bg-center px-6 py-20 text-white"
-        style={
-          {
-            // backgroundImage:
-            //   "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D')",
-          }
-        }
-      >
+      {/* Hero Section */}
+      <div className="relative mb-8 bg-black bg-cover bg-center px-6 py-20 text-white">
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="container relative z-10 mx-auto flex items-end justify-between">
-          <h1 className="text-center text-4xl font-bold">
-            Welcome back, Takegawa!
-          </h1>
+        <div className="container relative z-10 mx-auto flex flex-col items-start justify-between space-y-4">
+          <h1 className="text-4xl font-bold">Welcome back, Takegawa!</h1>
+          <div className="text-sm">
+            <p>Student ID: 20230915</p>
+            <p>Last Login: 2024-09-29 15:43 JST</p>
+            <p>Meal Plan: Unlimited | Balance: ¥15,000</p>
+            <p>Campus Access Card: Valid until 2025-03-31</p>
+            <p>Library Books: 3 checked out, 1 due in 5 days</p>
+          </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 p-6 lg:grid-cols-4">
         <div className="space-y-6 lg:col-span-3">
-          <section className="rounded-lg bg-secondary p-6">
-            <h2 className="mb-4 text-2xl font-semibold">Your Engagement</h2>
-            <Progress value={65} className="mb-2 h-2" />
-            <p className="text-sm text-muted-foreground">
-              65% of services utilized this semester
-            </p>
+          <section className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="rounded-lg bg-secondary p-6">
+              <Coffee className="mb-2 h-8 w-8 text-primary" />
+              <h3 className="mb-2 text-lg font-semibold">Campus Engagement</h3>
+              <Progress value={75} className="mb-2 h-2" />
+              <p className="text-sm text-muted-foreground">75% Active</p>
+            </div>
+            <div className="rounded-lg bg-secondary p-6">
+              <BookOpen className="mb-2 h-8 w-8 text-primary" />
+              <h3 className="mb-2 text-lg font-semibold">Study Hours</h3>
+              <Progress value={60} className="mb-2 h-2" />
+              <p className="text-sm text-muted-foreground">60 hrs this month</p>
+            </div>
+            <div className="rounded-lg bg-secondary p-6">
+              <User className="mb-2 h-8 w-8 text-primary" />
+              <h3 className="mb-2 text-lg font-semibold">Group Projects</h3>
+              <Progress value={40} className="mb-2 h-2" />
+              <p className="text-sm text-muted-foreground">2 active projects</p>
+            </div>
           </section>
 
           <section className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -214,7 +228,7 @@ export default function Home() {
             <h2 className="mb-4 text-2xl font-semibold">Upcoming Event</h2>
             <div className="flex items-center space-x-4">
               <Image
-                src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/sign/vlu-app-img/home/AdobeStock_473119551-vert-scaled.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2bHUtYXBwLWltZy9ob21lL0Fkb2JlU3RvY2tfNDczMTE5NTUxLXZlcnQtc2NhbGVkLmpwZyIsImlhdCI6MTcyNzIzNjYxOSwiZXhwIjoxNzU4NzcyNjE5fQ.t4Oek9DO9O5lsu8lFXiLjfb30-_XAyNmJ90q03uVLKE&t=2024-09-25T03%3A56%3A59.082Z"
+                src="https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/job-search-600x600.png"
                 alt="Event illustration"
                 width={80}
                 height={80}
