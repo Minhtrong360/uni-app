@@ -33,7 +33,13 @@ export default function Home() {
   return (
     <div className="relative mx-auto -mt-[64px] bg-background">
       {/* Hero Section */}
-      <div className="relative mb-8 bg-black bg-cover bg-center px-6 py-20 text-white">
+      <div
+        className="relative mb-8 bg-cover bg-center px-6 py-20 text-white"
+        style={{
+          backgroundImage:
+            "url('https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/home/86842026_3091645480860161_5034451456237764608_n_3a1d592ef5.jpg')",
+        }}
+      >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="container relative z-10 mx-auto flex flex-col items-start justify-between space-y-4">
           <h1 className="text-4xl font-bold">Welcome back, Takegawa!</h1>
@@ -137,9 +143,7 @@ export default function Home() {
               <Link href="/academic">
                 <div className="rounded-lg bg-secondary p-6">
                   <Rocket className="mb-4 h-10 w-10" />
-                  <h3 className="mb-2 text-xl font-semibold">
-                    Startups Contest
-                  </h3>
+                  <h3 className="mb-2 text-xl font-semibold">Academic</h3>
                   <p className="text-sm text-muted-foreground">
                     Submissions due in 2 weeks
                   </p>
@@ -256,6 +260,15 @@ export default function Home() {
                   className="w-full items-center justify-start"
                 >
                   <CircleGauge className="mr-2 h-4 w-4" /> Admin Dashboard
+                </Button>
+              </Link>
+
+              <Link href="/user/user-setting">
+                <Button
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <User className="mr-2 h-4 w-4" /> User
                 </Button>
               </Link>
 

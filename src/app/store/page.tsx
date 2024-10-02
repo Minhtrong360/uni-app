@@ -66,11 +66,12 @@ export default function Stores() {
 
   const categories = [
     "All",
-    "Fast Food",
-    "Healthy",
-    "Pizza",
-    "Asian",
-    "Desserts",
+    "Apparel",
+    "Accessories",
+    "Bags",
+    "Gifts",
+    "Essentials",
+    "Eco-Friendly",
   ];
 
   return (

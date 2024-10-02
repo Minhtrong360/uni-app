@@ -174,6 +174,8 @@ function CaseGrid({ cases }: { cases: Case[] }) {
         >
           <CardHeader className="p-0">
             <Image
+              width={3000}
+              height={2400}
               src={c.image}
               alt={c.title}
               className="h-48 w-full object-cover"

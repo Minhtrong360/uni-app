@@ -1,5 +1,5 @@
 "use client";
-// http://localhost:3000/forum
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -70,26 +70,14 @@ export default function TopicDetail() {
 
       <main className="flex-1 p-6">
         <div className="container mx-auto space-y-6">
-          {/* <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <a href="#" className="hover:underline">
-              Home
-            </a>
-            <span>/</span>
-            <a href="#" className="hover:underline">
-              Academic Discussions
-            </a>
-            <span>/</span>
-            <span>Study group for Advanced Calculus (MATH301)</span>
-          </div> */}
-
           <Card>
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
-                  <h1 className="text-2xl font-bold">
+                  <h1 className="text-xl font-bold sm:text-2xl">
                     Study group for Advanced Calculus (MATH301)
                   </h1>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <Badge variant="secondary">Academic Discussions</Badge>
                     <span className="text-sm text-muted-foreground">math</span>
                     <span className="text-sm text-muted-foreground">
@@ -150,8 +138,8 @@ export default function TopicDetail() {
               </div>
             </CardContent>
             <CardFooter>
-              <div className="flex w-full items-center justify-between">
-                <div className="flex space-x-4">
+              <div className="flex w-full flex-col items-start justify-between space-y-2 sm:flex-row sm:items-center sm:space-y-0">
+                <div className="flex flex-wrap gap-2">
                   <Button variant="ghost" size="sm">
                     <ThumbsUp className="mr-2 h-4 w-4" />
                     Like (23)
@@ -272,7 +260,7 @@ export default function TopicDetail() {
             </CardFooter>
           </Card>
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
             <Button variant="outline">
               <BookOpen className="mr-2 h-4 w-4" />
               View All Topics
