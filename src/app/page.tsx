@@ -236,7 +236,7 @@ export default function Home() {
           <section className="rounded-lg bg-secondary p-6">
             <h2 className="mb-4 text-2xl font-semibold">Quick Links</h2>
             <nav className="space-y-2">
-              <Link href="/admin/dashboard">
+              <Link href="/admin">
                 <Button
                   variant="ghost"
                   className="w-full items-center justify-start"
@@ -244,6 +244,17 @@ export default function Home() {
                   <CircleGauge className="mr-2 h-4 w-4" /> Admin Dashboard
                 </Button>
               </Link>
+
+              <Link href="/support">
+                <Button
+                  variant="ghost"
+                  className="w-full items-center justify-start"
+                >
+                  <HeartHandshake className="mr-2 h-4 w-4" /> Student Support
+                  Center
+                </Button>
+              </Link>
+
               <Link href="/store">
                 <Button
                   variant="ghost"
@@ -252,6 +263,7 @@ export default function Home() {
                   <ShoppingBag className="mr-2 h-4 w-4" /> Campus Store
                 </Button>
               </Link>
+
               <Link href="/events/bookvenue">
                 <Button
                   variant="ghost"
