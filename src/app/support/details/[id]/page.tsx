@@ -7,16 +7,26 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
-import { UserPlus, MessageSquare } from "lucide-react";
+import {
+  UserPlus,
+  MessageSquare,
+  MapPin,
+  Calendar,
+  Mail,
+  User,
+  ThumbsUp,
+} from "lucide-react";
 
-import AssignTask from "../components/assign-task";
+import AssignTask from "../../components/assign-task";
 import { Modal } from "antd";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
+import StudentFeedback from "../../components/feedback";
 
 export default function StudentSupportCenter() {
   const [isImageOpen, setIsImageOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isFBModalVisible, setIsFBModalVisible] = useState(false);
   const router = useRouter();
 
   // Define the type for an issue
@@ -39,6 +49,7 @@ export default function StudentSupportCenter() {
   const [issue, setIssue] = useState<Issue | null>(null); // Use the Issue type
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  console.log("id", id);
 
   // Fetch the specific issue from the API
   useEffect(() => {
@@ -66,6 +77,12 @@ export default function StudentSupportCenter() {
   const closeModal = () => {
     setIsModalVisible(false);
   };
+  const openFBModal = () => {
+    setIsFBModalVisible(true);
+  };
+  const closeFBModal = () => {
+    setIsFBModalVisible(false);
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 md:px-8 lg:w-[75%] lg:px-0">
@@ -79,7 +96,29 @@ export default function StudentSupportCenter() {
             <p className="text-sm text-gray-600">Empowering College Students</p>
           </div>
         </div>
-        <div className="flex space-x-4">
+        <div className="flex flex-wrap gap-2">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm" onClick={openModal}>
+                <UserPlus className="mr-2 h-4 w-4" /> Assign Task
+              </Button>
+            </DialogTrigger>
+            {/* <DialogContent className="sm:max-w-[425px]">
+            <AssignTask  />
+            </DialogContent> */}
+          </Dialog>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => router.push("/support/details/reply")}
+          >
+            <MessageSquare className="mr-2 h-4 w-4" /> Reply
+          </Button>
+          <Button variant="outline" size="sm" onClick={openFBModal}>
+            <ThumbsUp className="mr-2 h-4 w-4" /> Feedback
+          </Button>
+        </div>
+        {/* <div className="flex space-x-4">
           <Button variant="outline" onClick={openModal}>
             <UserPlus className="mr-2 h-4 w-4" /> Assign Task
           </Button>
@@ -89,7 +128,15 @@ export default function StudentSupportCenter() {
           >
             <MessageSquare className="mr-2 h-4 w-4" /> Reply
           </Button>
-        </div>
+        </div> */}
+        <Modal
+          title="Issue Details"
+          open={isFBModalVisible}
+          onCancel={closeFBModal}
+          footer={null}
+        >
+          <StudentFeedback />
+        </Modal>
         <Modal
           title="Assign Task"
           open={isModalVisible}
@@ -102,7 +149,7 @@ export default function StudentSupportCenter() {
 
       <main className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <p className="mb-4">${issue.description}</p>
+          <p className="mb-4">{issue.description}</p>
           <Card className="mb-8">
             <CardContent className="relative p-0">
               <Dialog open={isImageOpen} onOpenChange={setIsImageOpen}>
@@ -113,15 +160,17 @@ export default function StudentSupportCenter() {
                     width={600}
                     height={400}
                     className="h-64 w-full cursor-pointer rounded-t-lg object-cover sm:h-80 md:h-96"
+                    // style={{objectFit: "contain"}}
                   />
                 </DialogTrigger>
                 <DialogContent className="max-w-3xl">
                   <Image
                     src={`${issue.image}`}
                     alt="Supportive image"
-                    width={1200}
-                    height={800}
+                    width={600}
+                    height={400}
                     className="h-auto w-full object-contain"
+                    // style={{objectFit: "contain"}}
                   />
                 </DialogContent>
               </Dialog>
@@ -132,7 +181,7 @@ export default function StudentSupportCenter() {
                 <Badge className="bg-yellow-500 text-white">In Progress</Badge>
                 <Badge className="bg-red-500 text-white">{issue.urgency}</Badge>
               </div>
-              <div className="p-4 sm:p-6">
+              {/* <div className="p-4 sm:p-6">
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                   <Badge variant="secondary" className="justify-start">
                     <span className="mr-1 font-semibold">Location:</span>
@@ -140,7 +189,17 @@ export default function StudentSupportCenter() {
                   </Badge>
                   <Badge variant="secondary" className="justify-start">
                     <span className="mr-1 font-semibold">Ticket Issued:</span>
-                    <span className="truncate">{issue.created_at}</span>
+                    <span className="truncate">
+                    {new Date(issue.created_at).toLocaleString('en-GB', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: undefined,
+                        hour12: false,
+                    }).replace(',', '')}
+                    </span>
                   </Badge>
                   <Badge variant="secondary" className="justify-start">
                     <span className="mr-1 font-semibold">Student Email:</span>
@@ -151,7 +210,41 @@ export default function StudentSupportCenter() {
                     <span className="truncate">{issue.full_name}</span>
                   </Badge>
                 </div>
-              </div>
+              </div> */}
+              <Card className="m-4">
+                <CardContent className="p-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div className="flex items-center space-x-2">
+                      <MapPin className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm">Main Campus, Building B</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Calendar className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm">
+                        {new Date(issue.created_at)
+                          .toLocaleString("en-GB", {
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: undefined,
+                            hour12: false,
+                          })
+                          .replace(",", "")}
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Mail className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm"> {issue.email}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <User className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm"> {issue.full_name}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </CardContent>
           </Card>
           <Tabs defaultValue="overview">
