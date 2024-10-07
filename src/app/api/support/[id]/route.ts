@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabaseClient";
+import { createClient } from "@/lib/supabase/server";
 
 // Fetch a specific issue by ID
 export async function GET(
   request: Request,
   { params }: { params: { id: string } },
 ) {
+  const supabase = createClient();
   const { id } = params;
 
   try {

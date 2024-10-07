@@ -41,6 +41,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
 import { useRouter } from "next/navigation";
+import LoadingButtonClick from "@/components/loading";
 
 // Define the type for an issue
 interface Issue {
@@ -72,8 +73,9 @@ export default function SchoolSupportDashboard() {
     async function fetchIssues() {
       try {
         const response = await fetch("/api/support");
+        console.log("response", response);
         const data = await response.json();
-        console.log("data", data);
+
         setIssues(data.issues || []);
         setLoading(false);
       } catch (error) {
@@ -85,76 +87,14 @@ export default function SchoolSupportDashboard() {
     fetchIssues();
   }, []);
 
-  if (loading) return <p>Loading support issues...</p>;
+  if (loading)
+    return (
+      <div>
+        <LoadingButtonClick isLoading={loading} />
+      </div>
+    );
 
   if (!issues || issues.length === 0) return <p>No support issues found.</p>;
-  // const supportRequests = [
-  //   {
-  //     id: 1,
-  //     student: "Alice Johnson",
-  //     issue: "Difficulty with Math homework",
-  //     category: "Academic",
-  //     status: "Open",
-  //     priority: "High",
-  //     date: "2023-06-01",
-  //     description:
-  //       "Alice is struggling with her Algebra II homework and needs additional support.",
-  //     image:
-  //       "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_1.jpg",
-  //   },
-  //   {
-  //     id: 2,
-  //     student: "Bob Smith",
-  //     issue: "Conflict with classmate",
-  //     category: "Social",
-  //     status: "In Progress",
-  //     priority: "Medium",
-  //     date: "2023-06-02",
-  //     description:
-  //       "Bob has reported ongoing conflicts with a classmate during lunch periods.",
-  //     image:
-  //       "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_2.jpg",
-  //   },
-  //   {
-  //     id: 3,
-  //     student: "Charlie Brown",
-  //     issue: "Missed soccer practice",
-  //     category: "Extracurricular",
-  //     status: "Closed",
-  //     priority: "Low",
-  //     date: "2023-06-03",
-  //     description:
-  //       "Charlie has missed several soccer practices and needs to discuss team commitment.",
-  //     image:
-  //       "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_3.jpg",
-  //   },
-  //   {
-  //     id: 4,
-  //     student: "Diana Prince",
-  //     issue: "Struggling with essay writing",
-  //     category: "Academic",
-  //     status: "Open",
-  //     priority: "High",
-  //     date: "2023-06-04",
-  //     description:
-  //       "Diana is having difficulty structuring her essays for English class and requires writing support.",
-  //     image:
-  //       "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_4.jpg",
-  //   },
-  //   {
-  //     id: 5,
-  //     student: "Ethan Hunt",
-  //     issue: "Anxiety about upcoming exams",
-  //     category: "Wellbeing",
-  //     status: "In Progress",
-  //     priority: "Medium",
-  //     date: "2023-06-05",
-  //     description:
-  //       "Ethan is experiencing high levels of anxiety due to upcoming final exams.",
-  //     image:
-  //       "https://dheunoflmddynuaxiksw.supabase.co/storage/v1/object/public/vlu-app-img/ssc/ssc_5.jpg",
-  //   },
-  // ];
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -311,7 +251,19 @@ export default function SchoolSupportDashboard() {
                           </Badge>
                         </TableCell>
                         <TableCell>{issue.urgency}</TableCell>
-                        <TableCell>{issue.created_at}</TableCell>
+                        <TableCell>
+                          {new Date(issue.created_at)
+                            .toLocaleString("en-GB", {
+                              year: "numeric",
+                              month: "2-digit",
+                              day: "2-digit",
+                              // hour: '2-digit',
+                              // minute: '2-digit',
+                              second: undefined,
+                              hour12: false,
+                            })
+                            .replace(",", "")}
+                        </TableCell>
                         <TableCell className="text-right">
                           <Button
                             onClick={() =>
@@ -366,7 +318,19 @@ export default function SchoolSupportDashboard() {
                         Priority: {issue.priority}
                       </div>
                       <div className="mb-2 text-sm text-muted-foreground">
-                        Date: {issue.created_at}
+                        Date:
+                        {new Date(issue.created_at)
+                          .toLocaleString("en-GB", {
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                            // hour: '2-digit',
+                            // minute: '2-digit',
+                            second: undefined,
+                            hour12: false,
+                          })
+                          .replace(",", "")}
+                        {/* Date: {issue.created_at} */}
                       </div>
                       <p className="line-clamp-2 text-sm">
                         {issue.description}
@@ -392,97 +356,3 @@ export default function SchoolSupportDashboard() {
     </div>
   );
 }
-
-// ///
-// 'use client';
-
-// // import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui';
-// import { useEffect, useState } from 'react';
-// import { Button } from "@/components/ui/button";
-// import { Badge } from "@/components/ui/badge";
-// import {
-//     Card,
-//     CardContent,
-//     // CardDescription,
-//     CardHeader,
-//     CardTitle,
-//     CardFooter,
-//   } from "@/components/ui/card";
-// import Link from 'next/link';
-
-// // Define the type for an issue
-// interface Issue {
-//   id: number;
-//   full_name: string;
-//   email: string;
-//   student_id: string;
-//   request_type: string;
-//   urgency: string;
-//   description: string;
-//   contact_method: string;
-//   image: string | null;
-//   status: string;
-//   priority: string;
-//   created_at: string;
-//   updated_at: string;
-// }
-
-//   export default function SupportPage() {
-//     const [issues, setIssues] = useState<Issue[]>([]); // Use the Issue[] type
-//     const [loading, setLoading] = useState(true);
-
-//     // Fetch issues from the API
-//     useEffect(() => {
-//       async function fetchIssues() {
-//         try {
-//           const response = await fetch('/api/support');
-//           const data = await response.json();
-//           setIssues(data.issues || []);
-//           setLoading(false);
-//         } catch (error) {
-//           console.error('Failed to fetch issues:', error);
-//           setLoading(false);
-//         }
-//       }
-
-//       fetchIssues();
-//     }, []);
-
-//     if (loading) return <p>Loading support issues...</p>;
-
-//     if (!issues || issues.length === 0) return <p>No support issues found.</p>;
-
-//     return (
-//       <div>
-//         <h1>Support Requests</h1>
-//         <table>
-//           <thead>
-//             <tr>
-//               <th>ID</th>
-//               <th>Student</th>
-//               <th>Issue</th>
-//               <th>Status</th>
-//               <th>Priority</th>
-//               <th>Action</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {issues.map((issue) => (
-//               <tr key={issue.id}>
-//                 <td>{issue.id}</td>
-//                 <td>{issue.full_name}</td>
-//                 <td>{issue.description}</td>
-//                 <td>{issue.status}</td>
-//                 <td>{issue.priority}</td>
-//                 <td>
-//                   <Link href={`/support/details/${issue.id}`}>
-//                   <Button >View Details</Button>
-//                   </Link>
-//                 </td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     );
-//   }

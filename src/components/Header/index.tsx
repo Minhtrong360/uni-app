@@ -222,7 +222,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import {
   DropdownMenu,
@@ -308,9 +307,9 @@ export default function Header() {
                         </Button>
                       </BreadcrumbLink>
                       {index < breadcrumbs.length - 1 && (
-                        <BreadcrumbSeparator>
+                        <div>
                           <ChevronRight className="h-4 w-4 text-gray-400" />
-                        </BreadcrumbSeparator>
+                        </div>
                       )}
                     </BreadcrumbItem>
                   ))}

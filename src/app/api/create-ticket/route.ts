@@ -1,49 +1,7 @@
-// import { NextResponse } from 'next/server';
-// import { supabase } from '@/lib/supabaseClient';
-
-// // This function handles POST requests
-// export async function POST(request: Request) {
-//   try {
-
-//     const body = await request.json();
-//     console.log('Received request:', body); // Log incoming request data
-//     const { fullName, email, studentId, requestType, urgency, description, contactMethod, image } = body;
-
-//     // Insert data into the database
-//     const { data, error } = await supabase
-//   .from('support_issues')
-//   .insert([{
-//     full_name: fullName,
-//     email,
-//     student_id: studentId,
-//     request_type: requestType,
-//     urgency,
-//     description,
-//     contact_method: contactMethod,
-//     image
-//   }]);
-
-// if (error) {
-//   console.error('Error inserting data:', {
-//     message: error.message,
-//     details: error.details,
-//     hint: error.hint,
-//     code: error.code,
-//   });
-//   return NextResponse.json({ message: error.message, details: error.details, hint: error.hint }, { status: 500 });
-// }
-
-//     return NextResponse.json({ message: 'Issue created successfully', data }, { status: 200 });
-//   } catch (error) {
-//     console.error('Error processing POST request:', error);
-//     return NextResponse.json({ message: 'Failed to process request' }, { status: 500 });
-//   }
-// }
-
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabaseClient";
-
+import { createClient } from "@/lib/supabase/server";
 export async function POST(request: Request) {
+  const supabase = createClient();
   try {
     const formData = await request.formData(); // Using formData to handle the file and other fields
     const title = formData.get("title"); // New title field

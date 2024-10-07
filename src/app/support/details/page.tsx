@@ -13,6 +13,7 @@ import AssignTask from "../components/assign-task";
 import { Modal } from "antd";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
+import LoadingButtonClick from "@/components/loading";
 
 export default function StudentSupportCenter() {
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -58,7 +59,7 @@ export default function StudentSupportCenter() {
     fetchIssue();
   }, [id]);
 
-  if (loading) return <p>Loading issue details...</p>;
+  if (loading) return <LoadingButtonClick isLoading={loading} />;
   if (!issue) return <p>Issue not found</p>;
   const openModal = () => {
     setIsModalVisible(true);
@@ -92,6 +93,8 @@ export default function StudentSupportCenter() {
           </Button>
         </div>
         <Modal
+          getContainer={document.body}
+          maskClosable={true}
           title="Assign Task"
           open={isModalVisible}
           onCancel={closeModal}
@@ -141,7 +144,20 @@ export default function StudentSupportCenter() {
                   </Badge>
                   <Badge variant="secondary" className="justify-start">
                     <span className="mr-1 font-semibold">Ticket Issued:</span>
-                    <span className="truncate">{issue.created_at}</span>
+                    <span className="truncate">
+                      {new Date(issue.created_at)
+                        .toLocaleString("en-GB", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                          // hour: '2-digit',
+                          // minute: '2-digit',
+                          second: undefined,
+                          hour12: false,
+                        })
+                        .replace(",", "")}
+                      {/* {issue.created_at} */}
+                    </span>
                   </Badge>
                   <Badge variant="secondary" className="justify-start">
                     <span className="mr-1 font-semibold">Student Email:</span>

@@ -22,6 +22,7 @@ import { Modal } from "antd";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import StudentFeedback from "../../components/feedback";
+import LoadingButtonClick from "@/components/loading";
 
 export default function StudentSupportCenter() {
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -68,7 +69,7 @@ export default function StudentSupportCenter() {
     fetchIssue();
   }, [id]);
 
-  if (loading) return <p>Loading issue details...</p>;
+  if (loading) return <LoadingButtonClick isLoading={loading} />;
   if (!issue) return <p>Issue not found</p>;
   const openModal = () => {
     setIsModalVisible(true);
@@ -103,9 +104,6 @@ export default function StudentSupportCenter() {
                 <UserPlus className="mr-2 h-4 w-4" /> Assign Task
               </Button>
             </DialogTrigger>
-            {/* <DialogContent className="sm:max-w-[425px]">
-            <AssignTask  />
-            </DialogContent> */}
           </Dialog>
           <Button
             variant="outline"
@@ -118,17 +116,6 @@ export default function StudentSupportCenter() {
             <ThumbsUp className="mr-2 h-4 w-4" /> Feedback
           </Button>
         </div>
-        {/* <div className="flex space-x-4">
-          <Button variant="outline" onClick={openModal}>
-            <UserPlus className="mr-2 h-4 w-4" /> Assign Task
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => router.push("/support/details/reply")}
-          >
-            <MessageSquare className="mr-2 h-4 w-4" /> Reply
-          </Button>
-        </div> */}
         <Modal
           title="Issue Details"
           open={isFBModalVisible}
@@ -157,7 +144,7 @@ export default function StudentSupportCenter() {
                   <Image
                     src={`${issue.image}`}
                     alt="Supportive image"
-                    width={600}
+                    width={1400}
                     height={400}
                     className="h-64 w-full cursor-pointer rounded-t-lg object-cover sm:h-80 md:h-96"
                     // style={{objectFit: "contain"}}
@@ -181,36 +168,7 @@ export default function StudentSupportCenter() {
                 <Badge className="bg-yellow-500 text-white">In Progress</Badge>
                 <Badge className="bg-red-500 text-white">{issue.urgency}</Badge>
               </div>
-              {/* <div className="p-4 sm:p-6">
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                  <Badge variant="secondary" className="justify-start">
-                    <span className="mr-1 font-semibold">Location:</span>
-                    <span className="truncate">Main Campus, Building B</span>
-                  </Badge>
-                  <Badge variant="secondary" className="justify-start">
-                    <span className="mr-1 font-semibold">Ticket Issued:</span>
-                    <span className="truncate">
-                    {new Date(issue.created_at).toLocaleString('en-GB', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: undefined,
-                        hour12: false,
-                    }).replace(',', '')}
-                    </span>
-                  </Badge>
-                  <Badge variant="secondary" className="justify-start">
-                    <span className="mr-1 font-semibold">Student Email:</span>
-                    <span className="truncate">{issue.email}</span>
-                  </Badge>
-                  <Badge variant="secondary" className="justify-start">
-                    <span className="mr-1 font-semibold">Student Name:</span>
-                    <span className="truncate">{issue.full_name}</span>
-                  </Badge>
-                </div>
-              </div> */}
+
               <Card className="m-4">
                 <CardContent className="p-4">
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -226,8 +184,8 @@ export default function StudentSupportCenter() {
                             year: "numeric",
                             month: "2-digit",
                             day: "2-digit",
-                            hour: "2-digit",
-                            minute: "2-digit",
+                            // hour: '2-digit',
+                            // minute: '2-digit',
                             second: undefined,
                             hour12: false,
                           })

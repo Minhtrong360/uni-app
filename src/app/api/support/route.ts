@@ -1,8 +1,10 @@
+import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabaseClient";
 
 // Fetch all issues
 export async function GET() {
+  const supabase = createClient();
+
   try {
     const { data: issues, error } = await supabase
       .from("support_issues")
