@@ -46,6 +46,7 @@ export default function StudentSupportCenter() {
       try {
         const response = await fetch(`/api/support/${id}`);
         const data = await response.json();
+        console.log("data", data);
         setIssue(data.issue);
         setLoading(false);
       } catch (error) {
