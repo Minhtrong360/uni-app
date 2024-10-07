@@ -73,6 +73,7 @@ export default function SchoolSupportDashboard() {
       try {
         const response = await fetch("/api/support");
         const data = await response.json();
+        console.log("data", data);
         setIssues(data.issues || []);
         setLoading(false);
       } catch (error) {
