@@ -291,12 +291,12 @@ export default function GroupTaskManagement() {
         <Dialog open={isAddingGroup} onOpenChange={setIsAddingGroup}>
           <DialogTrigger asChild>
             <Button>
-              <Plus className="mr-2 h-4 w-4" /> Add Group
+              <Plus className="mr-2 h-4 w-4" /> Add Table
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Add New Group</DialogTitle>
+              <DialogTitle>Add New Table</DialogTitle>
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid grid-cols-4 items-center gap-4">
@@ -311,7 +311,7 @@ export default function GroupTaskManagement() {
                 />
               </div>
             </div>
-            <Button onClick={handleAddGroup}>Add Group</Button>
+            <Button onClick={handleAddGroup}>Add Table</Button>
           </DialogContent>
         </Dialog>
       </header>
