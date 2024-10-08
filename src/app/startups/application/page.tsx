@@ -4,14 +4,15 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { supabase } from "@/lib/supabase/supabaseClient"; // Import Supabase client
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
@@ -23,7 +24,6 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-
 import {
   Form,
   FormControl,
@@ -37,18 +37,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { message } from "antd";
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-const ACCEPTED_IMAGE_TYPES = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-] as const;
-const ACCEPTED_DOCUMENT_TYPES = [
-  "application/pdf",
-  "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-] as const;
-
+// Modify the form schema to handle File[] for images and documents
 const formSchema = z.object({
   founderName: z
     .string()
@@ -84,102 +73,49 @@ const formSchema = z.object({
   productDescription: z
     .string()
     .min(50, { message: "Product description must be at least 50 characters." })
-    .max(500, {
-      message: "Product description must not exceed 500 characters.",
-    }),
+    .max(500),
   problemStatement: z
     .string()
     .min(50, { message: "Problem statement must be at least 50 characters." })
-    .max(500, { message: "Problem statement must not exceed 500 characters." }),
+    .max(500),
   targetMarket: z
     .string()
     .min(20, {
       message: "Target market description must be at least 20 characters.",
     })
-    .max(200, {
-      message: "Target market description must not exceed 200 characters.",
-    }),
+    .max(200),
   competitiveAdvantage: z
     .string()
     .min(50, {
       message: "Competitive advantage must be at least 50 characters.",
     })
-    .max(500, {
-      message: "Competitive advantage must not exceed 500 characters.",
-    }),
+    .max(500),
   revenueModel: z
     .string()
     .min(20, { message: "Revenue model must be at least 20 characters." })
-    .max(200, { message: "Revenue model must not exceed 200 characters." }),
+    .max(200),
   traction: z
     .string()
     .min(20, { message: "Traction details must be at least 20 characters." })
-    .max(200, { message: "Traction details must not exceed 200 characters." }),
+    .max(200),
   goals: z
     .string()
     .min(50, { message: "Goals must be at least 50 characters." })
-    .max(500, { message: "Goals must not exceed 500 characters." }),
-  images: z
-    .array(
-      z.object({
-        name: z.string(),
-        size: z.number().max(MAX_FILE_SIZE, "File size must be less than 10MB"),
-        type: z.enum(ACCEPTED_IMAGE_TYPES, {
-          errorMap: () => ({
-            message: "Only .jpg, .jpeg, .png and .webp formats are supported",
-          }),
-        }),
-      }),
-    )
-    .optional(),
-  pptxFile: z
-    .object({
-      name: z.string(),
-      size: z.number().max(MAX_FILE_SIZE, "File size must be less than 10MB"),
-      type: z.literal(
-        "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-      ),
-    })
-    .optional(),
-  pitchDeckPdf: z
-    .object({
-      name: z.string(),
-      size: z.number().max(MAX_FILE_SIZE, "File size must be less than 10MB"),
-      type: z.literal("application/pdf"),
-    })
-    .optional(),
-  youtubeLink: z
-    .string()
-    .url("Please enter a valid URL")
-    .regex(
-      /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
-      "Please enter a valid YouTube URL",
-    )
-    .optional(),
-  supportingDocuments: z
-    .array(
-      z.object({
-        name: z.string(),
-        size: z.number().max(MAX_FILE_SIZE, "File size must be less than 10MB"),
-        type: z.enum(ACCEPTED_DOCUMENT_TYPES, {
-          errorMap: () => ({
-            message: "Only .pdf and .pptx formats are supported",
-          }),
-        }),
-      }),
-    )
-    .optional(),
+    .max(500),
+  youtubeLink: z.string().url("Please enter a valid URL").optional(),
   termsAgreed: z.boolean().refine((val) => val === true, {
     message: "You must agree to the terms and conditions.",
   }),
+  images: z.array(z.any()).optional(), // Store File[] objects here
+  pptxFile: z.any().optional(), // Store File object
+  pitchDeckPdf: z.any().optional(), // Store File object
+  supportingDocuments: z.array(z.any()).optional(), // Store File[] objects
 });
 
 export default function StartupContestForm() {
   const [phase, setPhase] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleClick = () => {
-    message.success("Application has been submitted successfully!");
-  };
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -208,22 +144,164 @@ export default function StartupContestForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      console.log(values);
-      toast({
-        title: "Form submitted successfully!",
-        description: "Thank you for submitting your startup details.",
-      });
-      setIsSubmitting(false);
-    }, 2000);
+  // Type for the file parameter
+  async function uploadToBucket(
+    file: File,
+    bucketName: string,
+  ): Promise<string> {
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${Date.now()}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error } = await supabase.storage
+      .from(bucketName)
+      .upload(filePath, file);
+
+    if (error) {
+      console.log("Error uploading file:", error);
+      throw error;
+    }
+
+    // Return the public URL of the uploaded file
+    const { publicUrl } = supabase.storage
+      .from(bucketName)
+      .getPublicUrl(filePath).data;
+    return publicUrl;
   }
 
-  const nextPhase = () => {
-    if (phase < 4) {
-      setPhase(phase + 1);
+  // Type for values parameter
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log("Form values before submission:", values); // Kiểm tra giá trị form trước khi submit
+    setIsSubmitting(true);
+    console.log("Form is being submitted..."); // Log khi bắt đầu submit
+    try {
+      // Handle image uploads to `vlu-app-img` bucket
+      console.log("Uploading images..."); // Log khi upload image
+      const imageUrls = await Promise.all(
+        (values.images || []).map((file: File) =>
+          uploadToBucket(file, "vlu-app-img"),
+        ),
+      );
+
+      // Handle document uploads to `startup-files` bucket
+      console.log("Uploading pptx and pdf files..."); // Log khi upload file
+      const pptxUrl = values.pptxFile
+        ? await uploadToBucket(values.pptxFile as File, "startup-files")
+        : null;
+      const pdfUrl = values.pitchDeckPdf
+        ? await uploadToBucket(values.pitchDeckPdf as File, "startup-files")
+        : null;
+      const supportingDocUrls = await Promise.all(
+        (values.supportingDocuments || []).map((file: File) =>
+          uploadToBucket(file, "startup-files"),
+        ),
+      );
+
+      // Insert into Supabase
+      console.log("Inserting data into Supabase..."); // Log trước khi insert vào Supabase
+      const { error } = await supabase.from("startups").insert([
+        {
+          foundername: values.founderName,
+          email: values.email,
+          startupname: values.startupName,
+          website: values.website,
+          foundingdate: values.foundingDate,
+          industry: values.industry,
+          teamsize: values.teamSize,
+          fundingstage: values.fundingStage,
+          fundingamount: values.fundingAmount,
+          productdescription: values.productDescription,
+          problemstatement: values.problemStatement,
+          targetmarket: values.targetMarket,
+          competitiveadvantage: values.competitiveAdvantage,
+          revenuemodel: values.revenueModel,
+          traction: values.traction,
+          goals: values.goals,
+          youtubelink: values.youtubeLink,
+          termsagreed: values.termsAgreed,
+          images: imageUrls, // Store image URLs
+          pptxfile: pptxUrl, // Store PPTX URL
+          pitchdeckpdf: pdfUrl, // Store PDF URL
+          supportingdocuments: supportingDocUrls, // Store supporting document URLs
+        },
+      ]);
+
+      if (error) {
+        console.error("Error inserting data into Supabase:", error); // Log lỗi khi insert dữ liệu vào Supabase
+        throw error;
+      }
+
+      toast({
+        title: "Success",
+        description: "Your startup has been successfully submitted!",
+      });
+
+      message.success("Your startup has been successfully submitted!");
+    } catch (error) {
+      console.error("Form submission error:", error); // Log khi có lỗi trong quá trình submit form
+      toast({
+        title: "Error",
+        description:
+          "There was an issue submitting the form. Please try again.",
+      });
+      message.success(
+        "There was an issue submitting the form. Please try again.",
+      );
+    }
+
+    setIsSubmitting(false);
+  }
+
+  // Trigger validation chỉ cho các field trong phase hiện tại
+  const triggerValidationForPhase = async () => {
+    let fieldsToValidate: Array<keyof z.infer<typeof formSchema>> = []; // Khai báo fieldsToValidate với kiểu hợp lệ
+
+    if (phase === 1) {
+      fieldsToValidate = [
+        "founderName",
+        "email",
+        "startupName",
+        "website",
+        "foundingDate",
+        "industry",
+        "teamSize",
+      ];
+    } else if (phase === 2) {
+      fieldsToValidate = [
+        "fundingStage",
+        "fundingAmount",
+        "productDescription",
+        "problemStatement",
+      ];
+    } else if (phase === 3) {
+      fieldsToValidate = [
+        "targetMarket",
+        "competitiveAdvantage",
+        "revenueModel",
+        "traction",
+        "goals",
+      ];
+    } else if (phase === 4) {
+      fieldsToValidate = [
+        "images",
+        "pptxFile",
+        "pitchDeckPdf",
+        "youtubeLink",
+        "supportingDocuments",
+        "termsAgreed",
+      ];
+    }
+
+    const result = await form.trigger(fieldsToValidate);
+    return result;
+  };
+
+  const nextPhase = async () => {
+    const isValid = await triggerValidationForPhase();
+    if (isValid) {
+      setPhase((prevPhase) => prevPhase + 1);
+    } else {
+      console.log("Validation failed, cannot move to the next phase");
     }
   };
 
@@ -245,7 +323,16 @@ export default function StartupContestForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault(); // Ngăn form submit mặc định
+              if (phase === 4) {
+                // Chỉ submit khi đang ở phase cuối cùng
+                form.handleSubmit(onSubmit)(e);
+              }
+            }}
+            className="space-y-8"
+          >
             {phase === 1 && (
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold">
@@ -597,18 +684,12 @@ export default function StartupContestForm() {
                           multiple
                           onChange={(e) => {
                             const files = Array.from(e.target.files || []);
-                            field.onChange(
-                              files.map((file) => ({
-                                name: file.name,
-                                size: file.size,
-                                type: file.type,
-                              })),
-                            );
+                            field.onChange(files);
                           }}
                         />
                       </FormControl>
                       <FormDescription>
-                        Upload images related to your startup (max 10MB each,
+                        Upload images related to your startup (max 20MB each,
                         .jpg, .jpeg, .png, .webp)
                       </FormDescription>
                       <FormMessage />
@@ -628,18 +709,14 @@ export default function StartupContestForm() {
                           onChange={(e) => {
                             const file = e.target.files?.[0];
                             if (file) {
-                              field.onChange({
-                                name: file.name,
-                                size: file.size,
-                                type: file.type,
-                              });
+                              field.onChange(file);
                             }
                           }}
                         />
                       </FormControl>
                       <FormDescription>
                         Upload a PowerPoint presentation about your startup (max
-                        10MB, .pptx)
+                        20MB, .pptx)
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -658,17 +735,13 @@ export default function StartupContestForm() {
                           onChange={(e) => {
                             const file = e.target.files?.[0];
                             if (file) {
-                              field.onChange({
-                                name: file.name,
-                                size: file.size,
-                                type: file.type,
-                              });
+                              field.onChange(file);
                             }
                           }}
                         />
                       </FormControl>
                       <FormDescription>
-                        Upload your pitch deck in PDF format (max 10MB)
+                        Upload your pitch deck in PDF format (max 20MB)
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -707,18 +780,12 @@ export default function StartupContestForm() {
                           multiple
                           onChange={(e) => {
                             const files = Array.from(e.target.files || []);
-                            field.onChange(
-                              files.map((file) => ({
-                                name: file.name,
-                                size: file.size,
-                                type: file.type,
-                              })),
-                            );
+                            field.onChange(files);
                           }}
                         />
                       </FormControl>
                       <FormDescription>
-                        Upload any additional supporting documents (max 10MB
+                        Upload any additional supporting documents (max 20MB
                         each, .pdf, .pptx)
                       </FormDescription>
                       <FormMessage />
@@ -767,11 +834,7 @@ export default function StartupContestForm() {
                   Next
                 </Button>
               ) : (
-                <Button
-                  onClick={handleClick}
-                  type="submit"
-                  disabled={isSubmitting}
-                >
+                <Button type="submit" disabled={isSubmitting}>
                   {isSubmitting ? "Submitting..." : "Submit Application"}
                 </Button>
               )}
