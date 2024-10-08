@@ -105,6 +105,10 @@ function PendingTasks() {
 
 export default function Reply() {
   const router = useRouter();
+  // Function to handle redirection
+  const handleRedirect = () => {
+    router.push("/support");
+  };
   return (
     <div className="h-screen bg-gray-100 p-4">
       <ScrollArea className="h-full">
@@ -172,13 +176,14 @@ export default function Reply() {
                   </div>
                   <div className="flex justify-end space-x-2 pt-4">
                     <Button
-                      onClick={() => router.push("/support/details")}
+                      onClick={handleRedirect}
                       variant="outline"
+                      type="button"
                       size="sm"
                     >
                       Cancel
                     </Button>
-                    <Button type="submit" size="sm">
+                    <Button type="button" size="sm" onClick={handleRedirect}>
                       Reply
                     </Button>
                   </div>

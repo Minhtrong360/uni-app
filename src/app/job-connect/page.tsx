@@ -49,6 +49,7 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const jobListings = [
   {
@@ -180,6 +181,13 @@ export default function JobBoard() {
     setSelectedTags((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
     );
+  };
+
+  const router = useRouter(); // Initialize useRouter
+
+  const handleRowClick = (id: number) => {
+    // Navigate to the job detail page when a row is clicked
+    router.push(`/job-connect/detail/${id}`);
   };
 
   return (
@@ -360,7 +368,11 @@ export default function JobBoard() {
             </TableHeader>
             <TableBody>
               {filteredAndSortedJobs.map((job) => (
-                <TableRow key={job.id}>
+                <TableRow
+                  key={job.id}
+                  className="cursor-pointer hover:bg-gray-100"
+                  onClick={() => handleRowClick(job.id)} // Handle row click
+                >
                   <TableCell>{job.title}</TableCell>
                   <TableCell>{job.company}</TableCell>
                   <TableCell>{job.location}</TableCell>
@@ -382,7 +394,11 @@ export default function JobBoard() {
       ) : (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredAndSortedJobs.map((job) => (
-            <Card key={job.id} className="flex flex-col">
+            <Card
+              key={job.id}
+              className="flex cursor-pointer flex-col hover:bg-gray-100"
+              onClick={() => handleRowClick(job.id)} // Handle row click
+            >
               <CardHeader>
                 <div className="flex items-center space-x-4">
                   <Image

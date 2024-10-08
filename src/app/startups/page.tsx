@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -248,18 +247,17 @@ const ItemCard = ({
           </PopoverContent>
         </Popover>
       </CardTitle>
-      <CardDescription>
-        <div className="flex items-center space-x-2">
-          <Avatar className="h-6 w-6">
-            <AvatarImage
-              src={`https://i.pravatar.cc/150?u=${item.id}`}
-              alt="Avatar"
-            />
-            <AvatarFallback>{avatarFallback}</AvatarFallback>
-          </Avatar>
-          <span>{item.author || item.founder || item.student}</span>
-        </div>
-      </CardDescription>
+
+      <div className="flex items-center space-x-2">
+        <Avatar className="h-6 w-6">
+          <AvatarImage
+            src={`https://i.pravatar.cc/150?u=${item.id}`}
+            alt="Avatar"
+          />
+          <AvatarFallback>{avatarFallback}</AvatarFallback>
+        </Avatar>
+        <div>{item.author || item.founder || item.student}</div>
+      </div>
     </CardHeader>
     <CardContent className="flex-grow">
       <div className="mb-4 flex flex-wrap gap-2">
@@ -371,31 +369,33 @@ export default function Component() {
 
   const extraContentPapers = (item: ItemType) => (
     <>
-      <p className="text-sm font-medium">Abstract</p>
-      <p className="text-sm">{item.abstract}</p>
-      <p className="text-sm font-medium">Published: {item.published}</p>
-      <p className="text-sm font-medium">Citations: {item.citations}</p>
-      <p className="text-sm font-medium">DOI: {item.doi}</p>
+      <div className="text-sm font-medium">Abstract</div>
+      <div className="text-sm">{item.abstract}</div>
+      <div className="text-sm font-medium">Published: {item.published}</div>
+      <div className="text-sm font-medium">Citations: {item.citations}</div>
+      <div className="text-sm font-medium">DOI: {item.doi}</div>
     </>
   );
 
   const extraContentTheses = (item: ItemType) => (
     <>
-      <p className="text-sm font-medium">Abstract</p>
-      <p className="text-sm">{item.abstract}</p>
-      <p className="text-sm font-medium">Supervisor: {item.supervisor}</p>
-      <p className="text-sm font-medium">Department: {item.department}</p>
-      <p className="text-sm font-medium">Completion: {item.completion}</p>
+      <div className="text-sm font-medium">Abstract</div>
+      <div className="text-sm">{item.abstract}</div>
+      <div className="text-sm font-medium">Supervisor: {item.supervisor}</div>
+      <div className="text-sm font-medium">Department: {item.department}</div>
+      <div className="text-sm font-medium">Completion: {item.completion}</div>
     </>
   );
 
   const extraContentStartups = (item: ItemType) => (
     <>
-      <p className="text-sm">{item.description}</p>
-      <p className="text-sm font-medium">Founded: {item.founded}</p>
-      <p className="text-sm font-medium">Team Size: {item.teamSize}</p>
-      <p className="text-sm font-medium">Funding Stage: {item.fundingStage}</p>
-      <p className="text-sm font-medium">Mentor: {item.mentor}</p>
+      <div className="text-sm">{item.description}</div>
+      <div className="text-sm font-medium">Founded: {item.founded}</div>
+      <div className="text-sm font-medium">Team Size: {item.teamSize}</div>
+      <div className="text-sm font-medium">
+        Funding Stage: {item.fundingStage}
+      </div>
+      <div className="text-sm font-medium">Mentor: {item.mentor}</div>
     </>
   );
 

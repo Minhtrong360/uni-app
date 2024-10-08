@@ -234,17 +234,25 @@ export default function SchoolSupportDashboard() {
                         <TableCell className="font-medium">
                           {issue.id}
                         </TableCell>
-                        <TableCell>{issue.full_name}</TableCell>
-                        <TableCell>{issue.title}</TableCell>
+                        <TableCell
+                          className="max-w-xs overflow-hidden text-ellipsis whitespace-nowrap"
+                          style={{ maxHeight: "3rem", lineHeight: "1.5rem" }}
+                        >
+                          {issue.full_name}
+                        </TableCell>
+                        <TableCell
+                          className="max-w-xs overflow-hidden text-ellipsis whitespace-nowrap"
+                          style={{ maxHeight: "3rem", lineHeight: "1.5rem" }}
+                        >
+                          {issue.title}
+                        </TableCell>
                         <TableCell>{issue.request_type}</TableCell>
                         <TableCell>
                           <Badge
                             variant={
                               issue.status === "Open"
                                 ? "destructive"
-                                : issue.status === "In Progress"
-                                  ? "default"
-                                  : "secondary"
+                                : "default"
                             }
                           >
                             {issue.status}
@@ -257,10 +265,6 @@ export default function SchoolSupportDashboard() {
                               year: "numeric",
                               month: "2-digit",
                               day: "2-digit",
-                              // hour: '2-digit',
-                              // minute: '2-digit',
-                              second: undefined,
-                              hour12: false,
                             })
                             .replace(",", "")}
                         </TableCell>
@@ -285,7 +289,7 @@ export default function SchoolSupportDashboard() {
                 {issues.map((issue) => (
                   <Card
                     key={issue.id}
-                    className="overflow-hidden bg-white dark:bg-gray-800"
+                    className="flex flex-col justify-between overflow-hidden bg-white dark:bg-gray-800"
                   >
                     <div className="relative h-60 w-full">
                       <Image
@@ -295,48 +299,39 @@ export default function SchoolSupportDashboard() {
                         objectFit="cover"
                       />
                     </div>
-                    <CardContent className="pt-4">
-                      <div className="mb-2 flex items-center justify-between">
-                        <Badge>{issue.urgency}</Badge>
-                        <Badge
-                          variant={
-                            issue.status === "Open"
-                              ? "destructive"
-                              : issue.status === "In Progress"
-                                ? "default"
-                                : "secondary"
-                          }
-                        >
-                          {issue.status}
-                        </Badge>
+                    <CardContent className="flex flex-grow flex-col justify-between pt-4">
+                      {/* Phần Title */}
+                      <div className="mb-4">
+                        <h3 className="min-h-[2rem] text-lg font-semibold">
+                          {issue.title}
+                        </h3>
                       </div>
-                      <div className="mb-2 text-sm text-muted-foreground">
-                        <h3 className="text-lg font-semibold">{issue.title}</h3>
-                        <p className="text-sm">{issue.full_name}</p>
+
+                      {/* Thông tin thêm */}
+                      <div className="mb-4">
+                        <p className="text-sm text-muted-foreground">
+                          {issue.full_name}
+                        </p>
+                        <div className="flex justify-between text-sm text-muted-foreground">
+                          <p>Priority: {issue.priority}</p>
+                          <p>
+                            Date:{" "}
+                            {new Date(issue.created_at)
+                              .toLocaleString("en-GB", {
+                                year: "numeric",
+                                month: "2-digit",
+                                day: "2-digit",
+                              })
+                              .replace(",", "")}
+                          </p>
+                        </div>
                       </div>
-                      <div className="mb-2 text-sm text-muted-foreground">
-                        Priority: {issue.priority}
-                      </div>
-                      <div className="mb-2 text-sm text-muted-foreground">
-                        Date:
-                        {new Date(issue.created_at)
-                          .toLocaleString("en-GB", {
-                            year: "numeric",
-                            month: "2-digit",
-                            day: "2-digit",
-                            // hour: '2-digit',
-                            // minute: '2-digit',
-                            second: undefined,
-                            hour12: false,
-                          })
-                          .replace(",", "")}
-                        {/* Date: {issue.created_at} */}
-                      </div>
-                      <p className="line-clamp-2 text-sm">
+
+                      <p className="mb-4 line-clamp-2 text-sm">
                         {issue.description}
                       </p>
                     </CardContent>
-                    <CardFooter>
+                    <CardFooter className="mt-auto">
                       <Button
                         onClick={() =>
                           router.push(`/support/details/${issue.id}`)

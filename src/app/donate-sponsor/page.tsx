@@ -20,16 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+
 import {
   SearchIcon,
   FilterIcon,
@@ -37,6 +28,7 @@ import {
   GraduationCapIcon,
 } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface Case {
   id: number;
@@ -165,12 +157,18 @@ export default function DonationPageWithForm() {
 }
 
 function CaseGrid({ cases }: { cases: Case[] }) {
+  const router = useRouter();
+  const handleRowClick = (id: number) => {
+    // Navigate to the job detail page when a row is clicked
+    router.push(`/donate-sponsor/${id}`);
+  };
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       {cases.map((c) => (
         <Card
           key={c.id}
-          className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg"
+          className="flex flex-col overflow-hidden transition-all duration-300 hover:cursor-pointer hover:shadow-lg"
+          onClick={() => handleRowClick(c.id)}
         >
           <CardHeader className="p-0">
             <Image
@@ -212,62 +210,10 @@ function CaseGrid({ cases }: { cases: Case[] }) {
               <span>Raised: ${c.raised.toLocaleString()}</span>
               <span>Goal: ${c.goal.toLocaleString()}</span>
             </div>
-            <DonationDialog caseTitle={c.title} />
+            <Button className="w-full">More Detail</Button>
           </CardFooter>
         </Card>
       ))}
     </div>
-  );
-}
-
-function DonationDialog({ caseTitle }: { caseTitle: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    // Handle form submission logic here
-    setIsOpen(false);
-  };
-
-  return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button className="w-full">Donate Now</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Donate to {caseTitle}</DialogTitle>
-          <DialogDescription>
-            Please provide your information so we can contact you about your
-            donation.
-          </DialogDescription>
-        </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name">Full Name</Label>
-            <Input id="name" required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="phone">Phone Number</Label>
-            <Input id="phone" type="tel" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="amount">Donation Amount ($)</Label>
-            <Input id="amount" type="number" min="1" step="1" required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="message">Message (Optional)</Label>
-            <Textarea id="message" />
-          </div>
-          <Button type="submit" className="w-full">
-            Submit Donation
-          </Button>
-        </form>
-      </DialogContent>
-    </Dialog>
   );
 }
