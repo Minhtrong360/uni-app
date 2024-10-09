@@ -20,6 +20,17 @@ export default function StudentSupportCenter() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    if (isModalVisible) {
+      document.body.style.overflow = "hidden"; // Vô hiệu hóa cuộn trên body khi mở modal
+    } else {
+      document.body.style.overflow = "auto"; // Bật lại cuộn khi đóng modal
+    }
+    return () => {
+      document.body.style.overflow = "auto"; // Cleanup khi component unmount
+    };
+  }, [isModalVisible]);
+
   // Define the type for an issue
   interface Issue {
     id: number;

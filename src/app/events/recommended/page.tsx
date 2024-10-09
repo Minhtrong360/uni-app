@@ -1,6 +1,6 @@
 "use client";
 // https://v0.dev/chat/QzgE90RGPCA
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -56,6 +56,17 @@ export default function Component() {
   const [savedEvents, setSavedEvents] = useState<number[]>([]);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  useEffect(() => {
+    if (isModalVisible) {
+      document.body.style.overflow = "hidden"; // Vô hiệu hóa cuộn trên body khi mở modal
+    } else {
+      document.body.style.overflow = "auto"; // Bật lại cuộn khi đóng modal
+    }
+    return () => {
+      document.body.style.overflow = "auto"; // Cleanup khi component unmount
+    };
+  }, [isModalVisible]);
 
   const showModal = () => {
     setIsModalVisible(true);

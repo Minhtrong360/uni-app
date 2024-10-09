@@ -30,6 +30,18 @@ export default function StudentSupportCenter() {
   const [isFBModalVisible, setIsFBModalVisible] = useState(false);
   const router = useRouter();
 
+  // Hook để vô hiệu hóa cuộn khi mở modal
+  useEffect(() => {
+    if (isModalVisible || isFBModalVisible) {
+      document.body.style.overflow = "hidden"; // Vô hiệu hóa cuộn trên body khi mở modal
+    } else {
+      document.body.style.overflow = "auto"; // Bật lại cuộn khi đóng modal
+    }
+    return () => {
+      document.body.style.overflow = "auto"; // Cleanup khi component unmount
+    };
+  }, [isModalVisible, isFBModalVisible]);
+
   // Define the type for an issue
   interface Issue {
     id: number;
@@ -50,7 +62,6 @@ export default function StudentSupportCenter() {
   const [issue, setIssue] = useState<Issue | null>(null); // Use the Issue type
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  console.log("id", id);
 
   // Fetch the specific issue from the API
   useEffect(() => {
@@ -121,6 +132,7 @@ export default function StudentSupportCenter() {
           open={isFBModalVisible}
           onCancel={closeFBModal}
           footer={null}
+          centered
         >
           <StudentFeedback />
         </Modal>
@@ -129,6 +141,7 @@ export default function StudentSupportCenter() {
           open={isModalVisible}
           onCancel={closeModal}
           footer={null}
+          centered
         >
           <AssignTask />
         </Modal>

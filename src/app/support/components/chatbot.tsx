@@ -33,7 +33,7 @@ const Chatbot = () => {
             "Hello! This is support assistant. How can I help you today?",
           errorMessage: "Please give me more detail!",
           backgroundColor: "#ffffff",
-          height: 700,
+          height: 600,
           width: 400,
           fontSize: 16,
           poweredByTextColor: "#303235",
