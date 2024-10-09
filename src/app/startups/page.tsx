@@ -1,4 +1,5 @@
 "use client";
+// https://v0.dev/chat/zugWFB9pPdK
 
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
@@ -203,7 +204,10 @@ export default function UniversityStartupProjects() {
                   key={startup.id}
                   className="flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-lg"
                 >
-                  <div className="relative w-full pt-[56.25%]">
+                  <div
+                    className="relative w-full pt-[56.25%]"
+                    onClick={() => router.push(`/startups/${startup.id}`)}
+                  >
                     <Image
                       src={
                         startup.images?.[0] ||
@@ -303,7 +307,10 @@ export default function UniversityStartupProjects() {
               </TableHeader>
               <TableBody>
                 {filteredStartups.map((startup) => (
-                  <TableRow key={startup.id}>
+                  <TableRow
+                    key={startup.id}
+                    onClick={() => router.push(`/startups/${startup.id}`)}
+                  >
                     <TableCell>{startup.startupname}</TableCell>
                     <TableCell>{startup.industry}</TableCell>
                     <TableCell>
