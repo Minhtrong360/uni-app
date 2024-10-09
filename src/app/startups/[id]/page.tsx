@@ -116,9 +116,9 @@ export default function StartupDetail() {
     return new Date(dateString).toLocaleDateString();
   };
 
-  if (!startup) {
-    return <p>Startup not found.</p>;
-  }
+  // if (!startup) {
+  //   return <p>Startup not found.</p>;
+  // }
 
   return (
     <>
