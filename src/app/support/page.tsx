@@ -62,7 +62,7 @@ interface Issue {
 }
 
 export default function SchoolSupportDashboard() {
-  const [viewType, setViewType] = useState<"table" | "cards">("table");
+  const [viewType, setViewType] = useState<"table" | "cards">("cards");
   const router = useRouter();
 
   const [issues, setIssues] = useState<Issue[]>([]); // Use the Issue[] type
@@ -93,8 +93,6 @@ export default function SchoolSupportDashboard() {
         <LoadingButtonClick isLoading={loading} />
       </div>
     );
-
-  if (!issues || issues.length === 0) return <p>No support issues found.</p>;
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">

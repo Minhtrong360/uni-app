@@ -104,7 +104,7 @@ export default function CreateTicket() {
   };
 
   return (
-    <Card className="mx-auto mb-8 w-full max-w-3xl md:mt-4">
+    <Card className="mx-auto mb-8 w-[95%] max-w-3xl md:mt-4">
       <CardHeader>
         <CardTitle>Advanced Student Support Request</CardTitle>
         <CardDescription>

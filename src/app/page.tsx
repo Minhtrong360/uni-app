@@ -161,12 +161,10 @@ export default function Home() {
                   </p>
                 </div>
               </Link>
-              <Link href="/startups/application">
+              <Link href="/startups">
                 <div className="rounded-lg bg-secondary p-6">
                   <Telescope className="mb-4 h-10 w-10" />
-                  <h3 className="mb-2 text-xl font-semibold">
-                    Startup Application
-                  </h3>
+                  <h3 className="mb-2 text-xl font-semibold">Startup</h3>
                   <p className="text-sm text-muted-foreground">
                     View today is menu
                   </p>
