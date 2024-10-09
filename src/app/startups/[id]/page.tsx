@@ -111,7 +111,6 @@ export default function StartupDetail() {
       fetchStartup();
     }
   }, [id]);
-  console.log("startup", startup);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString();
