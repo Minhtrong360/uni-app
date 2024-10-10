@@ -110,7 +110,7 @@ export default function UniversityStartupProjects() {
       startup.startupname.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (industryFilter === "All" || startup.industry === industryFilter),
   );
-
+  console.log("filteredStartups", filteredStartups);
   const industries = [
     "All",
     ...new Set(startups.map((startup) => startup.industry)),
@@ -216,7 +216,7 @@ export default function UniversityStartupProjects() {
                       alt={`${startup.startupname} image`}
                       layout="fill"
                       objectFit="cover"
-                      className="absolute left-0 top-0 h-full w-full transition-transform duration-300 hover:scale-105"
+                      className="absolute left-0 top-0 h-full w-full transition-transform duration-300 hover:scale-105 hover:cursor-pointer"
                     />
                   </div>
                   <div className="flex flex-grow flex-col">
@@ -230,7 +230,7 @@ export default function UniversityStartupProjects() {
                     </CardHeader>
                     <CardContent className="flex-grow">
                       <div className="space-y-3">
-                        <p className="line-clamp-3 text-sm">
+                        <p className="line-clamp-3 min-h-[60px] text-sm">
                           {startup.productdescription}
                         </p>
                         <div className="flex items-center space-x-2 text-sm text-muted-foreground">

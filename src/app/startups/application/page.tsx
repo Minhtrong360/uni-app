@@ -244,7 +244,7 @@ export default function StartupContestForm() {
         description:
           "There was an issue submitting the form. Please try again.",
       });
-      message.success(
+      message.error(
         "There was an issue submitting the form. Please try again.",
       );
     }
