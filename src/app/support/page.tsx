@@ -268,9 +268,7 @@ export default function SchoolSupportDashboard() {
                         </TableCell>
                         <TableCell className="text-right">
                           <Button
-                            onClick={() =>
-                              router.push(`/support/details/${issue.id}`)
-                            }
+                            onClick={() => router.push(`/support/${issue.id}`)}
                             variant="outline"
                             size="sm"
                           >
@@ -331,9 +329,7 @@ export default function SchoolSupportDashboard() {
                     </CardContent>
                     <CardFooter className="mt-auto">
                       <Button
-                        onClick={() =>
-                          router.push(`/support/details/${issue.id}`)
-                        }
+                        onClick={() => router.push(`/support/${issue.id}`)}
                         className="w-full"
                       >
                         View Details

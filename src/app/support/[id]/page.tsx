@@ -7,22 +7,33 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
-import { UserPlus, MessageSquare } from "lucide-react";
+import {
+  UserPlus,
+  MessageSquare,
+  MapPin,
+  Calendar,
+  Mail,
+  User,
+  ThumbsUp,
+} from "lucide-react";
 
-import AssignTask from "../components/assign-task";
 import { Modal } from "antd";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import LoadingButtonClick from "@/components/loading";
 import NotFoundComponent from "@/app/not-found";
+import StudentFeedback from "../components/feedback";
+import AssignTask from "../components/assign-task";
 
 export default function StudentSupportCenter() {
   const [isImageOpen, setIsImageOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isFBModalVisible, setIsFBModalVisible] = useState(false);
   const router = useRouter();
 
+  // Hook để vô hiệu hóa cuộn khi mở modal
   useEffect(() => {
-    if (isModalVisible) {
+    if (isModalVisible || isFBModalVisible) {
       document.body.style.overflow = "hidden"; // Vô hiệu hóa cuộn trên body khi mở modal
     } else {
       document.body.style.overflow = "auto"; // Bật lại cuộn khi đóng modal
@@ -30,7 +41,7 @@ export default function StudentSupportCenter() {
     return () => {
       document.body.style.overflow = "auto"; // Cleanup khi component unmount
     };
-  }, [isModalVisible]);
+  }, [isModalVisible, isFBModalVisible]);
 
   // Define the type for an issue
   interface Issue {
@@ -77,6 +88,12 @@ export default function StudentSupportCenter() {
   const closeModal = () => {
     setIsModalVisible(false);
   };
+  const openFBModal = () => {
+    setIsFBModalVisible(true);
+  };
+  const closeFBModal = () => {
+    setIsFBModalVisible(false);
+  };
 
   return (
     <>
@@ -100,24 +117,40 @@ export default function StudentSupportCenter() {
                     </p>
                   </div>
                 </div>
-                <div className="flex space-x-4">
-                  <Button variant="outline" onClick={openModal}>
-                    <UserPlus className="mr-2 h-4 w-4" /> Assign Task
-                  </Button>
+                <div className="flex flex-wrap gap-2">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" size="sm" onClick={openModal}>
+                        <UserPlus className="mr-2 h-4 w-4" /> Assign Task
+                      </Button>
+                    </DialogTrigger>
+                  </Dialog>
                   <Button
                     variant="outline"
-                    onClick={() => router.push("/support/details/reply")}
+                    size="sm"
+                    onClick={() => router.push(`/support/${id}/reply`)}
                   >
                     <MessageSquare className="mr-2 h-4 w-4" /> Reply
                   </Button>
+                  <Button variant="outline" size="sm" onClick={openFBModal}>
+                    <ThumbsUp className="mr-2 h-4 w-4" /> Feedback
+                  </Button>
                 </div>
                 <Modal
-                  getContainer={document.body}
-                  maskClosable={true}
+                  title="Issue Details"
+                  open={isFBModalVisible}
+                  onCancel={closeFBModal}
+                  footer={null}
+                  centered
+                >
+                  <StudentFeedback />
+                </Modal>
+                <Modal
                   title="Assign Task"
                   open={isModalVisible}
                   onCancel={closeModal}
                   footer={null}
+                  centered
                 >
                   <AssignTask />
                 </Modal>
@@ -125,7 +158,7 @@ export default function StudentSupportCenter() {
 
               <main className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                 <div className="lg:col-span-2">
-                  <p className="mb-4">${issue.description}</p>
+                  <p className="mb-4">{issue.description}</p>
                   <Card className="mb-8">
                     <CardContent className="relative p-0">
                       <Dialog open={isImageOpen} onOpenChange={setIsImageOpen}>
@@ -133,18 +166,20 @@ export default function StudentSupportCenter() {
                           <Image
                             src={`${issue.image}`}
                             alt="Supportive image"
-                            width={600}
+                            width={1400}
                             height={400}
                             className="h-64 w-full cursor-pointer rounded-t-lg object-cover sm:h-80 md:h-96"
+                            // style={{objectFit: "contain"}}
                           />
                         </DialogTrigger>
                         <DialogContent className="max-w-3xl">
                           <Image
                             src={`${issue.image}`}
                             alt="Supportive image"
-                            width={1200}
-                            height={800}
+                            width={600}
+                            height={400}
                             className="h-auto w-full object-contain"
+                            // style={{objectFit: "contain"}}
                           />
                         </DialogContent>
                       </Dialog>
@@ -159,49 +194,46 @@ export default function StudentSupportCenter() {
                           {issue.urgency}
                         </Badge>
                       </div>
-                      <div className="p-4 sm:p-6">
-                        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                          <Badge variant="secondary" className="justify-start">
-                            <span className="mr-1 font-semibold">
-                              Location:
-                            </span>
-                            <span className="truncate">
-                              Main Campus, Building B
-                            </span>
-                          </Badge>
-                          <Badge variant="secondary" className="justify-start">
-                            <span className="mr-1 font-semibold">
-                              Ticket Issued:
-                            </span>
-                            <span className="truncate">
-                              {new Date(issue.created_at)
-                                .toLocaleString("en-GB", {
-                                  year: "numeric",
-                                  month: "2-digit",
-                                  day: "2-digit",
-                                  // hour: '2-digit',
-                                  // minute: '2-digit',
-                                  second: undefined,
-                                  hour12: false,
-                                })
-                                .replace(",", "")}
-                              {/* {issue.created_at} */}
-                            </span>
-                          </Badge>
-                          <Badge variant="secondary" className="justify-start">
-                            <span className="mr-1 font-semibold">
-                              Student Email:
-                            </span>
-                            <span className="truncate">{issue.email}</span>
-                          </Badge>
-                          <Badge variant="secondary" className="justify-start">
-                            <span className="mr-1 font-semibold">
-                              Student Name:
-                            </span>
-                            <span className="truncate">{issue.full_name}</span>
-                          </Badge>
-                        </div>
-                      </div>
+
+                      <Card className="m-4">
+                        <CardContent className="p-4">
+                          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div className="flex items-center space-x-2">
+                              <MapPin className="h-4 w-4 text-muted-foreground" />
+                              <span className="text-sm">
+                                Main Campus, Building B
+                              </span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Calendar className="h-4 w-4 text-muted-foreground" />
+                              <span className="text-sm">
+                                {new Date(issue.created_at)
+                                  .toLocaleString("en-GB", {
+                                    year: "numeric",
+                                    month: "2-digit",
+                                    day: "2-digit",
+                                    // hour: '2-digit',
+                                    // minute: '2-digit',
+                                    second: undefined,
+                                    hour12: false,
+                                  })
+                                  .replace(",", "")}
+                              </span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Mail className="h-4 w-4 text-muted-foreground" />
+                              <span className="text-sm"> {issue.email}</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <User className="h-4 w-4 text-muted-foreground" />
+                              <span className="text-sm">
+                                {" "}
+                                {issue.full_name}
+                              </span>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </CardContent>
                   </Card>
                   <Tabs defaultValue="overview">
