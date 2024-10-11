@@ -299,17 +299,14 @@ export default function GroupTaskManagement() {
               <DialogTitle>Add New Table</DialogTitle>
             </DialogHeader>
             <div className="grid gap-4 py-4">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="groupTitle" className="text-right">
-                  Title
-                </Label>
-                <Input
-                  id="groupTitle"
-                  value={newGroup.title}
-                  onChange={(e) => setNewGroup({ title: e.target.value })}
-                  className="col-span-3"
-                />
-              </div>
+              <Label htmlFor="groupTitle" className="text-left">
+                Title
+              </Label>
+              <Input
+                id="groupTitle"
+                value={newGroup.title}
+                onChange={(e) => setNewGroup({ title: e.target.value })}
+              />
             </div>
             <Button onClick={handleAddGroup}>Add Table</Button>
           </DialogContent>
